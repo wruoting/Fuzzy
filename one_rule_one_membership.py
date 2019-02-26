@@ -21,12 +21,12 @@ data_y = np.array([0.3, 0.7, 2])
 # Create an antecedent input set and a membership function
 fuzzy_input = ctrl.Antecedent(data_x, 'x')
 fuzzy_input['x'] = generate_mf(data_x)
-# fuzzy_input.view()
+fuzzy_input.view()
 
 # Create a consequent output
 fuzzy_output = ctrl.Consequent(data_y, 'y')
 fuzzy_output['y'] = generate_mf(data_y)
-# fuzzy_output.view()
+fuzzy_output.view()
 
 # Create a rule
 rule1 = ctrl.Rule(fuzzy_input['x'], fuzzy_output['y'], label="rule")
@@ -41,4 +41,4 @@ control_simulation.input['x'] = 0.6
 
 control_simulation.compute()
 print(control_simulation.output['y'])
-fuzzy_input.view(sim=control_simulation)
+fuzzy_output.view(sim=control_simulation)
