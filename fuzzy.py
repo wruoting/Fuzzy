@@ -77,10 +77,10 @@ for index in range(1,9):
     #print(fpc)
 # FPC data
 data = [{'x': list(range(2, 10)), 'y': fpc_array}]
-graph('Number of Clusters', 'FPC Scores', data,
-      colorscale="div",
-      colorscale_type="RdYlBu",
-      name="FPC.html")
+# graph('Number of Clusters', 'FPC Scores', data,
+#       colorscale="div",
+#       colorscale_type="RdYlBu",
+#       name="FPC.html")
 max_fpc = np.argmax(fpc_array) + 2 # We add 2 here because 1 cluster is always 1, and we need to add 2 for the index
 
 cntr, u, u0, d, jm, p, fpc = fuzz.cluster.cmeans(
@@ -100,16 +100,17 @@ for pt in cntr:
                         'color': 'rgb(252,141,89)'
                     }
                  })
-graph('X', 'Y', data)
+# graph('X', 'Y', data)
 
 # Membership Data
 x_values_partition = []
 for index, value in enumerate(partition_data):
     x_values_partition.extend(value['x'])
 
-print(x_values_partition)
-quality = ctrl.Antecedent(x_values_partition, 'Data Set')
+# print(np.sort(x_values_partition))
+quality = ctrl.Antecedent(np.sort(x_values_partition), 'Data Set')
 quality.automf(3)
 quality.view()
+print(quality.terms['poor'])
 
 
