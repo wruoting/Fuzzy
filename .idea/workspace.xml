@@ -42,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/one_rule_one_membership.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="677">
-              <caret line="99" selection-start-line="99" selection-end-line="104" selection-end-column="10" />
+            <state relative-caret-position="439">
+              <caret line="86" column="18" selection-start-line="86" selection-end-line="87" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -54,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/fuzzyvariable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="49" column="21" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="21" />
+            <state relative-caret-position="561">
+              <caret line="37" column="56" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -365,13 +365,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/fuzzyvariable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/visualization.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -396,10 +389,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/fuzzyvariable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="37" column="56" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/one_rule_one_membership.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="99" selection-start-line="99" selection-end-line="104" selection-end-column="10" />
+        <state relative-caret-position="439">
+          <caret line="86" column="18" selection-start-line="86" selection-end-line="87" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

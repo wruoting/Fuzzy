@@ -48,9 +48,9 @@ def trimf(x_len, abc):
     y[idx] = 1
     return x, y
 
+
 # A 1-d Vector of X data
 def generate_mf(data):
-
     # Generate mean, min, max of universe
     mean_data = np.average(data)
     min_data = np.min(data)
@@ -58,13 +58,13 @@ def generate_mf(data):
     return trimf(len(data), [min_data, mean_data, max_data])
 
 
-def generate_output(input_tag, output_tag, input_value, control, graph=False):
-    control_simulation = ctrl.ControlSystemSimulation(control)
-
+def generate_output(input_tag, output_tag, input_value, control_simulation, graph=False):
     # Compute an input to output
     control_simulation.input[input_tag] = input_value
-
-    control_simulation.compute()
+    try:
+        control_simulation.compute()
+    except ValueError:
+        return 0
     if graph:
         fuzzy_output.view(sim=control_simulation)
     return control_simulation.output[output_tag]
@@ -76,16 +76,15 @@ data_y = np.random.rand(10)
 
 # Create an antecedent input set and a membership function
 fuzzy_x, fuzzy_x_output = generate_mf(data_x)
-
 fuzzy_input = ctrl.Antecedent(fuzzy_x, 'x')
 fuzzy_input['x'] = fuzzy_x_output
-fuzzy_input.view()
+# fuzzy_input.view()
 
 # Create a consequent output
 fuzzy_y, fuzzy_y_output = generate_mf(data_y)
 fuzzy_output = ctrl.Consequent(fuzzy_y, 'y')
 fuzzy_output['y'] = fuzzy_y_output
-fuzzy_output.view()
+# fuzzy_output.view()
 
 # Create a rule
 rule1 = ctrl.Rule(fuzzy_input['x'], fuzzy_output['y'], label="rule")
@@ -93,12 +92,14 @@ rule1 = ctrl.Rule(fuzzy_input['x'], fuzzy_output['y'], label="rule")
 # Create a control and controlsystem
 control = ctrl.ControlSystem([rule1])
 
+control_simulation = ctrl.ControlSystemSimulation(control)
 
+# Compute an input to output
 membership_output = []
 
 # Store outputs to array
 for datum in data_x:
-    membership_output.append(generate_output('x', 'y', datum, control, graph=False))
+    membership_output.append(generate_output('x', 'y', datum, control_simulation))
 mse_output = np.ones(len(membership_output))
 mse = np.square(np.subtract(mse_output, membership_output))
 
