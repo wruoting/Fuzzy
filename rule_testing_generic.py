@@ -11,3 +11,12 @@ height['small'] = fuzz.trimf(height.universe, [15, 30, 35])
 
 age.view()
 height.view()
+
+# Define a rule
+rule1 = ctrl.Rule(age['low'], height['small'])
+
+control = ctrl.ControlSystem([rule1])
+control_simulation = ctrl.ControlSystemSimulation(control)
+control_simulation.input['age'] = 5
+control_simulation.compute()
+height.view(sim=control_simulation)
