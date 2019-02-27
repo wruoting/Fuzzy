@@ -70,6 +70,19 @@ def generate_output(input_tag, output_tag, input_value, control_simulation, grap
     return control_simulation.output[output_tag]
 
 
+def mse(data_x, data_y, control_simulation):
+    # Compute an input to output
+    membership_output = []
+
+    # Store outputs to array
+    for datum in data_x:
+        membership_output.append(generate_output('x', 'y', datum, control_simulation))
+    mse = np.sum(np.square(np.subtract(data_y, membership_output)))
+    print(data_y)
+    print(membership_output)
+    print(mse)
+
+
 # Generate some data; input and output
 data_x = np.random.rand(10)
 data_y = np.random.rand(10)
@@ -94,14 +107,6 @@ control = ctrl.ControlSystem([rule1])
 
 control_simulation = ctrl.ControlSystemSimulation(control)
 
-# Compute an input to output
-membership_output = []
+mse(data_x, data_y, control_simulation)
 
-# Store outputs to array
-for datum in data_x:
-    membership_output.append(generate_output('x', 'y', datum, control_simulation))
-mse_output = np.ones(len(membership_output))
-mse = np.square(np.subtract(mse_output, membership_output))
-
-print(mse)
 
