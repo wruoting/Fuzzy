@@ -2,33 +2,97 @@ import numpy as np
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 from FuzzySystem import FuzzySystem
+from CreateSeedData import open_data, create_file
+from skfuzzy.control.antecedent_consequent import FuzzyVariable
 import matplotlib.pyplot as plt
-
-# Generate some data; input and output
-data_x = np.array([0.97587621, 0.18514317, 0.11278001, 0.59802743, 0.34573652, 0.65227173,
-                   0.55377137, 0.85699145, 0.53695026, 0.26970461])
-data_y = np.array([0.34010635, 0.27626549, 0.43559899, 0.25595622, 0.78174959, 0.60381853,
-                   0.97123691, 0.83535587, 0.74909083, 0.4041416])
-
-fuzzy_system = FuzzySystem(data_x, data_y)
-fuzzy_system.create_universes()
-
-x_inputs = np.arange(np.min(fuzzy_system.data_x)+fuzzy_system.tol_x, np.max(fuzzy_system.data_x)-fuzzy_system.tol_x, fuzzy_system.tol_x)
-mse_array = []
-
-for x_value in x_inputs:
-    mse_array.append(fuzzy_system.objective_function(m_x=x_value))
+import logging
 
 
-plt.plot(x_inputs, mse_array)
-plt.show()
+def variable_log(state, local_vars):
+    import logging
+    logging.basicConfig(filename='variables.log', level=logging.DEBUG)
+    # logging.debug('---------------------------------------------------------------------------------------------------')
+    # logging.debug('Tracking: ' + state)
+    print(local_vars)
+    for key, value in local_vars.items():
+        print(key)
+        print(value)
+    #     logging.debug('{key}:{value}'.format(key=key, value=value))
 
-for x, y in zip(x_inputs, mse_array):
-    if y == np.min(mse_array):
-        mse_x = x
 
-fuzzy_system.objective_function(m_x=mse_x)
-fuzzy_system.graph()
+def recursive_unpack(class_object):
+    if isinstance(class_object, FuzzySystem):
+        pass
+    if isinstance(class_object, FuzzyVariable):
+        pass
+
+
+def mse_generator(path=None):
+    # Generate some data; input and output
+    data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
+
+    # Create our universe
+    fuzzy_system = FuzzySystem(data_x, data_y)
+    fuzzy_system.create_universes()
+
+    # Create our MSE graph by creating a range of X's from min(data_x) to max(data_x)
+    x_inputs = np.arange(np.min(fuzzy_system.data_x)+fuzzy_system.tol_x, np.max(fuzzy_system.data_x)-fuzzy_system.tol_x, fuzzy_system.tol_x)
+    mse_array = []
+    print('Creating MSEs')
+    try:
+        try_x, try_mse = open_data(path="{}normalized_peak_mse.txt".format(path))
+        generate_data = True
+    except FileNotFoundError:
+        generate_data = False
+        print("No File")
+
+    if generate_data:
+        x_inputs = try_x
+        mse_array = try_mse
+    else:
+        for x_value in x_inputs:
+            mse_array.append(fuzzy_system.objective_function(m_x=x_value))
+            print('Adding value for : {}'.format(x_value))
+
+        create_file(path="{}normalized_peak_mse.txt".format(path), x_data=x_inputs, y_data=mse_array)
+
+    plt.figure(0)
+    plt.plot(x_inputs, mse_array)
+    plt.xlabel('X values for membership peak')
+    plt.ylabel('MSE of data set')
+    plt.savefig('{}mse_vs_x.png'.format(path))
+
+    plt.figure(1)
+    plt.plot(data_x, data_y, 'ro')
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.savefig('{}data.png'.format(path))
+
+    # Normalize Data overlay
+    normalize_mse = np.divide(np.subtract(mse_array, np.min(mse_array)), np.subtract(np.max(mse_array), np.min(mse_array)))
+    normalize_y = np.divide(np.subtract(data_y, np.min(data_y)), np.subtract(np.max(data_y), np.min(data_y)))
+    plt.figure(3)
+    plt.plot(x_inputs, normalize_mse, label="MSE")
+    plt.plot(data_x, normalize_y, 'ro', label="Data")
+    plt.legend()
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.savefig('{}overlay_data.png'.format(path))
+
+
+# Path Defaults
+normalized_peak_path = "Data/NormalizedPeakCenter/"
+left_shift_peak_path = "Data/LeftPeakCenter/"
+
+mse_generator(path=left_shift_peak_path)
+
+# mse_x = None
+# for x, y in zip(x_inputs, mse_array):
+#     if y == np.min(mse_array):
+#         mse_x = x
+
+# fuzzy_system.objective_function(m_x=mse_x)
+# fuzzy_system.graph()
 
 
 
