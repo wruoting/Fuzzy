@@ -53,6 +53,43 @@ def create_left_peak_gumbel_file():
     f.close()
 
 
+def create_right_peak_gumbel_file():
+    f = open("Data/RightPeakCenter/normalized_peak.txt", "w+")
+    mu = 0.5
+    sigma = 1
+    x = 1 - np.random.gumbel(loc=1, scale=1, size=400)
+    y = np.array(gaussian_distribution(x, mu, sigma))
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+
+
+def create_bimodal_peak_gumbel_file():
+    f = open("Data/BimodalPeak/normalized_peak.txt", "w+")
+    mu_1 = 0.5
+    mu_2 = 5.5
+    sigma = 1
+    x_1 = np.random.normal(loc=mu_1, scale=sigma, size=200)
+    x_2 = np.random.normal(loc=mu_2, scale=sigma, size=200)
+    y_1 = np.array(gaussian_distribution(x_1, mu_1, sigma))
+    y_2 = np.array(gaussian_distribution(x_2, mu_2, sigma))
+    x = np.append(x_1, x_2)
+    y = np.append(y_1, y_2)
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+
+
 def create_file(path=None, x_data=None, y_data=None):
     if not path:
         raise ValueError("You must pass a value into the path")
@@ -79,6 +116,6 @@ def open_data(path=None):
     return x_values, y_values
 
 
-create_left_peak_gumbel_file()
+create_bimodal_peak_gumbel_file()
 
 

@@ -61,12 +61,14 @@ def mse_generator(path=None):
     plt.xlabel('X values for membership peak')
     plt.ylabel('MSE of data set')
     plt.savefig('{}mse_vs_x.png'.format(path))
+    plt.close()
 
     plt.figure(1)
     plt.plot(data_x, data_y, 'ro')
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.savefig('{}data.png'.format(path))
+    plt.close()
 
     # Normalize Data overlay
     normalize_mse = np.divide(np.subtract(mse_array, np.min(mse_array)), np.subtract(np.max(mse_array), np.min(mse_array)))
@@ -78,21 +80,17 @@ def mse_generator(path=None):
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.savefig('{}overlay_data.png'.format(path))
+    plt.close()
 
 
 # Path Defaults
 normalized_peak_path = "Data/NormalizedPeakCenter/"
 left_shift_peak_path = "Data/LeftPeakCenter/"
+right_shift_peak_path = "Data/RightPeakCenter/"
+bimodal_peak_path = "Data/BimodalPeak/"
 
-mse_generator(path=left_shift_peak_path)
+mse_generator(path=bimodal_peak_path)
 
-# mse_x = None
-# for x, y in zip(x_inputs, mse_array):
-#     if y == np.min(mse_array):
-#         mse_x = x
-
-# fuzzy_system.objective_function(m_x=mse_x)
-# fuzzy_system.graph()
 
 
 
