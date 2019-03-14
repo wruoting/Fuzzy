@@ -88,8 +88,10 @@ normalized_peak_path = "Data/NormalizedPeakCenter/"
 left_shift_peak_path = "Data/LeftPeakCenter/"
 right_shift_peak_path = "Data/RightPeakCenter/"
 bimodal_peak_path = "Data/BimodalPeak/"
+three_point_peak_path = "Data/ThreePointPeak/"
 
-mse_generator(path=bimodal_peak_path)
+
+mse_generator(path=three_point_peak_path)
 
 
 

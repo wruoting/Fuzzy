@@ -19,6 +19,21 @@ def gaussian_distribution(x, mu, sigma):
     return final_y
 
 
+def create_three_point_file():
+    f = open("Data/ThreePointPeak/normalized_peak.txt", "w+")
+    x = [0, 5, 10]
+    y = [1, 5, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+
+
 def create_normalized_file():
     f = open("Data/NormalizedPeakCenter/normalized_peak.txt", "w+")
     mu = 0.5
@@ -116,6 +131,6 @@ def open_data(path=None):
     return x_values, y_values
 
 
-create_bimodal_peak_gumbel_file()
+create_three_point_file()
 
 

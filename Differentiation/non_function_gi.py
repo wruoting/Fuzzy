@@ -1,16 +1,19 @@
 
 # program = f
-# z = f(p, u)
-# dz/dp = df/dp * dp/dp + df/du * du/dp
+# v = f(p)
 # Initialize non parameter real variables:
-Du_Dp = 0
-
 p = 9  # parameter of this program
-u = 3 * p  # input variable 1
-z = u**2  # output
+v = 3  # input variable 1
 
-# Insert into the program this assignment:
-# D_z/D_p = f_1 + f_2 * D_u/D_p
-# f_1 = df_dp
-# f_2 = df_du
-print(z)  # output
+Dv_Dp = 0
+v = p ** 2 + v*p + v
+# Yields: p^2 + 3*p + 3
+v = v - 2
+# Yields: p^2 + 3*p + 1
+
+if p > v: # True
+    v = v + 1
+
+# Yields: p^2 + 3*p + 2
+
+print(v)  # output

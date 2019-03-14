@@ -20,7 +20,6 @@ def paramaterize(func):
         return all_parameters
     return func_wrapper
 
-
 @paramaterize
 def polynomial(x):
     v_1 = x**3
