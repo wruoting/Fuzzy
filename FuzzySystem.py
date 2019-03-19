@@ -38,17 +38,17 @@ class FuzzySystem(object):
 
     def create_membership(self, m_x=None, m_y=None):
         if m_x:
-            self.x_antecedent['x'] = fuzz.trimf(self.x_antecedent.universe,
-                                                [np.min(self.data_x), m_x, np.max(self.data_x)])
+            self.x_antecedent['x'] = trimf(self.x_antecedent.universe,
+                                           [np.min(self.data_x), m_x, np.max(self.data_x)])
         else:
-            self.x_antecedent['x'] = fuzz.trimf(self.x_antecedent.universe,
-                                                [np.min(self.data_x), self.m_x, np.max(self.data_x)])
+            self.x_antecedent['x'] = trimf(self.x_antecedent.universe,
+                                           [np.min(self.data_x), self.m_x, np.max(self.data_x)])
         if m_y:
-            self.y_consequent['y'] = fuzz.trimf(self.y_consequent.universe,
-                                                [np.min(self.data_y), m_y, np.max(self.data_y)])
+            self.y_consequent['y'] = trimf(self.y_consequent.universe,
+                                           [np.min(self.data_y), m_y, np.max(self.data_y)])
         else:
-            self.y_consequent['y'] = fuzz.trimf(self.y_consequent.universe,
-                                                [np.min(self.data_y), self.m_y, np.max(self.data_y)])
+            self.y_consequent['y'] = trimf(self.y_consequent.universe,
+                                           [np.min(self.data_y), self.m_y, np.max(self.data_y)])
 
     def rules_to_control(self):
         # Create a rule
@@ -106,5 +106,45 @@ class FuzzySystem(object):
         self.y_consequent.view(sim=self.control_simulation)
 
 
+def trimf(x, abc):
+    """
+    Triangular membership function generator.
 
+    Parameters
+    ----------
+    x : 1d array
+        Independent variable.
+    abc : 1d array, length 3
+        Three-element vector controlling shape of triangular function.
+        Requires a <= b <= c.
 
+    Returns
+    -------
+    y : 1d array
+        Triangular membership function.
+    """
+    assert len(abc) == 3, 'abc parameter must have exactly three elements.'
+    a, b, c = np.r_[abc]     # Zero-indexing in Python
+    assert a <= b and b <= c, 'abc requires the three elements a <= b <= c.'
+
+    y = []
+    temp_y = np.zeros(len(x))
+
+    # Left side
+    if a != b:
+        idx_a_b = np.nonzero(np.logical_and(a < x, x < b))[0]
+        temp_y[idx_a_b] = -1
+    if b != c:
+        idx_b_c = np.nonzero(np.logical_and(b < x, x < c))[0]
+        temp_y[idx_b_c] = 1
+    idx_b = np.nonzero(x == b)[0]
+    temp_y[idx_b] = 0
+
+    for index, value in enumerate(temp_y):
+        if value == -1:
+            y.append((x[index] - a) / (b - a))
+        elif value == 1:
+            y.append((c - x[index]) / (c - b))
+        elif value == 0:
+            y.append(1)
+    return y

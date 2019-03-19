@@ -1,30 +1,8 @@
 import numpy as np
-import skfuzzy as fuzz
-from skfuzzy import control as ctrl
 from FuzzySystem import FuzzySystem
 from CreateSeedData import open_data, create_file
-from skfuzzy.control.antecedent_consequent import FuzzyVariable
 import matplotlib.pyplot as plt
-import logging
-
-
-def variable_log(state, local_vars):
-    import logging
-    logging.basicConfig(filename='variables.log', level=logging.DEBUG)
-    # logging.debug('---------------------------------------------------------------------------------------------------')
-    # logging.debug('Tracking: ' + state)
-    print(local_vars)
-    for key, value in local_vars.items():
-        print(key)
-        print(value)
-    #     logging.debug('{key}:{value}'.format(key=key, value=value))
-
-
-def recursive_unpack(class_object):
-    if isinstance(class_object, FuzzySystem):
-        pass
-    if isinstance(class_object, FuzzyVariable):
-        pass
+from autograd import grad
 
 
 def mse_generator(path=None):
@@ -84,14 +62,29 @@ def mse_generator(path=None):
 
 
 # Path Defaults
-normalized_peak_path = "Data/NormalizedPeakCenter/"
-left_shift_peak_path = "Data/LeftPeakCenter/"
-right_shift_peak_path = "Data/RightPeakCenter/"
-bimodal_peak_path = "Data/BimodalPeak/"
-three_point_peak_path = "Data/ThreePointPeak/"
+# normalized_peak_path = "Data/NormalizedPeakCenter/"
+# left_shift_peak_path = "Data/LeftPeakCenter/"
+# right_shift_peak_path = "Data/RightPeakCenter/"
+# bimodal_peak_path = "Data/BimodalPeak/"
+# three_point_peak_path = "Data/ThreePointPeak/"
+#
+#
+# mse_generator(path=three_point_peak_path)
 
 
-mse_generator(path=three_point_peak_path)
+def differentiate_fuzzy(x_value, path=None):
+    # Generate some data; input and output
+    data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
+
+    # Create our universe
+    fuzzy_system = FuzzySystem(data_x, data_y)
+    fuzzy_system.create_universes()
+    grad_objective = grad(fuzzy_system.objective_function)
+    print(grad_objective(float(x_value)))
+
+
+differentiate_fuzzy(0.5, path='Data/NormalizedPeakCenter/')
+
 
 
 

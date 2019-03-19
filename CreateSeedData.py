@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import autograd.numpy as auto_np
+from autograd import grad
 
 
 def gaussian_distribution(x, mu, sigma):
@@ -131,6 +133,6 @@ def open_data(path=None):
     return x_values, y_values
 
 
-create_three_point_file()
+
 
 
