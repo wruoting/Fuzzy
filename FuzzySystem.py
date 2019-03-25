@@ -1,3 +1,4 @@
+from ControlSystemSimulationOverride import ControlSystemSimulationOverride
 import numpy as np
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
@@ -57,7 +58,7 @@ class FuzzySystem(object):
         self.rules = rule1
         # Create a control and controlsystem
         self.control = ctrl.ControlSystem(self.rules)
-        self.control_simulation = ctrl.ControlSystemSimulation(self.control)
+        self.control_simulation = ControlSystemSimulationOverride(self.control)
 
     def objective_function(self, m_x):
         self.create_membership(m_x=m_x)
@@ -132,10 +133,10 @@ def trimf(x, abc):
 
     # Left side
     if a != b:
-        idx_a_b = np.nonzero(np.logical_and(a < x, x < b))[0]
+        idx_a_b = np.nonzero(np.logical_and(a <= x, x < b))[0]
         temp_y[idx_a_b] = -1
     if b != c:
-        idx_b_c = np.nonzero(np.logical_and(b < x, x < c))[0]
+        idx_b_c = np.nonzero(np.logical_and(b < x, x <= c))[0]
         temp_y[idx_b_c] = 1
     idx_b = np.nonzero(x == b)[0]
     temp_y[idx_b] = 0

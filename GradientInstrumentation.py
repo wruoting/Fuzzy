@@ -69,16 +69,16 @@ def mse_generator(path=None):
 # three_point_peak_path = "Data/ThreePointPeak/"
 #
 #
-# mse_generator(path=three_point_peak_path)
+# mse_generator(path=bimodal_peak_path)
 
 
 def differentiate_fuzzy(x_value, path=None):
     # Generate some data; input and output
     data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
-
     # Create our universe
     fuzzy_system = FuzzySystem(data_x, data_y)
     fuzzy_system.create_universes()
+    # fuzzy_system.objective_function(m_x=x_value)
     grad_objective = grad(fuzzy_system.objective_function)
     print(grad_objective(float(x_value)))
 
