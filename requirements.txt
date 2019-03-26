@@ -60,10 +60,10 @@ pyreadline==2.1
 python-dateutil==2.7.2
 pytz==2018.3
 pywinpty==0.5.5
-PyYAML==3.12
+PyYAML==5.1
 pyzmq==17.1.2
 qtconsole==4.4.3
-requests==2.18.4
+requests==2.21.0
 requests-file==1.4.3
 requests-ftp==0.3.1
 scikit-fuzzy==0.4.0
@@ -82,7 +82,7 @@ terminado==0.8.1
 testpath==0.4.2
 tornado==5.1.1
 traitlets==4.3.2
-urllib3==1.22
+urllib3==1.24.1
 virtualenv==16.4.0
 virtualenvwrapper-win==1.2.5
 wcwidth==0.1.7
