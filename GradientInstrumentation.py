@@ -62,14 +62,13 @@ def mse_generator(path=None):
 
 
 # Path Defaults
-# normalized_peak_path = "Data/NormalizedPeakCenter/"
-# left_shift_peak_path = "Data/LeftPeakCenter/"
-# right_shift_peak_path = "Data/RightPeakCenter/"
-# bimodal_peak_path = "Data/BimodalPeak/"
-# three_point_peak_path = "Data/ThreePointPeak/"
-#
-#
-# mse_generator(path=bimodal_peak_path)
+normalized_peak_path = "Data/NormalizedPeakCenter/"
+left_shift_peak_path = "Data/LeftPeakCenter/"
+right_shift_peak_path = "Data/RightPeakCenter/"
+bimodal_peak_path = "Data/BimodalPeak/"
+three_point_peak_path = "Data/ThreePointPeak/"
+
+# mse_generator(path=three_point_peak_path)
 
 
 def differentiate_fuzzy(x_value, path=None):
@@ -83,7 +82,7 @@ def differentiate_fuzzy(x_value, path=None):
     print(grad_objective(float(x_value)))
 
 
-differentiate_fuzzy(0.5, path='Data/NormalizedPeakCenter/')
+differentiate_fuzzy(0.5, path=three_point_peak_path)
 
 
 

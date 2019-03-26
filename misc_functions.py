@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from skfuzzy.defuzzify.defuzz import bisector
 
 
-def interp_membership(x, xmf, xx):
+def interp_membership(x, xmf, xx, tol=1e-5):
     """
     Find the degree of membership ``u(xx)`` for a given value of ``x = xx``.
 
@@ -49,19 +49,19 @@ def interp_membership(x, xmf, xx):
             peak_x = x[index]
     range_left = x[0]
     range_right = x[len(x)-1]
-    slope_left = (peak_y - xmf[0])/(peak_x - range_left)
-    slope_right = (xmf[len(x)-1] - peak_y)/(range_right - peak_x)
+    slope_left = np.divide((peak_y - xmf[0]), (peak_x - range_left)) if peak_x != range_left else 0
+    slope_right = np.divide((xmf[len(x)-1] - peak_y), (range_right - peak_x)) if peak_x != range_right else 0
     # plt.plot(x, xmf)
     if xx > peak_x:
         # plt.plot(xx, peak_y + slope_right * (xx - peak_x), marker="^")
         # plt.show()
-        return peak_y+slope_right*(xx-peak_x)
+        return peak_y+slope_right*(xx-peak_x) if peak_y+slope_right*(xx-peak_x) > tol else 0
     elif xx < peak_x:
         # plt.plot(xx, peak_y-slope_left*(peak_x-xx), marker="^")
         # plt.show()
-        return peak_y-slope_left*(peak_x-xx)
+        return peak_y-slope_left*(peak_x-xx) if peak_y-slope_left*(peak_x-xx) > tol else 0
     else:
-        return peak_y
+        return peak_y if peak_y > tol else 0
 
 
 def defuzz(x, mfx, mode):
