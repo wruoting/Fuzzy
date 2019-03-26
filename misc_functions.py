@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from skfuzzy.defuzzify.defuzz import centroid, bisector
 
 
 def interp_membership(x, xmf, xx):
@@ -61,3 +62,105 @@ def interp_membership(x, xmf, xx):
         return peak_y-slope_left*(peak_x-xx)
     else:
         return peak_y
+
+
+def defuzz(x, mfx, mode):
+    """
+    Defuzzification of a membership function, returning a defuzzified value
+    of the function at x, using various defuzzification methods.
+
+    Parameters
+    ----------
+    x : 1d array or iterable, length N
+        Independent variable.
+    mfx : 1d array of iterable, length N
+        Fuzzy membership function.
+    mode : string
+        Controls which defuzzification method will be used.
+        * 'centroid': Centroid of area
+        * 'bisector': bisector of area
+        * 'mom'     : mean of maximum
+        * 'som'     : min of maximum
+        * 'lom'     : max of maximum
+
+    Returns
+    -------
+    u : float or int
+        Defuzzified result.
+
+    See Also
+    --------
+    skfuzzy.defuzzify.centroid, skfuzzy.defuzzify.dcentroid
+    """
+    mode = mode.lower()
+    x = x.ravel()
+    mfx = mfx.ravel()
+    n = len(x)
+    assert n == len(mfx), 'Length of x and fuzzy membership function must be \
+                          identical.'
+
+    if 'centroid' in mode or 'bisector' in mode:
+        zero_truth_degree = mfx.sum() == 0  # Approximation of total area
+        assert not zero_truth_degree, 'Total area is zero in defuzzification!'
+
+        if 'centroid' in mode:
+            return centroid(x, mfx)
+
+        elif 'bisector' in mode:
+            return bisector(x, mfx)
+
+    elif 'mom' in mode:
+        return np.mean(x[mfx == mfx.max()])
+
+    elif 'som' in mode:
+        return np.min(x[mfx == mfx.max()])
+
+    elif 'lom' in mode:
+        return np.max(x[mfx == mfx.max()])
+
+    else:
+        raise ValueError('The input for `mode`, %s, was incorrect.' % (mode))
+
+
+def interp_universe_fast(x, xmf, y):
+    """
+    Find interpolated universe value(s) for a given fuzzy membership value.
+
+    Fast version, with possible duplication.
+
+    Parameters
+    ----------
+    x : 1d array
+        Independent discrete variable vector.
+    xmf : 1d array
+        Fuzzy membership function for ``x``.  Same length as ``x``.
+    y : float
+        Specific fuzzy membership value.
+
+    Returns
+    -------
+    xx : list
+        List of discrete singleton values on universe ``x`` whose
+        membership function value is y, ``u(xx[i])==y``.
+        If there are not points xx[i] such that ``u(xx[i])==y``
+        it returns an empty list.
+
+    Notes
+    -----
+    For use in Fuzzy Logic, where a membership function level ``y`` is given.
+    Consider there is some value (or set of values) ``xx`` for which
+    ``u(xx) == y`` is true, though ``xx`` may not correspond to any discrete
+    values on ``x``. This function computes the value (or values) of ``xx``
+    such that ``u(xx) == y`` using linear interpolation.
+    """
+    # Special case required or zero-level cut does not work with faster method
+    if y == 0.:
+        idx = np.where(np.diff(xmf > y))[0]
+    else:
+        idx = np.where(np.diff(xmf >= y))[0]
+
+    # This method is fast, but duplicates point values where
+    # y == peak of a membership function.
+
+    # raise Exception
+    return x[idx] + (y-xmf[idx]) * (x[idx+1]-x[idx]) / (xmf[idx+1]-xmf[idx])
