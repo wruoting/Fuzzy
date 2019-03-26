@@ -1,5 +1,5 @@
 from skfuzzy.control.controlsystem import ControlSystemSimulation, CrispValueCalculator
-from misc_functions import interp_membership, defuzz, interp_universe_fast
+from misc_functions import interp_membership, defuzz, interp_universe_fast, centroid
 import numpy as np
 
 
