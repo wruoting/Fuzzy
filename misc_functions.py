@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from skfuzzy.defuzzify.defuzz import bisector
 
 
-def interp_membership(x, xmf, xx):
+def interp_membership(x, xmf, xx, zero_outside_x=True):
     """
     Find the degree of membership ``u(xx)`` for a given value of ``x = xx``.
 
@@ -30,6 +30,7 @@ def interp_membership(x, xmf, xx):
         value, this will be a single value; if it is an array or iterable the
         result will be returned as a NumPy array of like shape.
 
+    Notes
     -----
     For use in Fuzzy Logic, where an interpolated discrete membership function
     u(x) for discrete values of x on the universe of ``x`` is given. Then,
@@ -38,30 +39,13 @@ def interp_membership(x, xmf, xx):
     corresponding to the value ``xx`` using linear interpolation.
 
     """
-    # We overrode this function in an attempt to generate a line rather than an array
-
-    # x is the input
-    # xmf is the f(x)
-    peak_y = np.max(xmf)
-    peak_x = []
-    for index, value in enumerate(xmf):
-        if value == peak_y:
-            peak_x = x[index]
-    range_left = x[0]
-    range_right = x[len(x)-1]
-    slope_left = (peak_y - xmf[0])/(peak_x - range_left)
-    slope_right = (xmf[len(x)-1] - peak_y)/(range_right - peak_x)
-    # plt.plot(x, xmf)
-    if xx > peak_x:
-        # plt.plot(xx, peak_y + slope_right * (xx - peak_x), marker="^")
-        # plt.show()
-        return peak_y+slope_right*(xx-peak_x)
-    elif xx < peak_x:
-        # plt.plot(xx, peak_y-slope_left*(peak_x-xx), marker="^")
-        # plt.show()
-        return peak_y-slope_left*(peak_x-xx)
+    # Not much beats NumPy's built-in interpolation
+    if not zero_outside_x:
+        kwargs = (None, None)
     else:
-        return peak_y
+        kwargs = (0.0, 0.0)
+
+    return np.interp(xx, x, xmf, left=kwargs[0], right=kwargs[1])
 
 
 def defuzz(x, mfx, mode):
@@ -223,5 +207,6 @@ def centroid(x, mfx):
 
             sum_moment_area += moment * area
             sum_area += area
-    float_epsilon = 2.220446049250313e-16
-    return sum_moment_area / np.fmax(sum_area, float_epsilon)
+
+    return sum_moment_area / np.fmax(sum_area,
+                                     np.finfo(float).eps).astype(float)

@@ -125,30 +125,25 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
                 continue  # No membership defined for this adjective
 
             # Faster to aggregate as list w/duplication
-            # self.var.universe - x's values
-            # term.mf - y's values
-            # term._cut - particular y value for area under
+            new_values.extend(
+                _interp_universe_fast(
+                    self.var.universe, term.mf, term._cut).tolist())
 
-            new_values.extend(interp_universe_fast(self.var.universe, term.mf, term._cut))
         new_universe = np.union1d(self.var.universe, new_values)
-        # Initialize membership
+
+        # Initilize membership
         output_mf = np.zeros_like(new_universe, dtype=np.float64)
+
         # Build output membership function
         term_mfs = {}
-        upsampled_mf = []
-        output_mf_final = []
         for label, term in self.var.terms.items():
             if term._cut is None:
                 continue  # No membership defined for this adjective
-            for value in new_universe:
-                upsampled_mf.append(interp_membership(self.var.universe, term.mf, value))
+
+            upsampled_mf = interp_membership(
+                self.var.universe, term.mf, new_universe)
+
             term_mfs[label] = np.minimum(term._cut, upsampled_mf)
+            np.maximum(output_mf, term_mfs[label], output_mf)
 
-            for output_mf_element, term_mf_element in zip(output_mf, term_mfs[label]):
-                if output_mf_element >= term_mf_element:
-                    output_mf_final.append(output_mf_element)
-                elif output_mf_element < term_mf_element:
-                    output_mf_final.append(term_mf_element)
-        output_mf_final = np.array(output_mf_final)
-
-        return new_universe, output_mf_final, term_mfs
+        return new_universe, output_mf, term_mfs
