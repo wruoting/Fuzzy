@@ -4,7 +4,6 @@ from CreateSeedData import open_data, create_file
 import matplotlib.pyplot as plt
 from autograd import grad
 
-
 def mse_generator(path=None):
     # Generate some data; input and output
     data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
@@ -63,28 +62,61 @@ def mse_generator(path=None):
 
 # Path Defaults
 normalized_peak_path = "Data/NormalizedPeakCenter/"
+normalized_peak_path_low_sample_size = "Data/NormalizedPeakCenterLowSampleSize/"
+left_peak_path_low_sample_size = "Data/LeftPeakCenterLowSampleSize/"
 left_shift_peak_path = "Data/LeftPeakCenter/"
 right_shift_peak_path = "Data/RightPeakCenter/"
 bimodal_peak_path = "Data/BimodalPeak/"
 three_point_peak_path = "Data/ThreePointPeak/"
 
-# mse_generator(path=three_point_peak_path)
+mse_generator(path=left_peak_path_low_sample_size)
 
 
-def differentiate_fuzzy(x_value, path=None):
-    # Generate some data; input and output
-    data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
+def differentiate_fuzzy(x_value, fuzzy_system):
+    grad_objective = grad(fuzzy_system.objective_function)
+    return grad_objective(float(x_value))
+
+
+def add_to_path(data_x, data_y, path):
     # Create our universe
     fuzzy_system = FuzzySystem(data_x, data_y)
     fuzzy_system.create_universes()
-    # fuzzy_system.objective_function(m_x=x_value)
-    grad_objective = grad(fuzzy_system.objective_function)
-    print(grad_objective(float(x_value)))
+    min_x = np.min(data_x)
+    max_x = np.max(data_x)
+    x_array_linspace = np.linspace(max_x, min_x, 50)
+    f = open(path, 'w+')
+    for value in x_array_linspace:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for index, value in enumerate(x_array_linspace):
+        # if 43 >= index >= 37:
+        f.write(str(differentiate_fuzzy(value, fuzzy_system)))
+        f.write(" ")
+        print("We are on point {}, index: {}".format(value, index))
+    f.close()
 
 
-differentiate_fuzzy(0.5, path=three_point_peak_path)
+def create_diff_data(path):
+    data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
+    add_to_path(data_x, data_y, path='{}DiffData_XY.txt'.format(path))
 
 
+def plot_diff_data(path):
+    data_x, data_y = open_data(path='{}DiffData_XY.txt'.format(path))
+    plt.xlabel('X')
+    plt.ylabel('dMSE/dX')
+    plt.plot(data_x, data_y, 'ro')
+    plt.savefig('{}dMSE_vs_dX_points.png'.format(path))
+    plt.close()
+
+    plt.xlabel('X')
+    plt.ylabel('dMSE/dX')
+    plt.plot(data_x, data_y)
+    plt.savefig('{}dMSE_vs_dX.png'.format(path))
+    plt.close()
+
+    plt.show()
 
 
-
+plot_diff_data(left_peak_path_low_sample_size)

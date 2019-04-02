@@ -135,20 +135,19 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
         output_mf = np.zeros_like(new_universe, dtype=np.float64)
         # Build output membership function
         term_mfs = {}
-        upsampled_mf = []
-        output_mf_final = []
+        upsampled_mf = np.array([])
+        output_mf_final = np.array([])
         for label, term in self.var.terms.items():
             if term._cut is None:
                 continue  # No membership defined for this adjective
             for value in new_universe:
-                upsampled_mf.append(interp_membership(self.var.universe, term.mf, value))
+                upsampled_mf = np.append(upsampled_mf, interp_membership(self.var.universe, term.mf, value))
             term_mfs[label] = np.minimum(term._cut, upsampled_mf)
 
             for output_mf_element, term_mf_element in zip(output_mf, term_mfs[label]):
                 if output_mf_element >= term_mf_element:
-                    output_mf_final.append(output_mf_element)
+                    output_mf_final = np.append(output_mf_final, output_mf_element)
                 elif output_mf_element < term_mf_element:
-                    output_mf_final.append(term_mf_element)
-        output_mf_final = np.array(output_mf_final)
+                    output_mf_final = np.append(output_mf_final, term_mf_element)
 
         return new_universe, output_mf_final, term_mfs
