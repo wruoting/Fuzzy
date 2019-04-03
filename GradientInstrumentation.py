@@ -3,6 +3,7 @@ from FuzzySystem import FuzzySystem
 from CreateSeedData import open_data, create_file
 import matplotlib.pyplot as plt
 from autograd import grad
+from sklearn.preprocessing import MinMaxScaler
 
 def mse_generator(path=None):
     # Generate some data; input and output
@@ -17,7 +18,7 @@ def mse_generator(path=None):
     mse_array = []
     print('Creating MSEs')
     try:
-        try_x, try_mse = open_data(path="{}normalized_peak_mse.txt".format(path))
+        try_x, try_mse = open_data(path="{}normalized_peak_mse_gauss.txt".format(path))
         generate_data = True
     except FileNotFoundError:
         generate_data = False
@@ -31,7 +32,7 @@ def mse_generator(path=None):
             mse_array.append(fuzzy_system.objective_function(m_x=x_value))
             print('Adding value for : {}'.format(x_value))
 
-        create_file(path="{}normalized_peak_mse.txt".format(path), x_data=x_inputs, y_data=mse_array)
+        create_file(path="{}normalized_peak_mse_gauss.txt".format(path), x_data=x_inputs, y_data=mse_array)
 
     plt.figure(0)
     plt.plot(x_inputs, mse_array)
@@ -44,7 +45,7 @@ def mse_generator(path=None):
     plt.plot(data_x, data_y, 'ro')
     plt.xlabel('X')
     plt.ylabel('Y')
-    plt.savefig('{}data.png'.format(path))
+    plt.savefig('{}data_gauss.png'.format(path))
     plt.close()
 
     # Normalize Data overlay
@@ -56,25 +57,21 @@ def mse_generator(path=None):
     plt.legend()
     plt.xlabel('X')
     plt.ylabel('Y')
-    plt.savefig('{}overlay_data.png'.format(path))
+    plt.savefig('{}overlay_data_gauss.png'.format(path))
     plt.close()
-
-
-# Path Defaults
-normalized_peak_path = "Data/NormalizedPeakCenter/"
-normalized_peak_path_low_sample_size = "Data/NormalizedPeakCenterLowSampleSize/"
-left_peak_path_low_sample_size = "Data/LeftPeakCenterLowSampleSize/"
-left_shift_peak_path = "Data/LeftPeakCenter/"
-right_shift_peak_path = "Data/RightPeakCenter/"
-bimodal_peak_path = "Data/BimodalPeak/"
-three_point_peak_path = "Data/ThreePointPeak/"
-
-mse_generator(path=left_peak_path_low_sample_size)
 
 
 def differentiate_fuzzy(x_value, fuzzy_system):
     grad_objective = grad(fuzzy_system.objective_function)
     return grad_objective(float(x_value))
+
+
+def graph_fuzzy(path):
+    data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
+    fuzzy_system = FuzzySystem(data_x, data_y)
+    fuzzy_system.create_universes()
+    fuzzy_system.objective_function(0.1)
+    fuzzy_system.graph()
 
 
 def add_to_path(data_x, data_y, path):
@@ -83,7 +80,7 @@ def add_to_path(data_x, data_y, path):
     fuzzy_system.create_universes()
     min_x = np.min(data_x)
     max_x = np.max(data_x)
-    x_array_linspace = np.linspace(max_x, min_x, 50)
+    x_array_linspace = np.linspace(max_x, min_x, 70)
     f = open(path, 'w+')
     for value in x_array_linspace:
         f.write(str(value))
@@ -99,24 +96,49 @@ def add_to_path(data_x, data_y, path):
 
 def create_diff_data(path):
     data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
-    add_to_path(data_x, data_y, path='{}DiffData_XY.txt'.format(path))
+    add_to_path(data_x, data_y, path='{}DiffData_XY_Gauss.txt'.format(path))
 
 
 def plot_diff_data(path):
-    data_x, data_y = open_data(path='{}DiffData_XY.txt'.format(path))
+    data_x, data_y = open_data(path='{}DiffData_XY_Gauss.txt'.format(path))
     plt.xlabel('X')
     plt.ylabel('dMSE/dX')
     plt.plot(data_x, data_y, 'ro')
-    plt.savefig('{}dMSE_vs_dX_points.png'.format(path))
+    plt.savefig('{}dMSE_vs_dX_points_gauss.png'.format(path))
     plt.close()
 
     plt.xlabel('X')
     plt.ylabel('dMSE/dX')
     plt.plot(data_x, data_y)
-    plt.savefig('{}dMSE_vs_dX.png'.format(path))
+    plt.savefig('{}dMSE_vs_dX_gauss.png'.format(path))
+    plt.close()
+
+    x_inputs, mse_array = open_data(path="{}normalized_peak_mse_gauss.txt".format(path))
+    # Normalize Data overlay
+    scaler = MinMaxScaler(feature_range=(np.min(data_y), np.max(data_y)))
+    normalize_mse = scaler.fit(mse_array)#np.divide(np.subtract(mse_array, np.min(mse_array)), np.subtract(np.max(mse_array), np.min(mse_array)))
+    normalize_y = scaler.fit(data_y) # np.divide(np.subtract(data_y, np.min(data_y)), np.subtract(np.max(data_y), np.min(data_y)))
+    plt.plot(x_inputs, normalize_mse, label="MSE")
+    plt.plot(data_x, normalize_y, 'ro', label="dMSE/dX")
+    plt.legend()
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.savefig('{}overlay_dMSE_dX_gauss.png'.format(path))
     plt.close()
 
     plt.show()
 
 
-plot_diff_data(left_peak_path_low_sample_size)
+# Path Defaults
+normalized_peak_path = "Data/NormalizedPeakCenter/"
+normalized_peak_path_low_sample_size = "Data/NormalizedPeakCenterLowSampleSize/"
+left_peak_path_low_sample_size = "Data/LeftPeakCenterLowSampleSize/"
+left_shift_peak_path = "Data/LeftPeakCenter/"
+right_shift_peak_path = "Data/RightPeakCenter/"
+bimodal_peak_path = "Data/BimodalPeak/"
+three_point_peak_path = "Data/ThreePointPeak/"
+
+# graph_fuzzy(path=normalized_peak_path_low_sample_size)
+# mse_generator(path=normalized_peak_path_low_sample_size)
+# create_diff_data(normalized_peak_path_low_sample_size)
+plot_diff_data(path=normalized_peak_path_low_sample_size)

@@ -1,5 +1,6 @@
 from ControlSystemSimulationOverride import ControlSystemSimulationOverride
 import numpy as np
+import autograd.numpy as agnp
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 import logging
@@ -39,17 +40,13 @@ class FuzzySystem(object):
 
     def create_membership(self, m_x=None, m_y=None):
         if m_x:
-            self.x_antecedent['x'] = trimf(self.x_antecedent.universe,
-                                           [np.min(self.data_x), m_x, np.max(self.data_x)])
+            self.x_antecedent['x'] = gaussmf(self.x_antecedent.universe, m_x, float(np.std(np.array(self.x_antecedent.universe))))
         else:
-            self.x_antecedent['x'] = trimf(self.x_antecedent.universe,
-                                           [np.min(self.data_x), self.m_x, np.max(self.data_x)])
+            self.x_antecedent['x'] = gaussmf(self.x_antecedent.universe, float(np.mean(np.array(self.x_antecedent.universe))), float(np.std(np.array(self.x_antecedent.universe))))
         if m_y:
-            self.y_consequent['y'] = trimf(self.y_consequent.universe,
-                                           [np.min(self.data_y), m_y, np.max(self.data_y)])
+            self.y_consequent['y'] = gaussmf(self.y_consequent.universe, float(np.mean(np.array(self.y_consequent.universe))), float(np.std(np.array(self.y_consequent.universe))))
         else:
-            self.y_consequent['y'] = trimf(self.y_consequent.universe,
-                                           [np.min(self.data_y), self.m_y, np.max(self.data_y)])
+            self.y_consequent['y'] = gaussmf(self.y_consequent.universe, float(np.mean(np.array(self.y_consequent.universe))), float(np.std(np.array(self.y_consequent.universe))))
 
     def rules_to_control(self):
         # Create a rule
@@ -149,3 +146,24 @@ def trimf(x, abc):
         elif value == 0:
             y.append(1)
     return y
+
+
+def gaussmf(x, mean, sigma):
+    """
+    Gaussian fuzzy membership function.
+
+    Parameters
+    ----------
+    x : 1d array or iterable
+        Independent variable.
+    mean : float
+        Gaussian parameter for center (mean) value.
+    sigma : float
+        Gaussian parameter for standard deviation.
+
+    Returns
+    -------
+    y : 1d array
+        Gaussian membership function for x.
+    """
+    return agnp.exp(-((x - mean)**2.) / (2 * sigma**2.))
