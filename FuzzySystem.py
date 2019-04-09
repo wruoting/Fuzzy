@@ -57,7 +57,6 @@ class FuzzySystem(object):
                 print(self.y_consequent['y'].mf)
 
         elif self.analysis_function == 'trimf':
-            print(self.analysis_function)
             if m_x:
                 self.x_antecedent['x'] = trimf(self.x_antecedent.universe,
                                                [np.min(self.data_x), m_x, np.max(self.data_x)])

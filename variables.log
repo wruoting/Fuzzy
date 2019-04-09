@@ -443,3 +443,50 @@ DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal
 DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
 DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
 DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage10" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage19" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage10" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage19" as iconphoto: not a photo image
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage10" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage19" as iconphoto: not a photo image
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage40" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage49" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage70" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage79" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage116" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage125" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage137" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage146" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage155" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage10" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage19" as iconphoto: not a photo image
+DEBUG:matplotlib.font_manager:findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('E:\\Program Files\\Python36\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage42" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage51" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage63" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage72" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage81" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage102" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage111" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage123" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage132" as iconphoto: not a photo image
+INFO:matplotlib.backends._backend_tk:Could not load matplotlib icon: can't use "pyimage141" as iconphoto: not a photo image
