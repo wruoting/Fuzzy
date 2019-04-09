@@ -48,15 +48,16 @@ class FuzzySystem(object):
                                                  float(np.mean(np.array(self.x_antecedent.universe))),
                                                  float(np.std(np.array(self.x_antecedent.universe))))
             if m_y:
-                self.y_consequent['y'] = gaussmf(self.y_consequent.universe,
-                                                 float(np.mean(np.array(self.y_consequent.universe))),
+                self.y_consequent['y'] = gaussmf(self.y_consequent.universe, m_y,
                                                  float(np.std(np.array(self.y_consequent.universe))))
             else:
                 self.y_consequent['y'] = gaussmf(self.y_consequent.universe,
                                                  float(np.mean(np.array(self.y_consequent.universe))),
                                                  float(np.std(np.array(self.y_consequent.universe))))
+                print(self.y_consequent['y'].mf)
 
         elif self.analysis_function == 'trimf':
+            print(self.analysis_function)
             if m_x:
                 self.x_antecedent['x'] = trimf(self.x_antecedent.universe,
                                                [np.min(self.data_x), m_x, np.max(self.data_x)])

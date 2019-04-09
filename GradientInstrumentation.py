@@ -43,7 +43,6 @@ def mse_generator(path=None, analysis_function='gauss'):
         for x_value in x_inputs:
             mse_array.append(fuzzy_system.objective_function(m_x=x_value))
             print('Adding value for : {}'.format(x_value))
-
         create_file(path="{}{}".format(path, normalized_peak_mse_output_path), x_data=x_inputs, y_data=mse_array)
 
     plt.figure(0)
@@ -82,7 +81,7 @@ def graph_fuzzy(path):
     data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
     fuzzy_system = FuzzySystem(data_x, data_y)
     fuzzy_system.create_universes()
-    fuzzy_system.objective_function(0.1)
+    fuzzy_system.objective_function(1)
     fuzzy_system.graph()
 
 
@@ -167,19 +166,34 @@ def normalize(input_array, scaling_array=None):
 
 
 # Path Defaults
-normalized_peak_path = "Data/NormalizedPeakCenter/"
-normalized_peak_path_low_sample_size = "Data/NormalizedPeakCenterLowSampleSize/Trim_ABC"
+normalized_peak_path_low_sample_size = "Data/NormalizedPeakCenterLowSampleSize/Trim_ABC/"
 normalized_peak_path_low_sample_size_gauss = "Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/"
 
 left_peak_path_low_sample_size = "Data/LeftPeakCenterLowSampleSize/Trim_ABC/"
 left_peak_path_low_sample_size_gauss = "Data/LeftPeakCenterLowSampleSize/Gaussian_Data/"
 
-left_shift_peak_path = "Data/LeftPeakCenter/"
-right_shift_peak_path = "Data/RightPeakCenter/"
-bimodal_peak_path = "Data/BimodalPeak/"
-three_point_peak_path = "Data/ThreePointPeak/"
+left_peak_path_low_sample_size_higher_sig = "Data/LeftPeakCenterHigherSigLowSampleSize/Trim_ABC/"
+left_peak_path_low_sample_size_higher_sig_gauss = "Data/LeftPeakCenterHigherSigLowSampleSize/Gaussian_Data/"
 
-# graph_fuzzy(path=normalized_peak_path_low_sample_size)
-mse_generator(path=left_peak_path_low_sample_size_gauss)
+
+left_shift_peak_path = "Data/LeftPeakCenter/Trim_ABC/"
+left_shift_peak_path_gauss = "Data/LeftPeakCenter/Gaussian_Data/"
+
+normalized_peak_path = "Data/NormalizedPeakCenter/Trim_ABC/"
+normalized_peak_path_gauss = "Data/NormalizedPeakCenter/Gaussian_Data/"
+
+right_shift_peak_path = "Data/RightPeakCenter/Trim_ABC/"
+right_shift_peak_path_gauss = "Data/RightPeakCenter/Gaussian_Data/"
+
+bimodal_peak_path = "Data/BimodalPeak/Trim_ABC/"
+bimodal_peak_gauss = "Data/BimodalPeak/Gaussian_Data/"
+
+three_point_peak_path = "Data/ThreePointPeak/Trim_ABC/"
+three_point_peak_path_gauss = "Data/ThreePointPeak/Gaussian_Data/"
+
+
+#graph_fuzzy(path=left_shift_peak_path_gauss)
+mse_generator(path=left_peak_path_low_sample_size_higher_sig, analysis_function='trimf')
+mse_generator(path=left_peak_path_low_sample_size_higher_sig_gauss, analysis_function='gauss')
 # create_diff_data(normalized_peak_path_low_sample_size)
 # plot_diff_data(path=normalized_peak_path_low_sample_size)

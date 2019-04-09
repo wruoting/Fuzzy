@@ -71,10 +71,28 @@ def create_normalized_file_sample_size_10():
         f.write(" ")
     f.close()
 
-def create_left_peak_gumbel_file_sample_size_10():
+
+def create_left_peak_gumbel_file_sample_size_60():
     f = open("Data/LeftPeakCenterLowSampleSize/normalized_peak.txt", "w+")
     mu = 0.5
     sigma = 0.2
+
+    x = np.random.gumbel(loc=1, scale=1, size=60)
+    y = np.array(gaussian_distribution(x, mu, sigma))
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+
+
+def create_left_peak_gumbel_file_sample_size_60_higher_sig():
+    f = open("Data/LeftPeakCenterHigherSigLowSampleSize/Trim_ABC/normalized_peak.txt", "w+")
+    mu = 0.5
+    sigma = 0.7
 
     x = np.random.gumbel(loc=1, scale=1, size=60)
     y = np.array(gaussian_distribution(x, mu, sigma))
@@ -158,7 +176,8 @@ def create_file(path=None, x_data=None, y_data=None):
 def open_data(path=None):
     text_file = open(path, "r")
     lines = text_file.read().split(',')
-    x_values = np.array(lines[0].split(' ')[:-1]).astype(float)
-    y_values = np.array(lines[1].split(' ')[:-1]).astype(float)
+
+    x_values = np.array(lines[0].split(' ')[:-1]).astype('float64')
+    y_values = np.array(lines[1].split(' ')[:-1]).astype('float64')
 
     return x_values, y_values

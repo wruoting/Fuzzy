@@ -1,18 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17f646d0-a64d-40a2-a965-30dcd81cb6c0" name="Default Changelist" comment="normalized data input">
+    <list default="true" id="17f646d0-a64d-40a2-a965-30dcd81cb6c0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/normalized_peak.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/normalized_peak.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/LeftPeakCenterHigherSigLowSampleSize/Gaussian_Data/normalized_peak.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Gaussian_Data/data_gauss.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Gaussian_Data/mse_vs_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Gaussian_Data/normalized_peak_mse_gauss.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Gaussian_Data/overlay_data_gauss.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/normalized_peak.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/normalized_peak.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/RightPeakCenter/Trim_ABC/normalized_peak.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/normalized_peak.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/DiffData_XY.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/dMSE_vs_dX.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/dMSE_vs_dX_points.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/data.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/mse_vs_x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/normalized_peak.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/normalized_peak_mse.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/overlay_data.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CreateSeedData.py" beforeDir="false" afterPath="$PROJECT_DIR$/CreateSeedData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/BimodalPeak/data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/data.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/BimodalPeak/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/mse_vs_x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/BimodalPeak/normalized_peak.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/BimodalPeak/Gaussian_Data/normalized_peak.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/BimodalPeak/normalized_peak_mse.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/normalized_peak_mse.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/BimodalPeak/overlay_data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/overlay_data.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/DiffData_XY.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/DiffData_XY.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/data.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/mse_vs_x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/normalized_peak.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/LeftPeakCenter/Gaussian_Data/normalized_peak.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/normalized_peak_mse.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/normalized_peak_mse.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/overlay_data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/overlay_data.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/dMSE_vs_dX.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/dMSE_vs_dX.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/dMSE_vs_dX_points.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/dMSE_vs_dX_points.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/data.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/mse_vs_x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/normalized_peak.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Gaussian_Data/normalized_peak.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/normalized_peak_mse.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/normalized_peak_mse.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/overlay_data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/overlay_data.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RightPeakCenter/data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RightPeakCenter/Trim_ABC/data.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RightPeakCenter/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RightPeakCenter/Trim_ABC/mse_vs_x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RightPeakCenter/normalized_peak.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RightPeakCenter/Gaussian_Data/normalized_peak.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RightPeakCenter/normalized_peak_mse.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RightPeakCenter/Trim_ABC/normalized_peak_mse.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RightPeakCenter/overlay_data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RightPeakCenter/Trim_ABC/overlay_data.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ThreePointPeak/data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/data.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ThreePointPeak/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/mse_vs_x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ThreePointPeak/normalized_peak.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ThreePointPeak/Gaussian_Data/normalized_peak.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ThreePointPeak/normalized_peak_mse.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/normalized_peak_mse.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ThreePointPeak/overlay_data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/overlay_data.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ThreePointPeak/x-0.5-membership.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/x-0.5-membership.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ThreePointPeak/x-y-rule-membership-degree-0.5.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/x-y-rule-membership-degree-0.5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ThreePointPeak/y-0.5-membership-output.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/y-0.5-membership-output.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FuzzySystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/FuzzySystem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GradientInstrumentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/GradientInstrumentation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/variables.log" beforeDir="false" afterPath="$PROJECT_DIR$/variables.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,49 +57,32 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.53643215">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/GradientInstrumentation.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-                  <folding>
-                    <element signature="e#0#18#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/CreateSeedData.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="169">
-                  <caret line="109" column="13" lean-forward="true" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#0#18#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/FuzzySystem.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="51">
-                  <caret line="3" selection-start-line="3" selection-end-line="3" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GradientInstrumentation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1735">
+              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FuzzySystem.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="59" column="40" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#75#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -91,10 +110,11 @@
       <find>add_to_path</find>
       <find>skfuzzy</find>
       <find>trimf</find>
-      <find>create_membership</find>
       <find>,</find>
       <find>mse_vs_x</find>
       <find>FuzzySystem</find>
+      <find>normalized_peak.txt</find>
+      <find>create_membership</find>
     </findStrings>
     <dirStrings>
       <dir>E:\Program Files\Python36\Lib\site-packages\skfuzzy</dir>
@@ -117,8 +137,8 @@
         <option value="$PROJECT_DIR$/revised_rule_membership.py" />
         <option value="E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/term.py" />
         <option value="$PROJECT_DIR$/CreateSeedData.py" />
-        <option value="$PROJECT_DIR$/FuzzySystem.py" />
         <option value="$PROJECT_DIR$/GradientInstrumentation.py" />
+        <option value="$PROJECT_DIR$/FuzzySystem.py" />
       </list>
     </option>
   </component>
@@ -149,47 +169,40 @@
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="LeftPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
+              <item name="LeftPeakCenter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="LeftPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
-              <item name="Gaussian_Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="LeftPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
+              <item name="LeftPeakCenter" type="462c0819:PsiDirectoryNode" />
               <item name="Trim_ABC" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="NormalizedPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
+              <item name="LeftPeakCenterHigherSigLowSampleSize" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="NormalizedPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
+              <item name="LeftPeakCenterHigherSigLowSampleSize" type="462c0819:PsiDirectoryNode" />
               <item name="Gaussian_Data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="NormalizedPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
+              <item name="LeftPeakCenterHigherSigLowSampleSize" type="462c0819:PsiDirectoryNode" />
               <item name="Trim_ABC" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="ThreePointPeak" type="462c0819:PsiDirectoryNode" />
+              <item name="LeftPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -204,10 +217,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\LeftPeakCenterHigherSigLowSampleSize\Gaussian_Data" />
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\NormalizedPeakCenterLowSampleSize\Gaussian_Data" />
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\ThreePointPeak\Gaussian_Data" />
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\RightPeakCenter\Gaussian_Data" />
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\NormalizedPeakCenter\Gaussian_Data" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\LeftPeakCenterLowSampleSize\Trim_ABC" />
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\LeftPeakCenterLowSampleSize\Gaussian_Data" />
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\NormalizedPeakCenterLowSampleSize" />
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\ThreePointPeak\Trim_ABC" />
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\RightPeakCenter\Trim_ABC" />
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\NormalizedPeakCenter\Trim_ABC" />
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\BimodalPeak\Trim_ABC" />
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\LeftPeakCenter\Trim_ABC" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -265,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554246900186</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="never reset hard just don't do it">
+      <created>1554786711207</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1554786711207</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -275,7 +304,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16122234" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17017913" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -326,130 +355,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="normalized data input" />
-    <option name="LAST_COMMIT_MESSAGE" value="normalized data input" />
+    <MESSAGE value="never reset hard just don't do it" />
+    <option name="LAST_COMMIT_MESSAGE" value="never reset hard just don't do it" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/__init__.py" />
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/297085049/scipy/optimize/_zeros.py" />
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/scipy/optimize/optimize.py" />
-    <entry file="file://$PROJECT_DIR$/../Lib/site-packages/skfuzzy/control/fuzzyvariable.py" />
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/matplotlib/pyplot.py" />
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/fuzzyvariable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="37" column="56" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fuzzy.py" />
-    <entry file="file://$PROJECT_DIR$/fuzzy_membership.py" />
-    <entry file="file://$PROJECT_DIR$/one_rule_one_membership.py" />
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/scipy/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/scipy/optimize/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/membership/generatemf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#81#112#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rule_testing_generic.py" />
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/rule.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="57" column="78" lean-forward="true" selection-start-line="57" selection-start-column="78" selection-end-line="57" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/controlsystem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#81#128#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/visualization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/antecedent_consequent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
-          <folding>
-            <element signature="e#79#97#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/overlay_data.png" />
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/data.png" />
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/dMSE_vs_dX.png" />
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/normalized_peak.txt" />
-    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/term.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenter/dMSE_vs_dX.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/overlay_data.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/mse_vs_x.png" />
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/dMSE_vs_dX_points.png" />
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenter/dMSE_vs_dX_points.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenter/mse_vs_x.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/control/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test/fuzzy_membership.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/membership/generatemf.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="621">
           <caret line="66" selection-start-line="66" selection-end-line="84" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Trim_ABC/mse_vs_x.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CreateSeedData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="109" column="13" lean-forward="true" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -460,18 +373,6 @@
         <state relative-caret-position="-7803" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/autograd/numpy/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Trim_ABC/normalized_peak_mse.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Trim_ABC/normalized_peak_mse.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -480,9 +381,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Gaussian_Data/dMSE_vs_dX_points.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Gaussian_Data/normalized_peak_mse_gauss.txt">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Trim_ABC/data.png">
       <provider selected="true" editor-type-id="images" />
@@ -497,10 +395,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/mse_vs_x.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenter/Gaussian_Data/normalized_peak.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Trim_ABC/normalized_peak_mse.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/overlay_dMSE_dX_gauss.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/mse_vs_x.png">
+    <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/Gaussian_Data/normalized_peak.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/RightPeakCenter/Gaussian_Data/normalized_peak.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenter/Gaussian_Data/normalized_peak.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/BimodalPeak/Gaussian_Data/normalized_peak.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/normalized_peak_mse_gauss.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12846" selection-start-column="12846" selection-end-column="12846" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/overlay_data.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Trim_ABC/overlay_data.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/mse_vs_x.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Trim_ABC/mse_vs_x.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/overlay_data.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/Gaussian_Data/overlay_data_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenter/Gaussian_Data/overlay_data_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Gaussian_Data/overlay_data_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Gaussian_Data/normalized_peak_mse_gauss.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/data.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenter/Gaussian_Data/overlay_data_gauss.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Trim_ABC/DiffData_XY.txt">
@@ -510,19 +470,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FuzzySystem.py">
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Gaussian_Data/data_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/normalized_peak.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/overlay_data_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/autograd/numpy/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="119">
+          <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GradientInstrumentation.py">
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/term.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="423">
+          <caret line="61" column="37" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/BimodalPeak/Gaussian_Data/overlay_data_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/overlay_data.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenter/Gaussian_Data/mse_vs_x.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/mse_vs_x.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Gaussian_Data/mse_vs_x.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterHigherSigLowSampleSize/Gaussian_Data/normalized_peak.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CreateSeedData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1342">
+          <caret line="92" column="55" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="55" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterHigherSigLowSampleSize/Trim_ABC/data.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/overlay_data.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterHigherSigLowSampleSize/Trim_ABC/overlay_data.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterHigherSigLowSampleSize/Gaussian_Data/overlay_data_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterHigherSigLowSampleSize/Trim_ABC/mse_vs_x.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterHigherSigLowSampleSize/Gaussian_Data/mse_vs_x.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GradientInstrumentation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1735">
+          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FuzzySystem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="59" column="40" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
           </folding>
         </state>
       </provider>
