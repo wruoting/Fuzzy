@@ -19,7 +19,7 @@ class FuzzySystem(object):
         self.tol_y = None
         self.x_antecedent = None
         self.y_consequent = None
-        self.granularity = 500
+        self.granularity = 100
         self.control = None
         self.rules = []
         self.control_simulation = None
@@ -54,7 +54,6 @@ class FuzzySystem(object):
                 self.y_consequent['y'] = gaussmf(self.y_consequent.universe,
                                                  float(np.mean(np.array(self.y_consequent.universe))),
                                                  float(np.std(np.array(self.y_consequent.universe))))
-                print(self.y_consequent['y'].mf)
 
         elif self.analysis_function == 'trimf':
             if m_x:

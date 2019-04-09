@@ -77,9 +77,9 @@ def differentiate_fuzzy(x_value, fuzzy_system):
     return grad_objective(float(x_value))
 
 
-def graph_fuzzy(path):
+def graph_fuzzy(path, analysis_function='gauss'):
     data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
-    fuzzy_system = FuzzySystem(data_x, data_y)
+    fuzzy_system = FuzzySystem(data_x, data_y, analysis_function=analysis_function)
     fuzzy_system.create_universes()
     fuzzy_system.objective_function(1)
     fuzzy_system.graph()
@@ -192,8 +192,10 @@ three_point_peak_path = "Data/ThreePointPeak/Trim_ABC/"
 three_point_peak_path_gauss = "Data/ThreePointPeak/Gaussian_Data/"
 
 
-#graph_fuzzy(path=left_shift_peak_path_gauss)
-mse_generator(path=left_peak_path_low_sample_size_higher_sig, analysis_function='trimf')
-mse_generator(path=left_peak_path_low_sample_size_higher_sig_gauss, analysis_function='gauss')
+graph_fuzzy(path=left_shift_peak_path_gauss)
+# graph_fuzzy(path=left_shift_peak_path_gauss, analysis_function='trimf')
+
+# mse_generator(path=left_peak_path_low_sample_size, analysis_function='trimf')
+# mse_generator(path=left_peak_path_low_sample_size_gauss, analysis_function='gauss')
 # create_diff_data(normalized_peak_path_low_sample_size)
 # plot_diff_data(path=normalized_peak_path_low_sample_size)
