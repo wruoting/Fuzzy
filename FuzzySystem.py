@@ -1,7 +1,6 @@
 from ControlSystemSimulationOverride import ControlSystemSimulationOverride
 import numpy as np
 import autograd.numpy as agnp
-import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 import logging
 logging.basicConfig(filename='variables.log', level=logging.DEBUG)
@@ -9,7 +8,7 @@ logging.basicConfig(filename='variables.log', level=logging.DEBUG)
 
 class FuzzySystem(object):
 
-    def __init__(self, data_x, data_y, m_x=None, m_y=None):
+    def __init__(self, data_x, data_y, m_x=None, m_y=None,  analysis_function='gauss'):
         self.data_x = data_x
         self.data_y = data_y
         self.min_x = np.min(self.data_x)
@@ -26,6 +25,7 @@ class FuzzySystem(object):
         self.control_simulation = None
         self.m_x = m_x if m_x else np.average(data_x)
         self.m_y = m_y if m_y else np.average(data_y)
+        self.analysis_function = analysis_function
 
     def create_universes(self):
         # Set tolerance
@@ -39,14 +39,36 @@ class FuzzySystem(object):
         self.y_consequent = ctrl.Consequent(np.arange(np.min(self.data_y), np.max(self.data_y), self.tol_y), 'y')
 
     def create_membership(self, m_x=None, m_y=None):
-        if m_x:
-            self.x_antecedent['x'] = gaussmf(self.x_antecedent.universe, m_x, float(np.std(np.array(self.x_antecedent.universe))))
-        else:
-            self.x_antecedent['x'] = gaussmf(self.x_antecedent.universe, float(np.mean(np.array(self.x_antecedent.universe))), float(np.std(np.array(self.x_antecedent.universe))))
-        if m_y:
-            self.y_consequent['y'] = gaussmf(self.y_consequent.universe, float(np.mean(np.array(self.y_consequent.universe))), float(np.std(np.array(self.y_consequent.universe))))
-        else:
-            self.y_consequent['y'] = gaussmf(self.y_consequent.universe, float(np.mean(np.array(self.y_consequent.universe))), float(np.std(np.array(self.y_consequent.universe))))
+        if self.analysis_function == 'gauss':
+            if m_x:
+                self.x_antecedent['x'] = gaussmf(self.x_antecedent.universe, m_x,
+                                                 float(np.std(np.array(self.x_antecedent.universe))))
+            else:
+                self.x_antecedent['x'] = gaussmf(self.x_antecedent.universe,
+                                                 float(np.mean(np.array(self.x_antecedent.universe))),
+                                                 float(np.std(np.array(self.x_antecedent.universe))))
+            if m_y:
+                self.y_consequent['y'] = gaussmf(self.y_consequent.universe,
+                                                 float(np.mean(np.array(self.y_consequent.universe))),
+                                                 float(np.std(np.array(self.y_consequent.universe))))
+            else:
+                self.y_consequent['y'] = gaussmf(self.y_consequent.universe,
+                                                 float(np.mean(np.array(self.y_consequent.universe))),
+                                                 float(np.std(np.array(self.y_consequent.universe))))
+
+        elif self.analysis_function == 'trimf':
+            if m_x:
+                self.x_antecedent['x'] = trimf(self.x_antecedent.universe,
+                                               [np.min(self.data_x), m_x, np.max(self.data_x)])
+            else:
+                self.x_antecedent['x'] = trimf(self.x_antecedent.universe,
+                                               [np.min(self.data_x), self.m_x, np.max(self.data_x)])
+            if m_y:
+                self.y_consequent['y'] = trimf(self.y_consequent.universe,
+                                               [np.min(self.data_y), m_y, np.max(self.data_y)])
+            else:
+                self.y_consequent['y'] = trimf(self.y_consequent.universe,
+                                               [np.min(self.data_y), self.m_y, np.max(self.data_y)])
 
     def rules_to_control(self):
         # Create a rule
