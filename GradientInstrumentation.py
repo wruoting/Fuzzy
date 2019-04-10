@@ -81,7 +81,7 @@ def graph_fuzzy(path, analysis_function='gauss'):
     data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
     fuzzy_system = FuzzySystem(data_x, data_y, analysis_function=analysis_function)
     fuzzy_system.create_universes()
-    fuzzy_system.objective_function(1)
+    fuzzy_system.objective_function(4)
     fuzzy_system.graph()
 
 
@@ -91,63 +91,72 @@ def add_to_path(data_x, data_y, path):
     fuzzy_system.create_universes()
     min_x = np.min(data_x)
     max_x = np.max(data_x)
-    x_array_linspace = np.linspace(max_x, min_x, 70)
-    f = open(path, 'w+')
-    for value in x_array_linspace:
-        f.write(str(value))
-        f.write(" ")
-    f.write(",")
-    for index, value in enumerate(x_array_linspace):
-        # if 43 >= index >= 37:
-        f.write(str(differentiate_fuzzy(value, fuzzy_system)))
-        f.write(" ")
-        print("We are on point {}, index: {}".format(value, index))
-    f.close()
+    x_array_linspace = np.linspace(max_x, min_x, 50)
+    try:
+        open_data(path="{}".format(path))
+        generate_data = False
+    except FileNotFoundError:
+        generate_data = True
+        print("No File")
+    if generate_data:
+        f = open(path, 'w+')
+        for value in x_array_linspace:
+            f.write(str(value))
+            f.write(" ")
+        f.write(",")
+        for index, value in enumerate(x_array_linspace):
+            # if 43 >= index >= 37:
+            f.write(str(differentiate_fuzzy(value, fuzzy_system)))
+            f.write(" ")
+            print("We are on point {}, index: {}".format(value, index))
+        f.close()
 
 
 def create_diff_data(path, analysis_function='gauss'):
     if analysis_function == 'gauss':
-        normalized_peak_output_path = 'normalized_peak_mse.txt'
+        normalized_peak_output_path = 'normalized_peak_mse_gauss.txt'
         diff_data = 'DiffData_XY_Gauss.txt'
     elif analysis_function == 'trimf':
-        normalized_peak_output_path = 'normalized_peak.txt'
+        normalized_peak_output_path = 'normalized_peak_mse.txt'
         diff_data = 'DiffData_XY.txt'
 
-    data_x, data_y = open_data(path="{}{}.txt".format(path, normalized_peak_output_path))
+    data_x, data_y = open_data(path="{}{}".format(path, normalized_peak_output_path))
     add_to_path(data_x, data_y, path='{}{}'.format(path, diff_data))
 
 
 def plot_diff_data(path, analysis_function='gauss'):
     if analysis_function == 'gauss':
         output_dMSE_vs_dX_points = 'dMSE_vs_dX_points_gauss.png'
+        output_dMSE_vs_dX = 'dMSE_vs_dX_gauss.png'
         diff_data = 'DiffData_XY_Gauss.txt'
         normalized_peak_output_path = 'normalized_peak_mse_gauss.txt'
         overlay_output_dMSE_vs_dX = 'overlay_dMSE_dX_gauss.png'
     elif analysis_function == 'trimf':
         output_dMSE_vs_dX_points = 'dMSE_vs_dX_points.png'
+        output_dMSE_vs_dX = 'dMSE_vs_dX.png'
         diff_data = 'DiffData_XY.txt'
         normalized_peak_output_path = 'normalized_peak_mse.txt'
         overlay_output_dMSE_vs_dX = 'overlay_dMSE_dX.png'
 
-    data_x, data_y = open_data(path='{}{}'.format(path, diff_data))
+    data_x_gauss, data_y_gauss = open_data(path='{}{}'.format(path, diff_data))
     plt.xlabel('X')
     plt.ylabel('dMSE/dX')
-    plt.plot(data_x, data_y, 'ro')
+    plt.plot(data_x_gauss, data_y_gauss, 'ro')
     plt.savefig('{}{}'.format(path, output_dMSE_vs_dX_points))
     plt.close()
 
     plt.xlabel('X')
     plt.ylabel('dMSE/dX')
-    plt.plot(data_x, data_y)
-    plt.savefig('{}{}'.format(path, output_dMSE_vs_dX_points))
+    plt.plot(data_x_gauss, data_y_gauss)
+    plt.savefig('{}{}'.format(path, output_dMSE_vs_dX))
     plt.close()
 
-    x_inputs, mse_array = open_data(path="{}{}".format(path, normalized_peak_output_path))
+    data_x_mse, data_y_mse = open_data(path="{}{}".format(path, normalized_peak_output_path))
     # Normalize Data overlay
-    normalize_mse = normalize(mse_array, scaling_array=data_y)
-    normalize_y = normalize(data_y)
-    plt.plot(x_inputs, normalize_mse, label="MSE")
-    plt.plot(data_x, normalize_y, 'ro', label="dMSE/dX")
+    normalize_mse_y = normalize(data_y_mse, scaling_array=data_y_gauss)
+    normalize_gauss_y = normalize(data_y_gauss, scaling_array=data_y_gauss)
+    plt.plot(data_x_mse, normalize_mse_y, label="MSE")
+    plt.plot(data_x_gauss, normalize_gauss_y, 'ro', label="dMSE/dX")
     plt.legend()
     plt.xlabel('X')
     plt.ylabel('Y')
@@ -157,11 +166,12 @@ def plot_diff_data(path, analysis_function='gauss'):
     plt.show()
 
 
+# From https://stats.stackexchange.com/questions/281162/scale-a-number-between-a-range
 def normalize(input_array, scaling_array=None):
     if scaling_array is not None:
-        return np.multiply(
-            np.divide(np.subtract(input_array, np.min(input_array)), np.subtract(np.max(input_array), np.min(input_array))),
-            np.max(scaling_array), np.min(scaling_array)) + np.min(scaling_array)
+        return np.multiply(np.divide(np.subtract(input_array, np.min(input_array)),
+                                     np.subtract(np.max(input_array), np.min(input_array))),
+                           np.subtract(np.max(scaling_array), np.min(scaling_array))) + np.min(scaling_array)
     return np.divide(np.subtract(input_array, np.min(input_array)), np.subtract(np.max(input_array), np.min(input_array)))
 
 
@@ -192,10 +202,28 @@ three_point_peak_path = "Data/ThreePointPeak/Trim_ABC/"
 three_point_peak_path_gauss = "Data/ThreePointPeak/Gaussian_Data/"
 
 
-graph_fuzzy(path=left_shift_peak_path_gauss)
+# graph_fuzzy(path=left_shift_peak_path_gauss)
 # graph_fuzzy(path=left_shift_peak_path_gauss, analysis_function='trimf')
 
+# mse_generator(path=normalized_peak_path_low_sample_size, analysis_function='trimf')
+# mse_generator(path=normalized_peak_path_low_sample_size_gauss, analysis_function='gauss')
+#
 # mse_generator(path=left_peak_path_low_sample_size, analysis_function='trimf')
 # mse_generator(path=left_peak_path_low_sample_size_gauss, analysis_function='gauss')
-# create_diff_data(normalized_peak_path_low_sample_size)
-# plot_diff_data(path=normalized_peak_path_low_sample_size)
+#
+# mse_generator(path=left_peak_path_low_sample_size_higher_sig, analysis_function='trimf')
+# mse_generator(path=left_peak_path_low_sample_size_higher_sig_gauss, analysis_function='gauss')
+#
+# mse_generator(path=left_shift_peak_path, analysis_function='trimf')
+# mse_generator(path=left_shift_peak_path_gauss, analysis_function='gauss')
+#
+# mse_generator(path=normalized_peak_path, analysis_function='trimf')
+# mse_generator(path=normalized_peak_path_gauss, analysis_function='gauss')
+#
+# mse_generator(path=bimodal_peak_path, analysis_function='trimf')
+# mse_generator(path=bimodal_peak_gauss, analysis_function='gauss')
+#
+# mse_generator(path=three_point_peak_path, analysis_function='trimf')
+# mse_generator(path=three_point_peak_path_gauss, analysis_function='gauss')
+create_diff_data(three_point_peak_path_gauss)
+plot_diff_data(path=three_point_peak_path_gauss)

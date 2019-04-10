@@ -153,10 +153,6 @@ def interp_universe_fast(x, xmf, y):
     values on ``x``. This function computes the value (or values) of ``xx``
     such that ``u(xx) == y`` using linear interpolation.
     """
-    print("interp")
-    print(x)
-    print(xmf)
-    print(y)
     # Special case required or zero-level cut does not work with faster method
     if y == 0.:
         idx = np.where(np.diff(xmf > y))[0]

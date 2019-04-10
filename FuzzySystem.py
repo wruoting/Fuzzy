@@ -19,7 +19,7 @@ class FuzzySystem(object):
         self.tol_y = None
         self.x_antecedent = None
         self.y_consequent = None
-        self.granularity = 100
+        self.granularity = 50
         self.control = None
         self.rules = []
         self.control_simulation = None
