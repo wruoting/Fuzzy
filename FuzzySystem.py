@@ -19,7 +19,7 @@ class FuzzySystem(object):
         self.tol_y = None
         self.x_antecedent = None
         self.y_consequent = None
-        self.granularity = 50
+        self.granularity = 500
         self.control = None
         self.rules = []
         self.control_simulation = None
@@ -89,6 +89,7 @@ class FuzzySystem(object):
         try:
             self.control_simulation.compute()
         except ValueError:
+            print('There was a value error generating this point')
             return 0
 
         return self.control_simulation.output[output_tag]

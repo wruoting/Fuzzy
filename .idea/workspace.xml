@@ -3,48 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="17f646d0-a64d-40a2-a965-30dcd81cb6c0" name="Default Changelist" comment="more data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/BimodalPeak/Gaussian_Data/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/BimodalPeak/Gaussian_Data/mse_vs_x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/BimodalPeak/Gaussian_Data/normalized_peak_mse_gauss.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/BimodalPeak/Gaussian_Data/overlay_data_gauss.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/BimodalPeak/Gaussian_Data/overlay_data_gauss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/data.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/mse_vs_x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/normalized_peak_mse.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/overlay_data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/overlay_data.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/Gaussian_Data/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/LeftPeakCenter/Gaussian_Data/mse_vs_x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/Gaussian_Data/normalized_peak_mse_gauss.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/Gaussian_Data/overlay_data_gauss.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/LeftPeakCenter/Gaussian_Data/overlay_data_gauss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/data.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/mse_vs_x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/normalized_peak_mse.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/overlay_data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/overlay_data.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenterHigherSigLowSampleSize/Gaussian_Data/normalized_peak_mse_gauss.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenterHigherSigLowSampleSize/Trim_ABC/normalized_peak_mse.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Gaussian_Data/normalized_peak_mse_gauss.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Trim_ABC/normalized_peak_mse.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Membership_Graphs/Gauss_Membership.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Membership_Graphs/Gauss_Membership.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Membership_Graphs/Gauss_Membership_To_output.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Membership_Graphs/Gauss_Membership_To_output.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Membership_Graphs/trimf_Membership_To_output.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Membership_Graphs/trimf_Membership_To_output.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Gaussian_Data/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Gaussian_Data/mse_vs_x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Gaussian_Data/normalized_peak_mse_gauss.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Gaussian_Data/overlay_data_gauss.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Gaussian_Data/overlay_data_gauss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/mse_vs_x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/normalized_peak_mse.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/overlay_data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/overlay_data.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/mse_vs_x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/normalized_peak_mse_gauss.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/overlay_data_gauss.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/overlay_data_gauss.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Trim_ABC/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Trim_ABC/mse_vs_x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Trim_ABC/normalized_peak_mse.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Trim_ABC/overlay_data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Trim_ABC/overlay_data.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/RightPeakCenter/Gaussian_Data/normalized_peak_mse_gauss.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/RightPeakCenter/Trim_ABC/normalized_peak_mse.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/data.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/mse_vs_x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/mse_vs_x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/overlay_data.png" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/overlay_data.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FuzzySystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/FuzzySystem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradientInstrumentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/GradientInstrumentation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/misc_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/variables.log" beforeDir="false" afterPath="$PROJECT_DIR$/variables.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,18 +15,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GradientInstrumentation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
+            <state relative-caret-position="842">
               <caret line="98" column="28" selection-start-line="98" selection-start-column="28" selection-end-line="98" selection-end-column="28" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/Gaussian_Data/overlay_dMSE_dX_gauss.png">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -86,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FuzzySystem.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2482">
-              <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
+            <state relative-caret-position="1904">
+              <caret line="116" column="64" selection-start-line="116" selection-start-column="64" selection-end-line="116" selection-end-column="64" />
               <folding>
                 <element signature="e#0#75#0" expanded="true" />
               </folding>
@@ -216,173 +169,6 @@
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="BimodalPeak" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="BimodalPeak" type="462c0819:PsiDirectoryNode" />
-              <item name="Gaussian_Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="BimodalPeak" type="462c0819:PsiDirectoryNode" />
-              <item name="Trim_ABC" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="LeftPeakCenter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="LeftPeakCenter" type="462c0819:PsiDirectoryNode" />
-              <item name="Gaussian_Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="LeftPeakCenter" type="462c0819:PsiDirectoryNode" />
-              <item name="Trim_ABC" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="LeftPeakCenterHigherSigLowSampleSize" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="LeftPeakCenterHigherSigLowSampleSize" type="462c0819:PsiDirectoryNode" />
-              <item name="Gaussian_Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="LeftPeakCenterHigherSigLowSampleSize" type="462c0819:PsiDirectoryNode" />
-              <item name="Trim_ABC" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="LeftPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="LeftPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
-              <item name="Gaussian_Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="LeftPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
-              <item name="Trim_ABC" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="NormalizedPeakCenter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="NormalizedPeakCenter" type="462c0819:PsiDirectoryNode" />
-              <item name="Gaussian_Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="NormalizedPeakCenter" type="462c0819:PsiDirectoryNode" />
-              <item name="GradientData" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="NormalizedPeakCenter" type="462c0819:PsiDirectoryNode" />
-              <item name="Trim_ABC" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="NormalizedPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="NormalizedPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
-              <item name="Gaussian_Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="NormalizedPeakCenterLowSampleSize" type="462c0819:PsiDirectoryNode" />
-              <item name="Trim_ABC" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="RightPeakCenter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="RightPeakCenter" type="462c0819:PsiDirectoryNode" />
-              <item name="Gaussian_Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="RightPeakCenter" type="462c0819:PsiDirectoryNode" />
-              <item name="Trim_ABC" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="ThreePointPeak" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="ThreePointPeak" type="462c0819:PsiDirectoryNode" />
-              <item name="Gaussian_Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="ThreePointPeak" type="462c0819:PsiDirectoryNode" />
-              <item name="Trim_ABC" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -509,6 +295,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17017913" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -718,18 +505,18 @@
     <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/Gaussian_Data/dMSE_vs_dX_points_gauss.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/Gaussian_Data/overlay_dMSE_dX_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/GradientInstrumentation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
+        <state relative-caret-position="842">
           <caret line="98" column="28" selection-start-line="98" selection-start-column="28" selection-end-line="98" selection-end-column="28" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/Gaussian_Data/overlay_dMSE_dX_gauss.png">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/CreateSeedData.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -743,8 +530,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FuzzySystem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2482">
-          <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
+        <state relative-caret-position="1904">
+          <caret line="116" column="64" selection-start-line="116" selection-start-column="64" selection-end-line="116" selection-end-column="64" />
           <folding>
             <element signature="e#0#75#0" expanded="true" />
           </folding>

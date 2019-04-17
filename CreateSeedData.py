@@ -35,6 +35,93 @@ def create_three_point_file():
         f.write(" ")
     f.close()
 
+def create_three_point_right_file():
+    f = open("Data/ThreePointPeakRight/normalized_peak.txt", "w+")
+    x = [0, 9, 10]
+    y = [1, 5, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+    
+    
+def create_three_point_left_increased_error_file():
+    f = open("Data/ThreePointPeakLeft_Increase_Error/normalized_peak.txt", "w+")
+    x = [0, 1, 10]
+    y = [1, 25, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+
+
+def create_three_point_left_increased_error_file():
+    f = open("Data/ThreePointPeakLeft_Increase_Error/normalized_peak.txt", "w+")
+    x = [0, 2, 10]
+    y = [1, 25, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+    
+
+def create_three_point_left_less_file():
+    f = open("Data/ThreePointPeakLeft_X_3/normalized_peak.txt", "w+")
+    x = [0, 3, 10]
+    y = [1, 5, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+
+def create_three_point_left_x_4_file():
+    f = open("Data/ThreePointPeakLeft_X_4/normalized_peak.txt", "w+")
+    x = [0, 4, 10]
+    y = [1, 5, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+
+
+def create_three_point_left_x_5_file():
+    f = open("Data/ThreePointPeakLeft_X_5/normalized_peak.txt", "w+")
+    x = [0, 5, 10]
+    y = [1, 5, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
 
 def create_normalized_file():
     f = open("Data/NormalizedPeakCenter/normalized_peak.txt", "w+")
