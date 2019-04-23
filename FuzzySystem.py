@@ -19,13 +19,15 @@ class FuzzySystem(object):
         self.tol_y = None
         self.x_antecedent = None
         self.y_consequent = None
-        self.granularity = 500
+        self.granularity = 50
         self.control = None
         self.rules = []
         self.control_simulation = None
         self.m_x = m_x if m_x else np.average(data_x)
         self.m_y = m_y if m_y else np.average(data_y)
         self.analysis_function = analysis_function
+        self.analysis_params_antecedent = None
+        self.analysis_params_consequent = None
 
     def create_universes(self):
         # Set tolerance
@@ -43,18 +45,24 @@ class FuzzySystem(object):
             if m_x:
                 self.x_antecedent['x'] = gaussmf(self.x_antecedent.universe, m_x,
                                                  float(np.std(np.array(self.x_antecedent.universe))))
+                self.analysis_params_antecedent = {'mean': m_x,
+                                                   'sigma': float(np.std(np.array(self.x_antecedent.universe)))}
             else:
                 self.x_antecedent['x'] = gaussmf(self.x_antecedent.universe,
                                                  float(np.mean(np.array(self.x_antecedent.universe))),
                                                  float(np.std(np.array(self.x_antecedent.universe))))
+                self.analysis_params_antecedent = {'mean': float(np.mean(np.array(self.x_antecedent.universe))),
+                                                   'sigma': float(np.std(np.array(self.x_antecedent.universe)))}
             if m_y:
                 self.y_consequent['y'] = gaussmf(self.y_consequent.universe, m_y,
                                                  float(np.std(np.array(self.y_consequent.universe))))
+                self.analysis_params_consequent = {'mean': m_y, 'sigma': float(np.std(np.array(self.y_consequent.universe)))}
             else:
                 self.y_consequent['y'] = gaussmf(self.y_consequent.universe,
                                                  float(np.mean(np.array(self.y_consequent.universe))),
                                                  float(np.std(np.array(self.y_consequent.universe))))
-
+                self.analysis_params_consequent = {'mean': float(np.mean(np.array(self.y_consequent.universe))),
+                                                   'sigma': float(np.std(np.array(self.y_consequent.universe)))}
         elif self.analysis_function == 'trimf':
             if m_x:
                 self.x_antecedent['x'] = trimf(self.x_antecedent.universe,
@@ -76,7 +84,8 @@ class FuzzySystem(object):
         self.rules = rule1
         # Create a control and controlsystem
         self.control = ctrl.ControlSystem(self.rules)
-        self.control_simulation = ControlSystemSimulationOverride(self.control)
+        self.control_simulation = ControlSystemSimulationOverride(self.control, self.analysis_function,
+                                                                  self.analysis_params_antecedent, self.analysis_params_consequent)
 
     def objective_function(self, m_x):
         self.create_membership(m_x=m_x)

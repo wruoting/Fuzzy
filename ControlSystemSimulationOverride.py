@@ -1,11 +1,15 @@
 from skfuzzy.control.controlsystem import ControlSystemSimulation, CrispValueCalculator
-from misc_functions import interp_membership, defuzz, interp_universe_fast, centroid
+from misc_functions import interp_membership, defuzz, interp_universe_fast, centroid, gaussian
 import numpy as np
 
 
 class ControlSystemSimulationOverride(ControlSystemSimulation):
-    def __init__(self, control):
+    def __init__(self, control, analysis_function, analysis_params_antecedent, analysis_params_consequent):
+
         super(ControlSystemSimulationOverride, self).__init__(control)
+        self.analysis_function = analysis_function
+        self.analysis_params_antecedent = analysis_params_antecedent
+        self.analysis_params_consequent = analysis_params_consequent
 
     def compute(self):
         """
@@ -30,7 +34,7 @@ class ControlSystemSimulationOverride(ControlSystemSimulation):
         for antecedent in self.ctrl.antecedents:
             if antecedent.input[self] is None:
                 raise ValueError("All antecedents must have input values!")
-            CrispValueCalculatorOverride(antecedent, self).fuzz(antecedent.input[self])
+            CrispValueCalculatorOverride(antecedent, self.analysis_function, self.analysis_params_antecedent, self).fuzz(antecedent.input[self])
 
         # Calculate rules, taking inputs and accumulating outputs
         first = True
@@ -46,7 +50,7 @@ class ControlSystemSimulationOverride(ControlSystemSimulation):
         # Collect the results and present them as a dict
         for consequent in self.ctrl.consequents:
             consequent.output[self] = \
-                CrispValueCalculatorOverride(consequent, self).defuzz()
+                CrispValueCalculatorOverride(consequent,  self.analysis_function, self.analysis_params_consequent, self).defuzz()
             self.output[consequent.label] = consequent.output[self]
 
         # Make note of this run so we can easily find it again
@@ -63,8 +67,10 @@ class ControlSystemSimulationOverride(ControlSystemSimulation):
 
 
 class CrispValueCalculatorOverride(CrispValueCalculator):
-    def __init__(self, fuzzy_var, sim):
+    def __init__(self, fuzzy_var, analysis_function, analysis_params, sim):
         super(CrispValueCalculatorOverride, self).__init__(fuzzy_var, sim)
+        self.analysis_function = analysis_function
+        self.analysis_params = analysis_params
 
     def fuzz(self, value):
         """
@@ -74,8 +80,13 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             raise ValueError("Set Term membership function(s) first")
 
         for label, term in self.var.terms.items():
-            term.membership_value[self.sim] = \
-                interp_membership(self.var.universe, term.mf, value)
+            # input:
+            # self.var.universe is the array of x input values
+            # term.mf is the array of y output values
+            # value is the value that you want to obtain an output from based on interpolation
+            if self.analysis_function == 'gauss':
+                term.membership_value[self.sim] = gaussian(value, self.analysis_params['mean'],
+                                                           self.analysis_params['sigma'])
 
     def defuzz(self):
         """Derive crisp value based on membership of adjective(s)."""
@@ -118,6 +129,7 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
         '''
         # Find potentially new values
         new_values = []
+        vectorize_gaussian = np.vectorize(gaussian)
 
         for label, term in self.var.terms.items():
             term._cut = term.membership_value[self.sim]
@@ -128,8 +140,8 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             # self.var.universe - x's values
             # term.mf - y's values
             # term._cut - particular y value for area under
-
-            new_values.extend(interp_universe_fast(self.var.universe, term.mf, term._cut))
+            if self.analysis_function == 'gauss':
+                new_values.append(gaussian(term._cut, self.analysis_params.get('mean'), self.analysis_params.get('sigma')))
         new_universe = np.union1d(self.var.universe, new_values)
         # Initialize membership
         output_mf = np.zeros_like(new_universe, dtype=np.float64)
@@ -141,7 +153,9 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             if term._cut is None:
                 continue  # No membership defined for this adjective
             for value in new_universe:
-                upsampled_mf = np.append(upsampled_mf, interp_membership(self.var.universe, term.mf, value))
+                if self.analysis_function == 'gauss':
+                    upsampled_mf = np.append(upsampled_mf, vectorize_gaussian(value, self.analysis_params['mean'],
+                                                                              self.analysis_params['sigma']))
             term_mfs[label] = np.minimum(term._cut, upsampled_mf)
 
             for output_mf_element, term_mf_element in zip(output_mf, term_mfs[label]):

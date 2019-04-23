@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from skfuzzy.defuzzify.defuzz import bisector
+import autograd.numpy as agnp
 
 
 def interp_membership(x, xmf, xx, tol=1e-5):
@@ -62,6 +63,13 @@ def interp_membership(x, xmf, xx, tol=1e-5):
         return peak_y-slope_left*(peak_x-xx) if peak_y-slope_left*(peak_x-xx) > tol else 0
     else:
         return peak_y if peak_y > tol else 0
+
+
+def gaussian(x, mean, sigma):
+    sqrt_2pi = np.sqrt(np.multiply(2, np.pi))
+    constant = np.divide(1, sqrt_2pi)
+    exponent = np.multiply(-0.5, np.square(np.divide(np.subtract(x, mean), sigma)))
+    return np.multiply(constant, agnp.exp(exponent))
 
 
 def defuzz(x, mfx, mode):

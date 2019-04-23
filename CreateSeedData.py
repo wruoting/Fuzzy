@@ -22,7 +22,7 @@ def gaussian_distribution(x, mu, sigma):
 
 
 def create_three_point_file():
-    f = open("Data/ThreePointPeak/normalized_peak.txt", "w+")
+    f = open("Data/Non_Interpolated/ThreePointPeak/normalized_peak.txt", "w+")
     x = [0, 5, 10]
     y = [1, 5, 1]
 
@@ -34,6 +34,7 @@ def create_three_point_file():
         f.write(str(value))
         f.write(" ")
     f.close()
+
 
 def create_three_point_right_file():
     f = open("Data/ThreePointPeakRight/normalized_peak.txt", "w+")

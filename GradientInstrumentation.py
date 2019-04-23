@@ -82,7 +82,7 @@ def graph_fuzzy(path, analysis_function='gauss'):
     data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
     fuzzy_system = FuzzySystem(data_x, data_y, analysis_function=analysis_function)
     fuzzy_system.create_universes()
-    fuzzy_system.objective_function(4)
+    fuzzy_system.objective_function(4.5)
     fuzzy_system.graph()
 
 
@@ -201,8 +201,8 @@ right_shift_peak_path_gauss = "Data/RightPeakCenter/Gaussian_Data/"
 bimodal_peak_path = "Data/BimodalPeak/Trim_ABC/"
 bimodal_peak_gauss = "Data/BimodalPeak/Gaussian_Data/"
 
-three_point_peak_path = "Data/ThreePointPeak/Trim_ABC/"
-three_point_peak_path_gauss = "Data/ThreePointPeak/Gaussian_Data/"
+three_point_peak_path = "Data/Non_Interpolated/ThreePointPeak/Trim_ABC/"
+three_point_peak_path_gauss = "Data/Non_Interpolated/ThreePointPeak/Gaussian_Data/"
 
 three_point_peak_right_path = "Data/ThreePointPeakRight/Trim_ABC/"
 three_point_peak_right_path_gauss = "Data/ThreePointPeakRight/Gaussian_Data/"
@@ -246,15 +246,16 @@ three_point_peak_left_x_5_400_pts_path_gauss = "Data/ThreePointPeakLeft_X_5_400_
 # mse_generator(path=bimodal_peak_gauss, analysis_function='gauss')
 #
 # mse_generator(path=three_point_peak_path, analysis_function='trimf')
-# mse_generator(path=three_point_peak_path_gauss, analysis_function='gauss')
-
-# create_diff_data(three_point_peak_path_gauss)
-# plot_diff_data(path=three_point_peak_path_gauss)
+# graph_fuzzy(path=three_point_peak_path_gauss)
+mse_generator(path=three_point_peak_path_gauss, analysis_function='gauss')
+#
+create_diff_data(three_point_peak_path_gauss)
+plot_diff_data(path=three_point_peak_path_gauss)
 
 # mse_generator(path=three_point_peak_right_path, analysis_function='trimf')
 # mse_generator(path=three_point_peak_right_path_gauss, analysis_function='gauss')
-create_diff_data(three_point_peak_right_path_gauss)
-plot_diff_data(path=three_point_peak_right_path_gauss)
+# create_diff_data(three_point_peak_right_path_gauss)
+# plot_diff_data(path=three_point_peak_right_path_gauss)
 
 # mse_generator(path=three_point_peak_left_path, analysis_function='trimf')
 # mse_generator(path=three_point_peak_left_path_gauss, analysis_function='gauss')
