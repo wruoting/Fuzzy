@@ -72,6 +72,13 @@ def gaussian(x, mean, sigma):
     return np.multiply(constant, agnp.exp(exponent))
 
 
+def inverse_gaussian(y, mean, sigma):
+    sqrt_2pi = np.sqrt(np.multiply(2, np.pi))
+    log_y = agnp.log(np.multiply(y, sqrt_2pi))
+    ln_calc = agnp.sqrt(np.multiply(-2, log_y))
+    return np.add(np.multiply(sigma, ln_calc), mean)
+
+
 def defuzz(x, mfx, mode):
     """
     Defuzzification of a membership function, returning a defuzzified value

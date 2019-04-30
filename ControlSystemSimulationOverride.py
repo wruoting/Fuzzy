@@ -1,5 +1,5 @@
 from skfuzzy.control.controlsystem import ControlSystemSimulation, CrispValueCalculator
-from misc_functions import interp_membership, defuzz, interp_universe_fast, centroid, gaussian
+from misc_functions import interp_membership, defuzz, interp_universe_fast, centroid, gaussian, inverse_gaussian
 import numpy as np
 
 
@@ -141,7 +141,7 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             # term.mf - y's values
             # term._cut - particular y value for area under
             if self.analysis_function == 'gauss':
-                new_values.append(gaussian(term._cut, self.analysis_params.get('mean'), self.analysis_params.get('sigma')))
+                new_values.append(inverse_gaussian(term._cut, self.analysis_params.get('mean'), self.analysis_params.get('sigma')))
         new_universe = np.union1d(self.var.universe, new_values)
         # Initialize membership
         output_mf = np.zeros_like(new_universe, dtype=np.float64)
