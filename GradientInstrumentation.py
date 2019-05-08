@@ -82,9 +82,21 @@ def graph_fuzzy(path, analysis_function='gauss'):
     data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
     fuzzy_system = FuzzySystem(data_x, data_y, analysis_function=analysis_function)
     fuzzy_system.create_universes()
-    fuzzy_system.objective_function(4.5)
+    fuzzy_system.objective_function(5)
     fuzzy_system.graph()
 
+
+def test_fuzzy(path, analysis_function='gauss'):
+    data_x, data_y = open_data(path="{}normalized_peak.txt".format(path))
+    fuzzy_system = FuzzySystem(data_x, data_y, analysis_function=analysis_function)
+    fuzzy_system.create_universes()
+    fuzzy_system.create_membership(m_x=5)
+    fuzzy_system.rules_to_control()
+    for datum in data_x:
+        print('X Value:')
+        print(datum)
+        print('Membership')
+        print(fuzzy_system.generate_output('x', 'y', datum))
 
 def add_to_path(data_x, data_y, path):
     # Create our universe
@@ -207,8 +219,8 @@ three_point_peak_path_gauss = "Data/Non_Interpolated/ThreePointPeak/Gaussian_Dat
 three_point_peak_right_path = "Data/ThreePointPeakRight/Trim_ABC/"
 three_point_peak_right_path_gauss = "Data/ThreePointPeakRight/Gaussian_Data/"
 
-three_point_peak_left_path = "Data/ThreePointPeakLeft/Trim_ABC/"
-three_point_peak_left_path_gauss = "Data/ThreePointPeakLeft/Gaussian_Data/"
+three_point_peak_left_path = "Data/Non_Interpolated/ThreePointPeakLeft/Trim_ABC/"
+three_point_peak_left_path_gauss = "Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/"
 
 three_point_peak_left_increase_error_path = "Data/ThreePointPeakLeft_Increase_Error/Trim_ABC/"
 three_point_peak_left_increase_error_path_gauss = "Data/ThreePointPeakLeft_Increase_Error/Gaussian_Data/"
@@ -224,65 +236,10 @@ three_point_peak_left_x_5_path_gauss = "Data/ThreePointPeakLeft_X_5/Gaussian_Dat
 
 three_point_peak_left_x_5_400_pts_path = "Data/ThreePointPeakLeft_X_5_400_pts/Trim_ABC/"
 three_point_peak_left_x_5_400_pts_path_gauss = "Data/ThreePointPeakLeft_X_5_400_pts/Gaussian_Data/"
-# graph_fuzzy(path=left_shift_peak_path_gauss)
-# graph_fuzzy(path=left_shift_peak_path_gauss, analysis_function='trimf')
 
-# mse_generator(path=normalized_peak_path_low_sample_size, analysis_function='trimf')
-# mse_generator(path=normalized_peak_path_low_sample_size_gauss, analysis_function='gauss')
-#
-# mse_generator(path=left_peak_path_low_sample_size, analysis_function='trimf')
-# mse_generator(path=left_peak_path_low_sample_size_gauss, analysis_function='gauss')
-#
-# mse_generator(path=left_peak_path_low_sample_size_higher_sig, analysis_function='trimf')
-# mse_generator(path=left_peak_path_low_sample_size_higher_sig_gauss, analysis_function='gauss')
-#
-# mse_generator(path=left_shift_peak_path, analysis_function='trimf')
-# mse_generator(path=left_shift_peak_path_gauss, analysis_function='gauss')
-#
-# mse_generator(path=normalized_peak_path, analysis_function='trimf')
-# mse_generator(path=normalized_peak_path_gauss, analysis_function='gauss')
-#
-# mse_generator(path=bimodal_peak_path, analysis_function='trimf')
-# mse_generator(path=bimodal_peak_gauss, analysis_function='gauss')
-#
-# mse_generator(path=three_point_peak_path, analysis_function='trimf')
-# graph_fuzzy(path=three_point_peak_path_gauss)
-mse_generator(path=three_point_peak_path_gauss, analysis_function='gauss')
-#
-create_diff_data(three_point_peak_path_gauss)
-plot_diff_data(path=three_point_peak_path_gauss)
+mse_generator(path=three_point_peak_left_path_gauss, analysis_function='gauss')
 
-# mse_generator(path=three_point_peak_right_path, analysis_function='trimf')
-# mse_generator(path=three_point_peak_right_path_gauss, analysis_function='gauss')
-# create_diff_data(three_point_peak_right_path_gauss)
-# plot_diff_data(path=three_point_peak_right_path_gauss)
-
-# mse_generator(path=three_point_peak_left_path, analysis_function='trimf')
-# mse_generator(path=three_point_peak_left_path_gauss, analysis_function='gauss')
-# create_diff_data(three_point_peak_left_path_gauss)
+# test_fuzzy(three_point_peak_left_path_gauss)
+create_diff_data(three_point_peak_left_path_gauss)
 # plot_diff_data(path=three_point_peak_left_path_gauss)
-
-# mse_generator(path=three_point_peak_left_increase_error_path, analysis_function='trimf')
-# mse_generator(path=three_point_peak_left_increase_error_path_gauss, analysis_function='gauss')
-# create_diff_data(three_point_peak_left_increase_error_path_gauss)
-# plot_diff_data(path=three_point_peak_left_increase_error_path_gauss)
-
-# mse_generator(path=three_point_peak_left_x_3_path, analysis_function='trimf')
-# mse_generator(path=three_point_peak_left_x_3_path_gauss, analysis_function='gauss')
-# create_diff_data(three_point_peak_left_x_3_path_gauss)
-# plot_diff_data(path=three_point_peak_left_x_3_path_gauss)
-
-# mse_generator(path=three_point_peak_left_x_4_path, analysis_function='trimf')
-# mse_generator(path=three_point_peak_left_x_4_path_gauss, analysis_function='gauss')
-# create_diff_data(three_point_peak_left_x_4_path_gauss)
-# plot_diff_data(path=three_point_peak_left_x_4_path_gauss)
-
-# mse_generator(path=three_point_peak_left_x_5_path, analysis_function='trimf')
-# mse_generator(path=three_point_peak_left_x_5_path_gauss, analysis_function='gauss')
-# create_diff_data(three_point_peak_left_x_5_path_gauss)
-# plot_diff_data(path=three_point_peak_left_x_5_path_gauss)
-
-# mse_generator(path=three_point_peak_left_x_5_400_pts_path, analysis_function='trimf')
-# mse_generator(path=three_point_peak_left_x_5_400_pts_path_gauss, analysis_function='gauss')
-# create_diff_data(three_point_peak_left_x_5_400_pts_path_gauss)
-# plot_diff_data(path=three_point_peak_left_x_5_400_pts_path_gauss)
+# graph_fuzzy(path=three_point_peak_path_gauss)

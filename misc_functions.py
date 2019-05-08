@@ -67,14 +67,14 @@ def interp_membership(x, xmf, xx, tol=1e-5):
 
 def gaussian(x, mean, sigma):
     sqrt_2pi = np.sqrt(np.multiply(2, np.pi))
-    constant = np.divide(1, sqrt_2pi)
-    exponent = np.multiply(-0.5, np.square(np.divide(np.subtract(x, mean), sigma)))
+    constant = np.divide(1, np.multiply(sigma, sqrt_2pi))
+    exponent = -((x - mean)**2.) / (2 * sigma**2.)
     return np.multiply(constant, agnp.exp(exponent))
 
 
 def inverse_gaussian(y, mean, sigma):
     sqrt_2pi = np.sqrt(np.multiply(2, np.pi))
-    log_y = agnp.log(np.multiply(y, sqrt_2pi))
+    log_y = agnp.log(np.multiply(y, np.multiply(sigma, sqrt_2pi)))
     ln_calc = agnp.sqrt(np.multiply(-2, log_y))
     return np.add(np.multiply(sigma, ln_calc), mean)
 

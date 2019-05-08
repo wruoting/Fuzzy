@@ -1,4 +1,5 @@
 from ControlSystemSimulationOverride import ControlSystemSimulationOverride
+from misc_functions import gaussian
 import numpy as np
 import autograd.numpy as agnp
 from skfuzzy import control as ctrl
@@ -19,7 +20,7 @@ class FuzzySystem(object):
         self.tol_y = None
         self.x_antecedent = None
         self.y_consequent = None
-        self.granularity = 200
+        self.granularity = 300
         self.control = None
         self.rules = []
         self.control_simulation = None
@@ -43,22 +44,23 @@ class FuzzySystem(object):
     def create_membership(self, m_x=None, m_y=None):
         if self.analysis_function == 'gauss':
             if m_x:
-                self.x_antecedent['x'] = gaussmf(self.x_antecedent.universe, m_x,
+                self.x_antecedent['x'] = gaussian(self.x_antecedent.universe, m_x,
                                                  float(np.std(np.array(self.x_antecedent.universe))))
+                # print(self.x_antecedent['x'])
                 self.analysis_params_antecedent = {'mean': m_x,
                                                    'sigma': float(np.std(np.array(self.x_antecedent.universe)))}
             else:
-                self.x_antecedent['x'] = gaussmf(self.x_antecedent.universe,
+                self.x_antecedent['x'] = gaussian(self.x_antecedent.universe,
                                                  float(np.mean(np.array(self.x_antecedent.universe))),
                                                  float(np.std(np.array(self.x_antecedent.universe))))
                 self.analysis_params_antecedent = {'mean': float(np.mean(np.array(self.x_antecedent.universe))),
                                                    'sigma': float(np.std(np.array(self.x_antecedent.universe)))}
             if m_y:
-                self.y_consequent['y'] = gaussmf(self.y_consequent.universe, m_y,
+                self.y_consequent['y'] = gaussian(self.y_consequent.universe, m_y,
                                                  float(np.std(np.array(self.y_consequent.universe))))
                 self.analysis_params_consequent = {'mean': m_y, 'sigma': float(np.std(np.array(self.y_consequent.universe)))}
             else:
-                self.y_consequent['y'] = gaussmf(self.y_consequent.universe,
+                self.y_consequent['y'] = gaussian(self.y_consequent.universe,
                                                  float(np.mean(np.array(self.y_consequent.universe))),
                                                  float(np.std(np.array(self.y_consequent.universe))))
                 self.analysis_params_consequent = {'mean': float(np.mean(np.array(self.y_consequent.universe))),
@@ -85,7 +87,8 @@ class FuzzySystem(object):
         # Create a control and controlsystem
         self.control = ctrl.ControlSystem(self.rules)
         self.control_simulation = ControlSystemSimulationOverride(self.control, self.analysis_function,
-                                                                  self.analysis_params_antecedent, self.analysis_params_consequent)
+                                                                  self.analysis_params_antecedent,
+                                                                  self.analysis_params_consequent)
 
     def objective_function(self, m_x):
         self.create_membership(m_x=m_x)
