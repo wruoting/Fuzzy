@@ -240,6 +240,6 @@ three_point_peak_left_x_5_400_pts_path_gauss = "Data/ThreePointPeakLeft_X_5_400_
 mse_generator(path=three_point_peak_left_path_gauss, analysis_function='gauss')
 
 # test_fuzzy(three_point_peak_left_path_gauss)
-create_diff_data(three_point_peak_left_path_gauss)
+# create_diff_data(three_point_peak_left_path_gauss)
 # plot_diff_data(path=three_point_peak_left_path_gauss)
 # graph_fuzzy(path=three_point_peak_path_gauss)

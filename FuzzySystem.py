@@ -20,7 +20,7 @@ class FuzzySystem(object):
         self.tol_y = None
         self.x_antecedent = None
         self.y_consequent = None
-        self.granularity = 300
+        self.granularity = 100
         self.control = None
         self.rules = []
         self.control_simulation = None
@@ -36,10 +36,10 @@ class FuzzySystem(object):
         self.tol_y = np.divide(np.subtract(np.max(self.data_y), np.min(self.data_y)), self.granularity)
 
         # Create an antecedent input set and a membership function
-        self.x_antecedent = ctrl.Antecedent(np.arange(np.min(self.data_x), np.max(self.data_x), self.tol_x), 'x')
+        self.x_antecedent = ctrl.Antecedent(np.arange(np.min(self.data_x), np.max(self.data_x)+self.tol_x, self.tol_x), 'x')
 
         # Create an consequent input set and a membership function
-        self.y_consequent = ctrl.Consequent(np.arange(np.min(self.data_y), np.max(self.data_y), self.tol_y), 'y')
+        self.y_consequent = ctrl.Consequent(np.arange(np.min(self.data_y), np.max(self.data_y)+self.tol_y, self.tol_y), 'y')
 
     def create_membership(self, m_x=None, m_y=None):
         if self.analysis_function == 'gauss':
