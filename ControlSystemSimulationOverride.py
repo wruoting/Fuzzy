@@ -85,11 +85,9 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             # term.mf is the array of y output values
             # value is the value that you want to obtain an output from based on interpolation
             if self.analysis_function == 'gauss':
-                print(value)
                 # TODO: i think this function uses the wrong fuzzy membership since it's supposed to be the value of the defined gauss
                 term.membership_value[self.sim] = gaussian(value, self.analysis_params['mean'],
                                                            self.analysis_params['sigma'])
-                print(term.membership_value[self.sim])
 
     def defuzz(self):
         """Derive crisp value based on membership of adjective(s)."""
@@ -111,6 +109,7 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
                                  "activate at least one connected Term in each "
                                  "Antecedent via the current set of Rules.")
         else:
+            # TODO: figure out if defuzz is shitting the bed here
             # Calculate using array-aware version, one cut at a time.
             output = np.zeros(self.sim._array_shape, dtype=np.float64)
 
@@ -143,6 +142,9 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             # self.var.universe - x's values
             # term.mf - y's values
             # term._cut - particular y value for area under
+            print('asdfs')
+            print(self.var.universe)
+            print(term._cut)
             if self.analysis_function == 'gauss':
                 new_values.append(inverse_gaussian(term._cut, self.analysis_params.get('mean'), self.analysis_params.get('sigma')))
         new_universe = np.union1d(self.var.universe, new_values)
@@ -156,6 +158,7 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             if term._cut is None:
                 continue  # No membership defined for this adjective
             for value in new_universe:
+        # TODO: make sure we're doing the same thing as controlsystem
                 if self.analysis_function == 'gauss':
                     upsampled_mf = np.append(upsampled_mf, vectorize_gaussian(value, self.analysis_params['mean'],
                                                                               self.analysis_params['sigma']))

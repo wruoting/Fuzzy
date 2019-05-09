@@ -46,7 +46,6 @@ class FuzzySystem(object):
             if m_x:
                 self.x_antecedent['x'] = gaussian(self.x_antecedent.universe, m_x,
                                                  float(np.std(np.array(self.x_antecedent.universe))))
-                # print(self.x_antecedent['x'])
                 self.analysis_params_antecedent = {'mean': m_x,
                                                    'sigma': float(np.std(np.array(self.x_antecedent.universe)))}
             else:
