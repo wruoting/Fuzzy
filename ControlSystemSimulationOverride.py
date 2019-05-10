@@ -129,6 +129,9 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
         interpolates the `xx` values in the universe such that its membership
         function value is the activation level.
         '''
+        # This function essentially takes your universe (x value outputs from your antecendent) and maps them to your
+        # y value consequent. It then generates all x-value consequents from that mapping. Using those consequents, it
+        # will return y values TRUNCATED at the point we do the cut.
         # Find potentially new values
         new_values = []
         vectorize_gaussian = np.vectorize(gaussian)
@@ -142,9 +145,6 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             # self.var.universe - x's values
             # term.mf - y's values
             # term._cut - particular y value for area under
-            print('asdfs')
-            print(self.var.universe)
-            print(term._cut)
             if self.analysis_function == 'gauss':
                 new_values.append(inverse_gaussian(term._cut, self.analysis_params.get('mean'), self.analysis_params.get('sigma')))
         new_universe = np.union1d(self.var.universe, new_values)
@@ -158,7 +158,6 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             if term._cut is None:
                 continue  # No membership defined for this adjective
             for value in new_universe:
-        # TODO: make sure we're doing the same thing as controlsystem
                 if self.analysis_function == 'gauss':
                     upsampled_mf = np.append(upsampled_mf, vectorize_gaussian(value, self.analysis_params['mean'],
                                                                               self.analysis_params['sigma']))

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17f646d0-a64d-40a2-a965-30dcd81cb6c0" name="Default Changelist" comment="more data">
+    <list default="true" id="17f646d0-a64d-40a2-a965-30dcd81cb6c0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ControlSystemSimulationOverride.py" beforeDir="false" afterPath="$PROJECT_DIR$/ControlSystemSimulationOverride.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FuzzySystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/FuzzySystem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradientInstrumentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/GradientInstrumentation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/normalized_peak.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/normalized_peak.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/variables.log" beforeDir="false" afterPath="$PROJECT_DIR$/variables.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,14 +14,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5232859">
+    <splitter split-orientation="horizontal" split-proportion="0.4096601">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/GradientInstrumentation.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="668">
-                  <caret line="242" selection-start-line="242" selection-start-column="2" selection-end-line="243" selection-end-column="55" />
+                <state relative-caret-position="195">
+                  <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
                   <folding>
                     <element signature="e#0#18#0" expanded="true" />
                   </folding>
@@ -32,32 +32,47 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/FuzzySystem.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="30" column="45" lean-forward="true" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+                <state relative-caret-position="279">
+                  <caret line="46" column="49" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="49" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/misc_functions.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="171">
+                  <caret line="81" column="4" selection-start-line="81" selection-start-column="4" selection-end-line="81" selection-end-column="4" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/skfuzzy/control/controlsystem.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1170">
+                  <caret line="617" column="11" lean-forward="true" selection-start-line="617" selection-start-column="11" selection-end-line="617" selection-end-column="11" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/skfuzzy/fuzzymath/fuzzy_ops.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-533">
+                  <caret line="530" column="21" selection-start-line="530" selection-start-column="4" selection-end-line="530" selection-end-column="21" />
                   <folding>
-                    <element signature="e#0#75#0" expanded="true" />
+                    <element signature="e#15926#17463#0" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/misc_functions.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
-                  <folding>
-                    <element signature="e#0#18#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ControlSystemSimulationOverride.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
-                  <caret line="88" column="134" selection-start-line="88" selection-start-column="134" selection-end-line="88" selection-end-column="134" />
+                <state relative-caret-position="1290">
+                  <caret line="86" column="49" selection-start-line="86" selection-start-column="49" selection-end-line="86" selection-end-column="49" />
                   <folding>
                     <element signature="e#0#87#0" expanded="true" />
                   </folding>
@@ -70,12 +85,12 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/misc_functions.py">
+            <entry file="file://$PROJECT_DIR$/ControlSystemSimulationOverride.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1479">
-                  <caret line="87" column="14" lean-forward="true" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
+                <state relative-caret-position="382">
+                  <caret line="109" column="76" lean-forward="true" selection-start-line="109" selection-start-column="76" selection-end-line="109" selection-end-column="76" />
                   <folding>
-                    <element signature="e#0#18#0" expanded="true" />
+                    <element signature="e#0#87#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -94,36 +109,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mse_vs_x</find>
-      <find>normalized_peak.txt</find>
-      <find>centroid</find>
-      <find>interp</find>
-      <find>interp_universe_fast</find>
-      <find>create_membership</find>
-      <find>output_dMSE_vs_dX_points</find>
-      <find>find_memberships</find>
-      <find>_cut</find>
-      <find>autograd</find>
-      <find>generate_output</find>
-      <find>create_universes</find>
-      <find>fuzz</find>
-      <find>ControlSystemSimulationOverride</find>
-      <find>CrispValueCalculatorOverride</find>
-      <find>compute_rule</find>
-      <find>automf</find>
-      <find>gauss</find>
-      <find>gaussmf</find>
-      <find>self.data_y</find>
-      <find>FuzzySystem</find>
-      <find>,</find>
-      <find>print(</find>
+      <find>FuzzyVariable</find>
+      <find>view</find>
+      <find>bisect</find>
+      <find>label</find>
+      <find>trimf</find>
+      <find>abc</find>
+      <find>&quot;Expected {1}, got</find>
+      <find>fuzzy_output</find>
       <find>print</find>
-      <find>exp</find>
-      <find>create</find>
-      <find>exp(</find>
-      <find>create_mem</find>
-      <find>gaussian</find>
-      <find>create_membershi</find>
+      <find>plt</find>
+      <find>asfd</find>
+      <find>operator</find>
+      <find>-0.4985429993940158</find>
+      <find>create_file</find>
+      <find>-0.8358290776165398</find>
+      <find>,</find>
+      <find>add_to_path</find>
+      <find>compute_rule</find>
+      <find>weighte</find>
+      <find>membership_v</find>
+      <find>kind</find>
+      <find>self.label</find>
+      <find>weight</find>
+      <find>TermAggregate</find>
+      <find>aggregate_firing</find>
+      <find>TODO</find>
+      <find>create_membership</find>
+      <find>interp_membership</find>
+      <find>control</find>
+      <find>find_memberships</find>
     </findStrings>
     <dirStrings>
       <dir>E:\Program Files\Python36\Lib\site-packages\skfuzzy</dir>
@@ -145,124 +160,77 @@
         <option value="$PROJECT_DIR$/rule_testing_generic.py" />
         <option value="$PROJECT_DIR$/revised_rule_membership.py" />
         <option value="E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/term.py" />
-        <option value="$PROJECT_DIR$/ControlSystemOverride.py" />
-        <option value="$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/control/controlsystem.py" />
-        <option value="$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeak/Gaussian_Data/normalized_peak.txt" />
         <option value="$PROJECT_DIR$/CreateSeedData.py" />
-        <option value="$PROJECT_DIR$/misc_functions.py" />
-        <option value="$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/normalized_peak.txt" />
         <option value="$PROJECT_DIR$/GradientInstrumentation.py" />
+        <option value="$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/normalized_peak.txt" />
         <option value="$PROJECT_DIR$/FuzzySystem.py" />
+        <option value="$PROJECT_DIR$/misc_functions.py" />
         <option value="$PROJECT_DIR$/ControlSystemSimulationOverride.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1" />
-    <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="777" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1599" />
+    <option name="y" value="122" />
+    <option name="width" value="1719" />
+    <option name="height" value="910" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="Fuzzy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fuzzy" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="Fuzzy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fuzzy" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="Interpolated" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="Fuzzy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fuzzy" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
               <item name="Non_Interpolated" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="Non_Interpolated" type="462c0819:PsiDirectoryNode" />
-              <item name="ThreePointPeak" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="Non_Interpolated" type="462c0819:PsiDirectoryNode" />
-              <item name="ThreePointPeak" type="462c0819:PsiDirectoryNode" />
-              <item name="Gaussian_Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="Fuzzy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fuzzy" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
               <item name="Non_Interpolated" type="462c0819:PsiDirectoryNode" />
               <item name="ThreePointPeakLeft" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="Fuzzy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fuzzy" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
               <item name="Non_Interpolated" type="462c0819:PsiDirectoryNode" />
               <item name="ThreePointPeakLeft" type="462c0819:PsiDirectoryNode" />
               <item name="Gaussian_Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.6 (ENV) &gt;" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.6 (ENV) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/Program Files/Python36/Lib/site-packages/skfuzzy" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\ThreePointPeak\Trim_ABC" />
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\RightPeakCenter\Trim_ABC" />
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\NormalizedPeakCenter\Trim_ABC" />
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\BimodalPeak\Trim_ABC" />
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\LeftPeakCenter\Trim_ABC" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\Non_Interpolated" />
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\BimodalPeak\Gaussian_Data" />
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\LeftPeakCenterHigherSigLowSampleSize\Gaussian_Data" />
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\NormalizedPeakCenterLowSampleSize\Gaussian_Data" />
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\ThreePointPeak\Gaussian_Data" />
+      <recent name="$PROJECT_DIR$/Data/Non_Interpolated" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\NormalizedPeakCenterLowSampleSize" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -312,64 +280,22 @@
       <option name="presentableId" value="Default" />
       <updated>1550507270278</updated>
       <workItem from="1551298673389" duration="1644000" />
+      <workItem from="1557251676702" duration="18339000" />
     </task>
-    <task id="LOCAL-00001" summary="normalized data input">
-      <created>1554246900186</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1554246900186</updated>
-    </task>
-    <task id="LOCAL-00002" summary="never reset hard just don't do it">
-      <created>1554786711207</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1554786711207</updated>
-    </task>
-    <task id="LOCAL-00003" summary="never reset hard just don't do it">
-      <created>1554830257884</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1554830257884</updated>
-    </task>
-    <task id="LOCAL-00004" summary="more data">
-      <created>1554830296588</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1554830296588</updated>
-    </task>
-    <task id="LOCAL-00005" summary="more data">
-      <created>1554835789548</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1554835789549</updated>
-    </task>
-    <task id="LOCAL-00006" summary="more data">
-      <created>1554836280868</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1554836280868</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1644000" />
+    <option name="totallyTimeSpent" value="19931000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1599" y="122" width="1719" height="910" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09641728" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.23375075" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32905295" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -414,150 +340,159 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="normalized data input" />
-    <MESSAGE value="never reset hard just don't do it" />
-    <MESSAGE value="more data" />
-    <option name="LAST_COMMIT_MESSAGE" value="more data" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Data/BimodalPeak/Trim_ABC/overlay_data.png" />
-    <entry file="file://$PROJECT_DIR$/Data/BimodalPeak/Gaussian_Data/overlay_data_gauss.png" />
-    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenter/Gaussian_Data/overlay_data_gauss.png" />
-    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterHigherSigLowSampleSize/Gaussian_Data/overlay_data_gauss.png" />
-    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterHigherSigLowSampleSize/Trim_ABC/overlay_data.png" />
-    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Trim_ABC/overlay_data.png" />
-    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenterLowSampleSize/Gaussian_Data/overlay_data_gauss.png" />
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenter/Gaussian_Data/overlay_data_gauss.png" />
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenter/Trim_ABC/overlay_data.png" />
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Gaussian_Data/overlay_data_gauss.png" />
-    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/Trim_ABC/overlay_data.png" />
-    <entry file="file://$PROJECT_DIR$/Data/RightPeakCenter/Gaussian_Data/overlay_data_gauss.png" />
-    <entry file="file://$PROJECT_DIR$/Data/RightPeakCenter/Trim_ABC/overlay_data.png" />
-    <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/Gaussian_Data/overlay_data_gauss.png" />
-    <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/Gaussian_Data/DiffData_XY_Gauss.txt" />
-    <entry file="file://$PROJECT_DIR$/Data/LeftPeakCenter/Trim_ABC/overlay_data.png" />
-    <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/Trim_ABC/overlay_data.png" />
-    <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/Gaussian_Data/dMSE_vs_dX_points_gauss.png" />
-    <entry file="file://$PROJECT_DIR$/Data/ThreePointPeak/Gaussian_Data/overlay_dMSE_dX_gauss.png" />
-    <entry file="file://$PROJECT_DIR$/Data/BimodalPeak/Gaussian_Data/normalized_peak.txt" />
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeak/Gaussian_Data/mse_vs_x.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeak/Gaussian_Data/dMSE_vs_dX_points_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeak/Gaussian_Data/overlay_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/fuzzymath/fuzzy_ops.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/collections/__init__.pyi">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="619" column="34" selection-start-line="619" selection-start-column="34" selection-end-line="619" selection-end-column="34" />
+        <state relative-caret-position="341">
+          <caret line="293" column="58" selection-start-line="293" selection-start-column="57" selection-end-line="293" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeak/Gaussian_Data/overlay_dMSE_dX_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ControlSystemOverride.py" />
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/control/controlsystem.py">
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/numpy/core/fromnumeric.py" />
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/__init__.py" />
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/297085049/scipy/optimize/_zeros.py" />
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/scipy/optimize/optimize.py" />
+    <entry file="file://$PROJECT_DIR$/../Lib/site-packages/skfuzzy/control/fuzzyvariable.py" />
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/matplotlib/pyplot.py" />
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/fuzzyvariable.py" />
+    <entry file="file://$PROJECT_DIR$/fuzzy.py" />
+    <entry file="file://$PROJECT_DIR$/fuzzy_membership.py" />
+    <entry file="file://$PROJECT_DIR$/one_rule_one_membership.py" />
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/scipy/__init__.py" />
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/scipy/optimize/__init__.py" />
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/membership/generatemf.py" />
+    <entry file="file://$PROJECT_DIR$/rule_testing_generic.py" />
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/rule.py" />
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/controlsystem.py" />
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/visualization.py" />
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/antecedent_consequent.py" />
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/overlay_data.png" />
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/DiffData_XY.txt" />
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/data.png" />
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/dMSE_vs_dX_points.png" />
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/mse_vs_x.png" />
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/dMSE_vs_dX.png" />
+    <entry file="file://$PROJECT_DIR$/Data/NormalizedPeakCenterLowSampleSize/normalized_peak.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="433" column="39" lean-forward="true" selection-start-line="433" selection-start-column="39" selection-end-line="433" selection-end-column="39" />
+        <state>
+          <caret column="1149" selection-start-column="1148" selection-end-column="1149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CreateSeedData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2499">
+          <caret line="164" selection-start-line="164" selection-end-line="164" />
           <folding>
-            <element signature="e#81#128#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/control/rule.py">
+    <entry file="file://E:/Program Files/Python36/Lib/site-packages/skfuzzy/control/term.py" />
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.3/python_stubs/-1945805487/numpy/core/_multiarray_umath.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="43" column="39" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="39" />
+        <state relative-caret-position="194">
+          <caret line="3200" column="4" selection-start-line="3200" selection-start-column="4" selection-end-line="3200" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/control/state.py">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/skfuzzy/control/fuzzyvariable.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="-297">
+          <caret line="67" column="29" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/skfuzzy/control/antecedent_consequent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="28" column="30" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/skfuzzy/control/term.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="749">
+          <caret line="122" column="21" selection-start-line="122" selection-start-column="13" selection-end-line="122" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/skfuzzy/control/state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
           <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/control/antecedent_consequent.py">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/skfuzzy/control/rule.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="72" column="54" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="54" />
+        <state relative-caret-position="-482">
+          <caret line="43" column="39" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/control/fuzzyvariable.py">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/skfuzzy/defuzzify/defuzz.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="222" column="30" selection-start-line="222" selection-start-column="25" selection-end-line="222" selection-end-column="30" />
+        <state relative-caret-position="-409">
+          <caret line="210" column="4" selection-start-line="210" selection-start-column="4" selection-end-line="210" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/control/term.py">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/skfuzzy/control/controlsystem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="119" column="18" selection-start-line="119" selection-start-column="18" selection-end-line="119" selection-end-column="18" />
+        <state relative-caret-position="212">
+          <caret line="399" column="28" lean-forward="true" selection-start-line="399" selection-start-column="28" selection-end-line="399" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/skfuzzy/membership/generatemf.py">
+    <entry file="file://$PROJECT_DIR$/FuzzySystem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+        <state relative-caret-position="279">
+          <caret line="46" column="49" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeak/Gaussian_Data/normalized_peak.txt">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/skfuzzy/fuzzymath/fuzzy_ops.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/autograd/differential_operators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/autograd/numpy/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="-533">
+          <caret line="530" column="21" selection-start-line="530" selection-start-column="4" selection-end-line="530" selection-end-column="21" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#15926#17463#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/DiffData_XY_Gauss.txt">
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/normalized_peak_mse_gauss.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/overlay_dMSE_dX_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/dMSE_vs_dX_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/dMSE_vs_dX_points_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CreateSeedData.py">
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/normalized_peak.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3604">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/skfuzzy/control/controlsystem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="617" column="11" lean-forward="true" selection-start-line="617" selection-start-column="11" selection-end-line="617" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/mse_vs_x.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Interpolated Y Gaussian.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/overlay_data_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GradientInstrumentation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -566,58 +501,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/misc_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GradientInstrumentation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="668">
-          <caret line="242" selection-start-line="242" selection-start-column="2" selection-end-line="243" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/normalized_peak.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="3" selection-start-column="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/normalized_peak_mse_gauss.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2566" lean-forward="true" selection-start-column="2566" selection-end-column="2566" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/mse_vs_x.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/overlay_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FuzzySystem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="30" column="45" lean-forward="true" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="171">
+          <caret line="81" column="4" selection-start-line="81" selection-start-column="4" selection-end-line="81" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ControlSystemSimulationOverride.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="88" column="134" selection-start-line="88" selection-start-column="134" selection-end-line="88" selection-end-column="134" />
+        <state relative-caret-position="382">
+          <caret line="109" column="76" lean-forward="true" selection-start-line="109" selection-start-column="76" selection-end-line="109" selection-end-column="76" />
           <folding>
             <element signature="e#0#87#0" expanded="true" />
           </folding>
