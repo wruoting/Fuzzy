@@ -109,7 +109,6 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
                                  "activate at least one connected Term in each "
                                  "Antecedent via the current set of Rules.")
         else:
-            # TODO: figure out if defuzz is shitting the bed here
             # Calculate using array-aware version, one cut at a time.
             output = np.zeros(self.sim._array_shape, dtype=np.float64)
 
@@ -135,7 +134,7 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
         # Find potentially new values
         new_values = []
         vectorize_gaussian = np.vectorize(gaussian)
-
+        print(self.var.universe)
         for label, term in self.var.terms.items():
             term._cut = term.membership_value[self.sim]
             if term._cut is None:
@@ -146,8 +145,11 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             # term.mf - y's values
             # term._cut - particular y value for area under
             if self.analysis_function == 'gauss':
-                new_values.append(inverse_gaussian(term._cut, self.analysis_params.get('mean'), self.analysis_params.get('sigma')))
-        new_universe = np.union1d(self.var.universe, new_values)
+                new_values = new_values.append(inverse_gaussian(term._cut, self.analysis_params.get('mean'), self.analysis_params.get('sigma')))
+        # new_universe = np.union1d(self.var.universe, new_values)
+        print(new_values)
+        new_universe = new_values
+        print(new_universe)
         # Initialize membership
         output_mf = np.zeros_like(new_universe, dtype=np.float64)
         # Build output membership function

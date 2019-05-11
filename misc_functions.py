@@ -76,7 +76,9 @@ def inverse_gaussian(y, mean, sigma):
     sqrt_2pi = np.sqrt(np.multiply(2, np.pi))
     log_y = agnp.log(np.multiply(y, np.multiply(sigma, sqrt_2pi)))
     ln_calc = agnp.sqrt(np.multiply(-2, log_y))
-    return [np.add(np.multiply(sigma, ln_calc), mean), np.add(np.multiply(sigma, np.multiply(-1, ln_calc)), mean)]
+    return np.add(np.multiply(sigma, ln_calc), mean)
+    # we know we have two values, but either one should work for the fuzzification of our gaussian
+    # return [np.add(np.multiply(sigma, ln_calc), mean), np.add(np.multiply(sigma, np.multiply(-1, ln_calc)), mean)]
 
 
 def defuzz(x, mfx, mode):
