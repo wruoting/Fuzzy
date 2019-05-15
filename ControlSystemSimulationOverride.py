@@ -100,6 +100,8 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
                                  "variable and have run the rules calculation.")
 
             try:
+                print(ups_universe)
+                print(output_mf)
                 return defuzz(ups_universe, output_mf,
                               self.var.defuzzify_method)
             except AssertionError:
@@ -134,7 +136,10 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
         # Find potentially new values
         new_values = []
         vectorize_gaussian = np.vectorize(gaussian)
-        print(self.var.universe)
+        # This is our range function
+        new_universe = self.analysis_params['range']
+        new_universe = np.arange(-3, 8, 0.5)
+
         for label, term in self.var.terms.items():
             term._cut = term.membership_value[self.sim]
             if term._cut is None:
@@ -145,11 +150,13 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             # term.mf - y's values
             # term._cut - particular y value for area under
             if self.analysis_function == 'gauss':
-                new_values = new_values.append(inverse_gaussian(term._cut, self.analysis_params.get('mean'), self.analysis_params.get('sigma')))
-        # new_universe = np.union1d(self.var.universe, new_values)
-        print(new_values)
-        new_universe = new_values
-        print(new_universe)
+                new_values.append(inverse_gaussian(term._cut, self.analysis_params.get('mean'), self.analysis_params.get('sigma')))
+
+        # The new values are the values that represent the universe area
+        # I should be taking the new values and using them to create a
+        # new output_mf_final that is the cut shape
+        # The new_universe should be the range of the gaussian post cut
+
         # Initialize membership
         output_mf = np.zeros_like(new_universe, dtype=np.float64)
         # Build output membership function
@@ -164,11 +171,7 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
                     upsampled_mf = np.append(upsampled_mf, vectorize_gaussian(value, self.analysis_params['mean'],
                                                                               self.analysis_params['sigma']))
             term_mfs[label] = np.minimum(term._cut, upsampled_mf)
+            output_mf_final = term_mfs[label]
 
-            for output_mf_element, term_mf_element in zip(output_mf, term_mfs[label]):
-                if output_mf_element >= term_mf_element:
-                    output_mf_final = np.append(output_mf_final, output_mf_element)
-                elif output_mf_element < term_mf_element:
-                    output_mf_final = np.append(output_mf_final, term_mf_element)
-
+        # input value, membership output value
         return new_universe, output_mf_final, term_mfs

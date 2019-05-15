@@ -214,6 +214,7 @@ def centroid(x, mfx):
 
     # If the membership function is a singleton fuzzy set:
     if len(x) == 1:
+        print(x[0]*mfx[0] / np.fmax(mfx[0], np.finfo(float).eps).astype(float))
         return x[0]*mfx[0] / np.fmax(mfx[0], np.finfo(float).eps).astype(float)
 
     # else return the sum of moment*area/sum of area

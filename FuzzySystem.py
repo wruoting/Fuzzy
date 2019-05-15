@@ -47,7 +47,8 @@ class FuzzySystem(object):
                 self.x_antecedent['x'] = gaussian(self.x_antecedent.universe, m_x,
                                                  float(np.std(np.array(self.x_antecedent.universe))))
                 self.analysis_params_antecedent = {'mean': m_x,
-                                                   'sigma': float(np.std(np.array(self.x_antecedent.universe)))}
+                                                   'sigma': float(np.std(np.array(self.x_antecedent.universe))),
+                                                   'range': np.arange(np.min(self.data_x), np.max(self.data_x)+self.tol_x, self.tol_x)}
             else:
                 self.x_antecedent['x'] = gaussian(self.x_antecedent.universe,
                                                  float(np.mean(np.array(self.x_antecedent.universe))),
@@ -63,7 +64,8 @@ class FuzzySystem(object):
                                                  float(np.mean(np.array(self.y_consequent.universe))),
                                                  float(np.std(np.array(self.y_consequent.universe))))
                 self.analysis_params_consequent = {'mean': float(np.mean(np.array(self.y_consequent.universe))),
-                                                   'sigma': float(np.std(np.array(self.y_consequent.universe)))}
+                                                   'sigma': float(np.std(np.array(self.y_consequent.universe))),
+                                                   'range': np.arange(np.min(self.data_y), np.max(self.data_y)+self.tol_y, self.tol_y)}
         elif self.analysis_function == 'trimf':
             if m_x:
                 self.x_antecedent['x'] = trimf(self.x_antecedent.universe,
@@ -112,7 +114,7 @@ class FuzzySystem(object):
         # Store outputs to array
         for datum in self.data_x:
             membership_output.append(self.generate_output('x', 'y', datum))
-        mse = np.sum(np.square(np.subtract(self.data_y, membership_output)))
+        mse = np.divide(np.sum(np.square(np.subtract(self.data_y, membership_output))), len(self.data_y))
         return mse
 
     def graph(self):
