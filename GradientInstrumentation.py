@@ -44,6 +44,7 @@ def mse_generator(path=None, analysis_function='gauss'):
         for x_value in x_inputs:
             mse_array.append(fuzzy_system.objective_function(m_x=x_value))
             print('Adding value for : {}'.format(x_value))
+        print(mse_array)
         create_file(path="{}{}".format(path, normalized_peak_mse_output_path), x_data=x_inputs, y_data=mse_array)
 
     plt.figure(0)

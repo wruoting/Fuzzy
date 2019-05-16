@@ -100,8 +100,7 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
                                  "variable and have run the rules calculation.")
 
             try:
-                print(ups_universe)
-                print(output_mf)
+
                 return defuzz(ups_universe, output_mf,
                               self.var.defuzzify_method)
             except AssertionError:
@@ -138,7 +137,6 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
         vectorize_gaussian = np.vectorize(gaussian)
         # This is our range function
         new_universe = self.analysis_params['range']
-        new_universe = np.arange(-3, 8, 0.5)
 
         for label, term in self.var.terms.items():
             term._cut = term.membership_value[self.sim]
@@ -157,8 +155,6 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
         # new output_mf_final that is the cut shape
         # The new_universe should be the range of the gaussian post cut
 
-        # Initialize membership
-        output_mf = np.zeros_like(new_universe, dtype=np.float64)
         # Build output membership function
         term_mfs = {}
         upsampled_mf = np.array([])

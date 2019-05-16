@@ -54,11 +54,14 @@ class FuzzySystem(object):
                                                  float(np.mean(np.array(self.x_antecedent.universe))),
                                                  float(np.std(np.array(self.x_antecedent.universe))))
                 self.analysis_params_antecedent = {'mean': float(np.mean(np.array(self.x_antecedent.universe))),
-                                                   'sigma': float(np.std(np.array(self.x_antecedent.universe)))}
+                                                   'sigma': float(np.std(np.array(self.x_antecedent.universe))),
+                                                   'range': np.arange(np.min(self.data_x), np.max(self.data_x)+self.tol_x, self.tol_x)}
             if m_y:
                 self.y_consequent['y'] = gaussian(self.y_consequent.universe, m_y,
                                                  float(np.std(np.array(self.y_consequent.universe))))
-                self.analysis_params_consequent = {'mean': m_y, 'sigma': float(np.std(np.array(self.y_consequent.universe)))}
+                self.analysis_params_consequent = {'mean': m_y,
+                                                   'sigma': float(np.std(np.array(self.y_consequent.universe))),
+                                                   'range': np.arange(np.min(self.data_y), np.max(self.data_y)+self.tol_y, self.tol_y)}
             else:
                 self.y_consequent['y'] = gaussian(self.y_consequent.universe,
                                                  float(np.mean(np.array(self.y_consequent.universe))),
