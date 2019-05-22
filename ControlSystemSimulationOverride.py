@@ -93,6 +93,8 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
         """Derive crisp value based on membership of adjective(s)."""
         if not self.sim._array_inputs:
             ups_universe, output_mf, cut_mfs = self.find_memberships()
+            print(ups_universe)
+            print(output_mf)
 
             if len(cut_mfs) == 0:
                 raise ValueError("No terms have memberships.  Make sure you "
@@ -149,7 +151,6 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             # term._cut - particular y value for area under
             if self.analysis_function == 'gauss':
                 new_values.append(inverse_gaussian(term._cut, self.analysis_params.get('mean'), self.analysis_params.get('sigma')))
-
         # The new values are the values that represent the universe area
         # I should be taking the new values and using them to create a
         # new output_mf_final that is the cut shape
