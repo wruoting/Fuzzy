@@ -103,7 +103,7 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             try:
 
                 return defuzz(ups_universe, output_mf,
-                              self.var.defuzzify_method)
+                              self.var.defuzzify_method, self.analysis_function, self.analysis_params)
             except AssertionError:
                 raise ValueError("Crisp output cannot be calculated, likely "
                                  "because the system is too sparse. Check to "
@@ -168,8 +168,8 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
                                                                               self.analysis_params['sigma']))
             term_mfs[label] = np.minimum(term._cut, upsampled_mf)
             output_mf_final = term_mfs[label]
-        if self.analysis_function == 'gauss':
-            save_fig(path=self.analysis_params['path'], mean=self.analysis_params['mean'],
-                     sigma=self.analysis_params['sigma'], x_data=new_universe, y_data=output_mf_final)
+            if self.analysis_function == 'gauss':
+                save_fig(path=self.analysis_params['path'], mean=self.analysis_params['mean'],
+                         sigma=self.analysis_params['sigma'], x_data=new_universe, y_data=output_mf_final, y_value=term._cut)
         # input value, membership output value
         return new_universe, output_mf_final, term_mfs

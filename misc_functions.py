@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 from skfuzzy.defuzzify.defuzz import bisector
 import autograd.numpy as agnp
 from scipy.stats import norm
-
+import scipy.integrate as integrate
+from math import isclose
 
 def interp_membership(x, xmf, xx, tol=1e-5):
     """
@@ -91,6 +92,11 @@ def gaussian(x, mean, sigma):
     return np.multiply(constant, agnp.exp(exponent))
 
 
+def centroid_gaussian(x, analysis_params):
+    y_value = gaussian(x, analysis_params['mean'], analysis_params['sigma'])
+    return x * y_value
+
+
 def inverse_gaussian(y, mean, sigma):
     sqrt_2pi = np.sqrt(np.multiply(2, np.pi))
     log_y = agnp.log(np.multiply(y, np.multiply(sigma, sqrt_2pi)))
@@ -100,7 +106,7 @@ def inverse_gaussian(y, mean, sigma):
     # return [np.add(np.multiply(sigma, ln_calc), mean), np.add(np.multiply(sigma, np.multiply(-1, ln_calc)), mean)]
 
 
-def defuzz(x, mfx, mode):
+def defuzz(x, mfx, mode, analysis_function, analysis_params):
     """
     Defuzzification of a membership function, returning a defuzzified value
     of the function at x, using various defuzzification methods.
@@ -140,7 +146,7 @@ def defuzz(x, mfx, mode):
         assert not zero_truth_degree, 'Total area is zero in defuzzification!'
 
         if 'centroid' in mode:
-            return centroid(x, mfx)
+            return centroid(x, mfx, analysis_function, analysis_params)
 
         elif 'bisector' in mode:
             return bisector(x, mfx)
@@ -202,7 +208,7 @@ def interp_universe_fast(x, xmf, y):
     return x[idx] + (y-xmf[idx]) * (x[idx+1]-x[idx]) / (xmf[idx+1]-xmf[idx])
 
 
-def centroid(x, mfx):
+def centroid(x, mfx, analysis_function, analysis_params):
     """
     Defuzzification using centroid (`center of gravity`) method.
 
@@ -230,35 +236,55 @@ def centroid(x, mfx):
 
     sum_moment_area = 0.0
     sum_area = 0.0
-
-    # If the membership function is a singleton fuzzy set:
-    if len(x) == 1:
-        print(x[0]*mfx[0] / np.fmax(mfx[0], np.finfo(float).eps).astype(float))
-        return x[0]*mfx[0] / np.fmax(mfx[0], np.finfo(float).eps).astype(float)
-
-    # else return the sum of moment*area/sum of area
-    for i in range(1, len(x)):
-        x1 = x[i - 1]
-        x2 = x[i]
-        y1 = mfx[i - 1]
-        y2 = mfx[i]
-
-        # if y1 == y2 == 0.0 or x1==x2: --> rectangle of zero height or width
-        if not(y1 == y2 == 0.0 or x1 == x2):
-            if y1 == y2:  # rectangle
-                moment = 0.5 * (x1 + x2)
-                area = (x2 - x1) * y1
-            elif y1 == 0.0 and y2 != 0.0:  # triangle, height y2
-                moment = 2.0 / 3.0 * (x2-x1) + x1
-                area = 0.5 * (x2 - x1) * y2
-            elif y2 == 0.0 and y1 != 0.0:  # triangle, height y1
-                moment = 1.0 / 3.0 * (x2 - x1) + x1
-                area = 0.5 * (x2 - x1) * y1
+    if analysis_function == 'gauss':
+        # detect tol is flat
+        centroid_x = []
+        for i in range(1, len(x)):
+            x1 = x[i - 1]
+            x2 = x[i]
+            y1 = mfx[i - 1]
+            y2 = mfx[i]
+            if isclose(y1, y2, abs_tol=1e-5):
+                # we consider 5 digits to be close enough
+                # this case is a square
+                centroid_x.append(0.5*(x2**2-x1**2) * (x2-x1))
             else:
-                moment = (2.0 / 3.0 * (x2-x1) * (y2 + 0.5*y1)) / (y1+y2) + x1
-                area = 0.5 * (x2 - x1) * (y1 + y2)
+                # integrate from x1 to x2
+                centroid_x.append(integrate.quad(lambda val: centroid_gaussian(val, analysis_params), x1, x2)[0]/integrate.quad(lambda val: gaussian(val, analysis_params['mean'], analysis_params['sigma']), x1, x2)[0])
+        if len(centroid_x) == 0:
+            total_area = 0
+        else:
+            total_area = np.average(centroid_x)
+        return total_area
+    else:
+        # If the membership function is a singleton fuzzy set:
+        if len(x) == 1:
+            print(x[0]*mfx[0] / np.fmax(mfx[0], np.finfo(float).eps).astype(float))
+            return x[0]*mfx[0] / np.fmax(mfx[0], np.finfo(float).eps).astype(float)
 
-            sum_moment_area += moment * area
-            sum_area += area
-    float_epsilon = 2.220446049250313e-16
-    return sum_moment_area / np.fmax(sum_area, float_epsilon)
+        # else return the sum of moment*area/sum of area
+        for i in range(1, len(x)):
+            x1 = x[i - 1]
+            x2 = x[i]
+            y1 = mfx[i - 1]
+            y2 = mfx[i]
+
+            # if y1 == y2 == 0.0 or x1==x2: --> rectangle of zero height or width
+            if not(y1 == y2 == 0.0 or x1 == x2):
+                if y1 == y2:  # rectangle
+                    moment = 0.5 * (x1 + x2)
+                    area = (x2 - x1) * y1
+                elif y1 == 0.0 and y2 != 0.0:  # triangle, height y2
+                    moment = 2.0 / 3.0 * (x2-x1) + x1
+                    area = 0.5 * (x2 - x1) * y2
+                elif y2 == 0.0 and y1 != 0.0:  # triangle, height y1
+                    moment = 1.0 / 3.0 * (x2 - x1) + x1
+                    area = 0.5 * (x2 - x1) * y1
+                else:
+                    moment = (2.0 / 3.0 * (x2-x1) * (y2 + 0.5*y1)) / (y1+y2) + x1
+                    area = 0.5 * (x2 - x1) * (y1 + y2)
+
+                sum_moment_area += moment * area
+                sum_area += area
+        float_epsilon = 2.220446049250313e-16
+        return sum_moment_area / np.fmax(sum_area, float_epsilon)
