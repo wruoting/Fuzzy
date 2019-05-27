@@ -23,7 +23,7 @@ def mse_generator(path=None, analysis_function='gauss'):
         overlay_graph_data = 'overlay_data.png'
 
     # Create our universe
-    fuzzy_system = FuzzySystem(data_x, data_y, analysis_function=analysis_function)
+    fuzzy_system = FuzzySystem(data_x, data_y, analysis_function=analysis_function, path=path)
     fuzzy_system.create_universes()
 
     # Create our MSE graph by creating a range of X's from min(data_x) to max(data_x)
@@ -44,7 +44,6 @@ def mse_generator(path=None, analysis_function='gauss'):
         for x_value in x_inputs:
             mse_array.append(fuzzy_system.objective_function(m_x=x_value))
             print('Adding value for : {}'.format(x_value))
-        print(mse_array)
         create_file(path="{}{}".format(path, normalized_peak_mse_output_path), x_data=x_inputs, y_data=mse_array)
 
     plt.figure(0)
@@ -241,6 +240,6 @@ three_point_peak_left_x_5_400_pts_path_gauss = "Data/ThreePointPeakLeft_X_5_400_
 mse_generator(path=three_point_peak_left_path_gauss, analysis_function='gauss')
 
 # test_fuzzy(three_point_peak_left_path_gauss)
-# create_diff_data(three_point_peak_left_path_gauss)
-# plot_diff_data(path=three_point_peak_left_path_gauss)
+create_diff_data(three_point_peak_left_path_gauss)
+plot_diff_data(path=three_point_peak_left_path_gauss)
 # graph_fuzzy(path=three_point_peak_path_gauss)

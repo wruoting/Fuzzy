@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skfuzzy.defuzzify.defuzz import bisector
 import autograd.numpy as agnp
+from scipy.stats import norm
 
 
 def interp_membership(x, xmf, xx, tol=1e-5):
@@ -63,6 +64,24 @@ def interp_membership(x, xmf, xx, tol=1e-5):
         return peak_y-slope_left*(peak_x-xx) if peak_y-slope_left*(peak_x-xx) > tol else 0
     else:
         return peak_y if peak_y > tol else 0
+
+
+def skew_norm_pdf(x, e=0, w=1, a=0):
+    # adapated from:
+    # http://stackoverflow.com/questions/5884768/skew-normal-distribution-in-scipy
+    # e = location
+    # w = scale
+    # a = shape
+    # mean = e + w*alpha*sqrt(2/pi)
+    # alpha = alpha/sqrt(1+alpha^2)
+    t = (x-e) / w
+    return 2.0 * w * norm.pdf(t) * norm.cdf(a*t)
+
+
+def inverse_skew_pdf(x, y, e=0, w=1, a=0):
+    y_pdf = skew_norm_pdf(x, e=e, w=w, a=a)
+    y_cdf = norm.cdf(y_pdf)
+    return
 
 
 def gaussian(x, mean, sigma):

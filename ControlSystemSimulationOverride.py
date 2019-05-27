@@ -1,7 +1,7 @@
 from skfuzzy.control.controlsystem import ControlSystemSimulation, CrispValueCalculator
 from misc_functions import interp_membership, defuzz, interp_universe_fast, centroid, gaussian, inverse_gaussian
 import numpy as np
-
+from file_functions import save_fig
 
 class ControlSystemSimulationOverride(ControlSystemSimulation):
     def __init__(self, control, analysis_function, analysis_params_antecedent, analysis_params_consequent):
@@ -69,6 +69,7 @@ class ControlSystemSimulationOverride(ControlSystemSimulation):
 class CrispValueCalculatorOverride(CrispValueCalculator):
     def __init__(self, fuzzy_var, analysis_function, analysis_params, sim):
         super(CrispValueCalculatorOverride, self).__init__(fuzzy_var, sim)
+        self.fuzzy_var = fuzzy_var
         self.analysis_function = analysis_function
         self.analysis_params = analysis_params
 
@@ -93,8 +94,6 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
         """Derive crisp value based on membership of adjective(s)."""
         if not self.sim._array_inputs:
             ups_universe, output_mf, cut_mfs = self.find_memberships()
-            print(ups_universe)
-            print(output_mf)
 
             if len(cut_mfs) == 0:
                 raise ValueError("No terms have memberships.  Make sure you "
@@ -169,6 +168,8 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
                                                                               self.analysis_params['sigma']))
             term_mfs[label] = np.minimum(term._cut, upsampled_mf)
             output_mf_final = term_mfs[label]
-
+        if self.analysis_function == 'gauss':
+            save_fig(path=self.analysis_params['path'], mean=self.analysis_params['mean'],
+                     sigma=self.analysis_params['sigma'], x_data=new_universe, y_data=output_mf_final)
         # input value, membership output value
         return new_universe, output_mf_final, term_mfs

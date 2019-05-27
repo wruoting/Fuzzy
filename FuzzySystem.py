@@ -9,7 +9,7 @@ logging.basicConfig(filename='variables.log', level=logging.DEBUG)
 
 class FuzzySystem(object):
 
-    def __init__(self, data_x, data_y, m_x=None, m_y=None,  analysis_function='gauss'):
+    def __init__(self, data_x, data_y, m_x=None, m_y=None,  analysis_function='gauss', path=None):
         self.data_x = data_x
         self.data_y = data_y
         self.min_x = np.min(self.data_x)
@@ -29,6 +29,7 @@ class FuzzySystem(object):
         self.analysis_function = analysis_function
         self.analysis_params_antecedent = None
         self.analysis_params_consequent = None
+        self.path = path
 
     def create_universes(self):
         # Set tolerance
@@ -43,32 +44,39 @@ class FuzzySystem(object):
 
     def create_membership(self, m_x=None, m_y=None):
         if self.analysis_function == 'gauss':
+            std_dev_x = np.std(np.array(self.x_antecedent.universe))
+            std_dev_y = np.std(np.array(self.y_consequent.universe))
+
             if m_x:
                 self.x_antecedent['x'] = gaussian(self.x_antecedent.universe, m_x,
                                                  float(np.std(np.array(self.x_antecedent.universe))))
                 self.analysis_params_antecedent = {'mean': m_x,
-                                                   'sigma': float(np.std(np.array(self.x_antecedent.universe))),
-                                                   'range': np.arange(np.min(self.data_x), np.max(self.data_x)+self.tol_x, self.tol_x)}
+                                                   'sigma': float(np.divide(std_dev_x, 4)),
+                                                   'range': np.arange(np.min(self.data_x), np.max(self.data_x)+self.tol_x, self.tol_x),
+                                                   'path': self.path}
             else:
                 self.x_antecedent['x'] = gaussian(self.x_antecedent.universe,
                                                  float(np.mean(np.array(self.x_antecedent.universe))),
                                                  float(np.std(np.array(self.x_antecedent.universe))))
                 self.analysis_params_antecedent = {'mean': float(np.mean(np.array(self.x_antecedent.universe))),
                                                    'sigma': float(np.std(np.array(self.x_antecedent.universe))),
-                                                   'range': np.arange(np.min(self.data_x), np.max(self.data_x)+self.tol_x, self.tol_x)}
+                                                   'range': np.arange(np.min(self.data_x), np.max(self.data_x)+self.tol_x, self.tol_x),
+                                                   'path': self.path}
             if m_y:
                 self.y_consequent['y'] = gaussian(self.y_consequent.universe, m_y,
                                                  float(np.std(np.array(self.y_consequent.universe))))
                 self.analysis_params_consequent = {'mean': m_y,
                                                    'sigma': float(np.std(np.array(self.y_consequent.universe))),
-                                                   'range': np.arange(np.min(self.data_y), np.max(self.data_y)+self.tol_y, self.tol_y)}
+                                                   'range': np.arange(np.min(self.data_y), np.max(self.data_y)+self.tol_y, self.tol_y),
+                                                   'path': self.path}
             else:
                 self.y_consequent['y'] = gaussian(self.y_consequent.universe,
                                                  float(np.mean(np.array(self.y_consequent.universe))),
-                                                 float(np.std(np.array(self.y_consequent.universe))))
+                                                 float(np.divide(std_dev_y, 4)))
                 self.analysis_params_consequent = {'mean': float(np.mean(np.array(self.y_consequent.universe))),
                                                    'sigma': float(np.std(np.array(self.y_consequent.universe))),
-                                                   'range': np.arange(np.min(self.data_y), np.max(self.data_y)+self.tol_y, self.tol_y)}
+                                                   'range': np.arange(np.min(self.data_y), np.max(self.data_y)+self.tol_y, self.tol_y),
+                                                   'path': self.path}
         elif self.analysis_function == 'trimf':
             if m_x:
                 self.x_antecedent['x'] = trimf(self.x_antecedent.universe,
