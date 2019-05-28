@@ -1,6 +1,7 @@
 import numpy as np
 from FuzzySystem import FuzzySystem
-from CreateSeedData import open_data, create_file
+from CreateSeedData import open_data, create_file, open_array_data
+from misc_functions import gaussian
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from autograd import grad
@@ -12,6 +13,8 @@ def mse_generator(path=None, analysis_function='gauss'):
 
     mse_vs_x_graph = 'mse_vs_x.png'
     if analysis_function == 'gauss':
+        centroid_peak_output_path = 'centroid_peak_gauss.txt'
+        centroid_peak_output_pic_path = 'centroid_data_gauss.png'
         normalized_peak_output_path = 'normalized_peak_mse_gauss.txt'
         normalized_peak_mse_output_path = 'normalized_peak_mse_gauss.txt'
         data_output_graph = 'data_gauss.png'
@@ -27,24 +30,49 @@ def mse_generator(path=None, analysis_function='gauss'):
     fuzzy_system.create_universes()
 
     # Create our MSE graph by creating a range of X's from min(data_x) to max(data_x)
-    x_inputs = np.arange(np.min(fuzzy_system.data_x)+fuzzy_system.tol_x, np.max(fuzzy_system.data_x)-fuzzy_system.tol_x, fuzzy_system.tol_x)
     mse_array = []
+    centroid_y_array = []
     print('Creating MSEs')
     try:
         try_x, try_mse = open_data(path="{}{}".format(path, normalized_peak_output_path))
-        generate_data = True
+        generate_data_mse = True
     except FileNotFoundError:
-        generate_data = False
+        generate_data_mse = False
         print("No File")
 
-    if generate_data:
+    if generate_data_mse:
         x_inputs = try_x
         mse_array = try_mse
     else:
+        x_inputs = np.arange(np.min(fuzzy_system.data_x) + fuzzy_system.tol_x,
+                             np.max(fuzzy_system.data_x) - fuzzy_system.tol_x, fuzzy_system.tol_x)
         for x_value in x_inputs:
             mse_array.append(fuzzy_system.objective_function(m_x=x_value))
             print('Adding value for : {}'.format(x_value))
         create_file(path="{}{}".format(path, normalized_peak_mse_output_path), x_data=x_inputs, y_data=mse_array)
+
+    # TODO: find a way to parse that file
+    try:
+        try_centroid_x, try_centroid_y = open_array_data(path="{}{}".format(path, centroid_peak_output_path))
+        generate_data = True
+    except FileNotFoundError:
+        generate_data = False
+        print("No File")
+    if generate_data:
+        centroid_x_array = try_centroid_x
+        centroid_y_array = try_centroid_y
+    else:
+        x_inputs_centroid = np.arange(np.min(fuzzy_system.data_x) + fuzzy_system.tol_x,
+                             np.max(fuzzy_system.data_x) - fuzzy_system.tol_x, fuzzy_system.tol_x)
+        centroid_x_array = []
+        for x_value in x_inputs_centroid:
+            centroid_x_array.append([data_x[0], data_x[1], data_x[2]])
+            # centroid_x_array.append([x_value, x_value, x_value])
+            centroid_y_array.append(fuzzy_system.objective_function_membership(m_x=x_value))
+            print(fuzzy_system.objective_function_membership(m_x=x_value))
+            print('Adding value for : {}'.format(x_value))
+        create_file(path="{}{}".format(path, centroid_peak_output_path),
+                    x_data=centroid_x_array, y_data=centroid_y_array)
 
     plt.figure(0)
     plt.plot(x_inputs, mse_array)
@@ -59,6 +87,23 @@ def mse_generator(path=None, analysis_function='gauss'):
     plt.ylabel('Y')
     plt.savefig('{}{}'.format(path, data_output_graph))
     plt.close()
+
+    # centroid output
+    plt.figure(2)
+    for x_array, y_array, x_input in zip(centroid_x_array, centroid_y_array, x_inputs_centroid):
+        x_input_path = '_' + str(x_input).replace('.', '_') + '_'
+        granularity = 500
+        tol_x = np.divide(np.subtract(np.max(data_x), np.min(data_x)), granularity)
+        x_inputs_gaussian = np.arange(np.min(fuzzy_system.data_x) + tol_x, np.max(fuzzy_system.data_x) - tol_x, tol_x)
+        x_outputs_gaussian = gaussian(x_inputs_gaussian, x_input, fuzzy_system.std_x_sigma)
+        plt.plot(data_x, data_y, 'ro', label='Data Values')
+        plt.plot(x_inputs_gaussian, x_outputs_gaussian, label='X-Membership Function Gaussian')
+        plt.plot(x_array, y_array, label='Y-Membership Output Centroids')
+        plt.xlabel('X')
+        plt.ylabel('Y')
+        plt.legend()
+        plt.savefig('{}{}{}'.format(path, x_input_path, centroid_peak_output_pic_path))
+        plt.close()
 
     # Normalize Data overlay
     normalize_mse = np.divide(np.subtract(mse_array, np.min(mse_array)), np.subtract(np.max(mse_array), np.min(mse_array)))

@@ -252,10 +252,10 @@ def centroid(x, mfx, analysis_function, analysis_params):
                 # integrate from x1 to x2
                 centroid_x.append(integrate.quad(lambda val: centroid_gaussian(val, analysis_params), x1, x2)[0]/integrate.quad(lambda val: gaussian(val, analysis_params['mean'], analysis_params['sigma']), x1, x2)[0])
         if len(centroid_x) == 0:
-            total_area = 0
+            total_centroid = 0
         else:
-            total_area = np.average(centroid_x)
-        return total_area
+            total_centroid = np.average(centroid_x)
+        return total_centroid
     else:
         # If the membership function is a singleton fuzzy set:
         if len(x) == 1:

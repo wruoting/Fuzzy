@@ -168,8 +168,8 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
                                                                               self.analysis_params['sigma']))
             term_mfs[label] = np.minimum(term._cut, upsampled_mf)
             output_mf_final = term_mfs[label]
-            if self.analysis_function == 'gauss':
-                save_fig(path=self.analysis_params['path'], mean=self.analysis_params['mean'],
-                         sigma=self.analysis_params['sigma'], x_data=new_universe, y_data=output_mf_final, y_value=term._cut)
+            # if self.analysis_function == 'gauss':
+            #     save_fig(path=self.analysis_params['path'], mean=self.analysis_params['mean'],
+            #              sigma=self.analysis_params['sigma'], x_data=new_universe, y_data=output_mf_final, y_value=term._cut)
         # input value, membership output value
         return new_universe, output_mf_final, term_mfs

@@ -277,3 +277,21 @@ def open_data(path=None):
             y_values_delete = np.append(y_values_delete, value)
     y_values = y_values_delete.astype('float64')
     return x_values, y_values
+
+
+def open_array_data(path=None):
+    text_file = open(path, "r")
+    lines = text_file.read().split('] ,[')
+    x_values = np.array(lines[0].split(' '))
+    x_values_delete = np.array([])
+    for index, value in enumerate(x_values):
+        if value != ' ' and value != '':
+            x_values_delete = np.append(x_values_delete, value)
+    x_values = x_values_delete.astype('float64')
+    y_values = np.array(lines[1].split(' '))
+    y_values_delete = np.array([])
+    for index, value in enumerate(y_values):
+        if value != ' ' and value != '':
+            y_values_delete = np.append(y_values_delete, value)
+    y_values = y_values_delete.astype('float64')
+    return x_values, y_values

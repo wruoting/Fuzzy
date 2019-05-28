@@ -20,7 +20,7 @@ class FuzzySystem(object):
         self.tol_y = None
         self.x_antecedent = None
         self.y_consequent = None
-        self.granularity = 100
+        self.granularity = 30
         self.control = None
         self.rules = []
         self.control_simulation = None
@@ -30,6 +30,10 @@ class FuzzySystem(object):
         self.analysis_params_antecedent = None
         self.analysis_params_consequent = None
         self.path = path
+        self.std_dev_x = None
+        self.std_dev_y = None
+        self.std_x_sigma = None
+        self.std_y_sigma = None
 
     def create_universes(self):
         # Set tolerance
@@ -42,16 +46,20 @@ class FuzzySystem(object):
         # Create an consequent input set and a membership function
         self.y_consequent = ctrl.Consequent(self.data_y, 'y')
 
+        self.std_dev_x = np.std(np.array(self.x_antecedent.universe))
+        self.std_dev_y = np.std(np.array(self.y_consequent.universe))
+        self.std_x_sigma = float(np.divide(self.std_dev_x, 4))
+        self.std_y_sigma = float(self.std_dev_y)
+
+
     def create_membership(self, m_x=None, m_y=None):
         if self.analysis_function == 'gauss':
-            std_dev_x = np.std(np.array(self.x_antecedent.universe))
-            std_dev_y = np.std(np.array(self.y_consequent.universe))
 
             if m_x:
                 self.x_antecedent['x'] = gaussian(self.x_antecedent.universe, m_x,
                                                  float(np.std(np.array(self.x_antecedent.universe))))
                 self.analysis_params_antecedent = {'mean': m_x,
-                                                   'sigma': float(np.divide(std_dev_x, 4)),
+                                                   'sigma': self.std_x_sigma,
                                                    'range': np.arange(np.min(self.data_x), np.max(self.data_x)+self.tol_x, self.tol_x),
                                                    'path': self.path}
             else:
@@ -71,10 +79,10 @@ class FuzzySystem(object):
                                                    'path': self.path}
             else:
                 self.y_consequent['y'] = gaussian(self.y_consequent.universe,
-                                                 float(np.mean(np.array(self.y_consequent.universe))),
-                                                 float(np.divide(std_dev_y, 4)))
+                                                  float(np.mean(np.array(self.y_consequent.universe))),
+                                                  self.std_y_sigma)
                 self.analysis_params_consequent = {'mean': float(np.mean(np.array(self.y_consequent.universe))),
-                                                   'sigma': float(np.std(np.array(self.y_consequent.universe))),
+                                                   'sigma': self.std_y_sigma,
                                                    'range': np.arange(np.min(self.data_y), np.max(self.data_y)+self.tol_y, self.tol_y),
                                                    'path': self.path}
         elif self.analysis_function == 'trimf':
@@ -106,6 +114,16 @@ class FuzzySystem(object):
         self.create_membership(m_x=m_x)
         self.rules_to_control()
         return self.mse
+
+    def objective_function_membership(self, m_x):
+        self.create_membership(m_x=m_x)
+        self.rules_to_control()
+        # Compute an input to output
+        membership_output = []
+        # Store outputs to array
+        for datum in self.data_x:
+            membership_output.append(self.generate_output('x', 'y', datum))
+        return membership_output
 
     def generate_output(self, input_tag, output_tag, input_value):
         # Compute an input to output
