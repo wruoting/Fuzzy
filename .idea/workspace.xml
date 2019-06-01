@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="17f646d0-a64d-40a2-a965-30dcd81cb6c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ControlSystemSimulationOverride.py" beforeDir="false" afterPath="$PROJECT_DIR$/ControlSystemSimulationOverride.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CreateSeedData.py" beforeDir="false" afterPath="$PROJECT_DIR$/CreateSeedData.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FuzzySystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/FuzzySystem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GradientInstrumentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/GradientInstrumentation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/misc_functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/variables.log" beforeDir="false" afterPath="$PROJECT_DIR$/variables.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,11 +18,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GradientInstrumentation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="100" column="71" selection-start-line="100" selection-start-column="71" selection-end-line="100" selection-end-column="71" />
+            <state relative-caret-position="348">
+              <caret line="46" column="87" selection-start-line="46" selection-start-column="87" selection-end-line="46" selection-end-column="87" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <marker date="1559019344426" expanded="true" signature="12372:12422" ph="..." />
+                <marker date="1559394627325" expanded="true" signature="12899:12949" ph="..." />
               </folding>
             </state>
           </provider>
@@ -34,10 +31,27 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FuzzySystem.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+            <state relative-caret-position="221">
+              <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
               <folding>
                 <element signature="e#0#75#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/overlay_data_gauss.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ControlSystemSimulationOverride.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="157" column="42" selection-start-line="157" selection-start-column="42" selection-end-line="157" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#87#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,7 +68,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>TODO</find>
       <find>interp_membership</find>
       <find>control</find>
       <find>_cut</find>
@@ -84,6 +97,7 @@
       <find>] ,</find>
       <find>normalized_peak_mse_gauss</find>
       <find>x_inputs</find>
+      <find>objective_function</find>
     </findStrings>
     <dirStrings>
       <dir>E:\Program Files\Python36\Lib\site-packages\skfuzzy</dir>
@@ -177,12 +191,13 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\NormalizedPeakCenterLowSampleSize" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\Non_Interpolated\ThreePointPeakLeft\Gaussian_Data" />
       <recent name="$PROJECT_DIR$/Data/Non_Interpolated" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\Non_Interpolated\ThreePointPeakLeft\Gaussian_Data\30_points" />
+      <recent name="E:\Graduate_School\Braude_Research\Fuzzy\ENV\Project\Data\NormalizedPeakCenterLowSampleSize" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -243,7 +258,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30671602" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19777896" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -297,21 +312,8 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/44_1_3177051679551631e-14.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/39_0_15945175593808725.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/45_0_12329730451276254.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/82_0_28074750076327293.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/85_0_26102039570181623.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/82_0_28074750076327293.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/85_0_26102039570181623.png" />
     <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/586_4_918988371278194e-19.png" />
     <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/587_1_751936116254843e-12.png" />
     <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/588_0_3630710513002307.png" />
@@ -320,45 +322,21 @@
     <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/normalized_peak_mse_gauss.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/293_0_3630710513002307.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/292_1_751936116254843e-12.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/291_4_918988371278194e-19.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/256_2_8825650359742676e-09.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/271_1_5304339804491827e-10.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/270_1_4266765019420413e-16.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/269_0_24060822234518328.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/277_4_454214475996074e-11.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/0_0_36776924563209284.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/1_0_07861783237641973.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/2_2_1144974658841797e-19.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/293_0_3630710513002307.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/292_1_751936116254843e-12.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/291_4_918988371278194e-19.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/256_2_8825650359742676e-09.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/271_1_5304339804491827e-10.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/270_1_4266765019420413e-16.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/269_0_24060822234518328.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/277_4_454214475996074e-11.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/0_0_36776924563209284.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/1_0_07861783237641973.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/2_2_1144974658841797e-19.png" />
     <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/mse_vs_x.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/4_0_09212717664308867.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/Membership/4_0_09212717664308867.png" />
     <entry file="file://$PROJECT_DIR$/file_functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -369,13 +347,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/normalized_peak.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/centroid_peak_gauss.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -383,21 +354,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/centroid_data_gauss.png">
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/30_points/_3_0_centroid_data_gauss.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_3_0_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ControlSystemSimulationOverride.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3454">
-          <caret line="157" column="42" selection-start-line="157" selection-start-column="42" selection-end-line="157" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#87#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CreateSeedData.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -416,74 +375,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_1_5_centroid_data_gauss.png">
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_1_5_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/30_points/_1_0_centroid_data_gauss.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_0_5_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_2_0_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_2_5_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_3_5_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_4_5_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_5_0_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_5_5_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_6_0_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_6_5_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_7_5_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_8_0_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/30_points/_9_0_centroid_data_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_8_5_centroid_data_gauss.png" />
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/30_points/_4_0_centroid_data_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/30_points/_5_666666666666666_centroid_data_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/30_points/_4_999999999999999_centroid_data_gauss.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/normalized_peak.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" selection-start-column="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_9_850000000000001_centroid_data_gauss.png" />
     <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/overlay_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_1_0_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_0_5_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_2_0_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_2_5_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_3_5_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_4_5_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_5_0_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_5_5_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_6_0_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_6_5_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_7_5_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_8_0_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_9_0_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_8_5_centroid_data_gauss.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/_4_0_centroid_data_gauss.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/FuzzySystem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+        <state relative-caret-position="221">
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
           <folding>
             <element signature="e#0#75#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ControlSystemSimulationOverride.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="157" column="42" selection-start-line="157" selection-start-column="42" selection-end-line="157" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GradientInstrumentation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="100" column="71" selection-start-line="100" selection-start-column="71" selection-end-line="100" selection-end-column="71" />
+        <state relative-caret-position="348">
+          <caret line="46" column="87" selection-start-line="46" selection-start-column="87" selection-end-line="46" selection-end-column="87" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1559019344426" expanded="true" signature="12372:12422" ph="..." />
+            <marker date="1559394627325" expanded="true" signature="12899:12949" ph="..." />
           </folding>
         </state>
       </provider>

@@ -20,7 +20,7 @@ class FuzzySystem(object):
         self.tol_y = None
         self.x_antecedent = None
         self.y_consequent = None
-        self.granularity = 30
+        self.granularity = 200
         self.control = None
         self.rules = []
         self.control_simulation = None
@@ -50,7 +50,6 @@ class FuzzySystem(object):
         self.std_dev_y = np.std(np.array(self.y_consequent.universe))
         self.std_x_sigma = float(np.divide(self.std_dev_x, 4))
         self.std_y_sigma = float(self.std_dev_y)
-
 
     def create_membership(self, m_x=None, m_y=None):
         if self.analysis_function == 'gauss':
@@ -115,6 +114,11 @@ class FuzzySystem(object):
         self.rules_to_control()
         return self.mse
 
+    def objective_function_middle_point(self, m_x):
+        self.create_membership(m_x=m_x)
+        self.rules_to_control()
+        return self.single_point_mse
+
     def objective_function_membership(self, m_x):
         self.create_membership(m_x=m_x)
         self.rules_to_control()
@@ -135,6 +139,12 @@ class FuzzySystem(object):
             return 0
 
         return self.control_simulation.output[output_tag]
+
+    @property
+    def single_point_mse(self):
+        middle_output = self.generate_output('x', 'y', self.data_x[1])
+        mse = np.sum(np.square(np.subtract(self.data_y[1], middle_output)))
+        return mse
 
     @property
     def mse(self):
