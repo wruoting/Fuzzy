@@ -4,7 +4,9 @@ from skfuzzy.defuzzify.defuzz import bisector
 import autograd.numpy as agnp
 from scipy.stats import norm
 import scipy.integrate as integrate
+import scipy.special as special
 from math import isclose
+
 
 def interp_membership(x, xmf, xx, tol=1e-5):
     """
@@ -95,6 +97,18 @@ def gaussian(x, mean, sigma):
 def centroid_gaussian(x, analysis_params):
     y_value = gaussian(x, analysis_params['mean'], analysis_params['sigma'])
     return x * y_value
+
+
+# https://www.wolframalpha.com/input/?i=integrate+(1%2F((sigma)*sqrt(2*pi))*exp(-(x-mu)%5E2%2F(2*sigma%5E2)))%5E2+dx
+def integrate_centroid(x, analysis_params):
+    denom = 4*agnp.sqrt(np.pi) * analysis_params['sigma']
+    return agnp.divide(special.erf((x-analysis_params['mean'])/analysis_params['sigma']), denom)
+
+
+# https://www.wolframalpha.com/input/?i=integrate+(1%2F((sigma)*sqrt(2*pi))*exp(-(x-mu)%5E2%2F(2*sigma%5E2)))+dx
+def integrate_gaussian(x, analysis_params):
+    special_func = special.erf((x-analysis_params['mean'])/(agnp.sqrt(2) * analysis_params['sigma']))
+    return agnp.divide(special_func, 2)
 
 
 def inverse_gaussian(y, mean, sigma):
@@ -244,13 +258,27 @@ def centroid(x, mfx, analysis_function, analysis_params):
             x2 = x[i]
             y1 = mfx[i - 1]
             y2 = mfx[i]
-            if isclose(y1, y2, abs_tol=1e-5):
-                # we consider 5 digits to be close enough
-                # this case is a square
-                centroid_x.append(0.5*(x2**2-x1**2) * (x2-x1))
-            else:
-                # integrate from x1 to x2
-                centroid_x.append(integrate.quad(lambda val: centroid_gaussian(val, analysis_params), x1, x2)[0]/integrate.quad(lambda val: gaussian(val, analysis_params['mean'], analysis_params['sigma']), x1, x2)[0])
+            # if agnp.absolute(agnp.subtract(y1, y2)) <= 1e-5:
+            #     # we consider 5 digits to be close enough
+            #     # this case is a square
+            #     centroid_x.append(0.5*(x2**2-x1**2) * (x2-x1))
+            # else:
+            # # integrate from x1 to x2
+            # first_integration = integrate.quad(lambda val: centroid_gaussian(val, analysis_params), x1, x2)[0]
+            # second_integration = integrate.quad(lambda val: gaussian(val, analysis_params['mean'], analysis_params['sigma']), x1, x2)[0]
+            # total_integration = agnp.divide(first_integration, second_integration)
+            if y2 == y1:
+                centroid_x.append(0.5 * (x2 ** 2 - x1 ** 2) * (x2 - x1))
+            elif y2 > y1:
+                first_integration = integrate_centroid(x2, analysis_params) - integrate_centroid(x1, analysis_params)
+                second_integration = integrate_gaussian(x2, analysis_params) - integrate_gaussian(x1, analysis_params)
+                total_integration = agnp.divide(first_integration, second_integration)
+                centroid_x.append(total_integration)
+            elif y2 < y1:
+                first_integration = integrate_centroid(x1, analysis_params) - integrate_centroid(x2, analysis_params)
+                second_integration = integrate_gaussian(x1, analysis_params) - integrate_gaussian(x2, analysis_params)
+                total_integration = agnp.divide(first_integration, second_integration)
+                centroid_x.append(total_integration)
         if len(centroid_x) == 0:
             total_centroid = 0
         else:

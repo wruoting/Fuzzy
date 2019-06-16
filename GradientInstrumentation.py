@@ -104,13 +104,12 @@ def centroid_generator(path=None, analysis_function='gauss'):
             centroid_x_array.append([data_x[0], data_x[1], data_x[2]])
             # centroid_x_array.append([x_value, x_value, x_value])
             centroid_y_array.append(fuzzy_system.objective_function_membership(m_x=x_value))
-            print(fuzzy_system.objective_function_membership(m_x=x_value))
             print('Adding value for : {}'.format(x_value))
         create_file(path="{}{}".format(path, centroid_peak_output_path),
                     x_data=centroid_x_array, y_data=centroid_y_array)
     # centroid output
     plt.figure(2)
-    for x_array, y_array, x_input in zip(centroid_x_array, centroid_y_array, x_inputs_centroid):
+    for index, (x_array, y_array, x_input) in enumerate(zip(centroid_x_array, centroid_y_array, x_inputs_centroid)):
         x_input_path = '_' + str(x_input).replace('.', '_') + '_'
         granularity = 500
         tol_x = np.divide(np.subtract(np.max(data_x), np.min(data_x)), granularity)
@@ -122,12 +121,17 @@ def centroid_generator(path=None, analysis_function='gauss'):
         plt.xlabel('X')
         plt.ylabel('Y')
         plt.legend()
-        plt.savefig('{}{}{}'.format(path, x_input_path, centroid_peak_output_pic_path))
+        plt.savefig('{}{}{}{}'.format(path, str(index), x_input_path, centroid_peak_output_pic_path))
         plt.close()
 
 
 def differentiate_fuzzy(x_value, fuzzy_system):
     grad_objective = grad(fuzzy_system.objective_function)
+    return grad_objective(float(x_value))
+
+
+def differentiate_fuzzy_middle_point(x_value, fuzzy_system):
+    grad_objective = grad(fuzzy_system.objective_function_middle_point)
     return grad_objective(float(x_value))
 
 
@@ -151,6 +155,7 @@ def test_fuzzy(path, analysis_function='gauss'):
         print('Membership')
         print(fuzzy_system.generate_output('x', 'y', datum))
 
+
 def add_to_path(data_x, data_y, path):
     # Create our universe
     fuzzy_system = FuzzySystem(data_x, data_y)
@@ -171,8 +176,7 @@ def add_to_path(data_x, data_y, path):
             f.write(" ")
         f.write(",")
         for index, value in enumerate(x_array_linspace):
-            # if 43 >= index >= 37:
-            f.write(str(differentiate_fuzzy(value, fuzzy_system)))
+            f.write(str(differentiate_fuzzy_middle_point(value, fuzzy_system)))
             f.write(" ")
             print("We are on point {}, index: {}".format(value, index))
         f.close()
@@ -293,6 +297,6 @@ three_point_peak_left_x_5_400_pts_path_gauss = "Data/ThreePointPeakLeft_X_5_400_
 mse_generator(path=three_point_peak_left_path_gauss, analysis_function='gauss')
 # centroid_generator(path=three_point_peak_left_path_gauss, analysis_function='gauss')
 # test_fuzzy(three_point_peak_left_path_gauss)
-# create_diff_data(three_point_peak_left_path_gauss)
-# plot_diff_data(path=three_point_peak_left_path_gauss)
+create_diff_data(three_point_peak_left_path_gauss)
+plot_diff_data(path=three_point_peak_left_path_gauss)
 # graph_fuzzy(path=three_point_peak_path_gauss)

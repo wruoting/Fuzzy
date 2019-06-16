@@ -143,7 +143,7 @@ class FuzzySystem(object):
     @property
     def single_point_mse(self):
         middle_output = self.generate_output('x', 'y', self.data_x[1])
-        mse = np.sum(np.square(np.subtract(self.data_y[1], middle_output)))
+        mse = agnp.sum(np.square(agnp.subtract(self.data_y[1], middle_output)))
         return mse
 
     @property
