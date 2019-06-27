@@ -1,5 +1,5 @@
 from ControlSystemSimulationOverride import ControlSystemSimulationOverride
-from misc_functions import gaussian
+from misc_functions import gaussian, gaussian_with_range
 import numpy as np
 import autograd.numpy as agnp
 from skfuzzy import control as ctrl
@@ -52,6 +52,40 @@ class FuzzySystem(object):
         self.std_y_sigma = float(self.std_dev_y)
 
     def create_membership(self, m_x=None, m_y=None):
+        if self.analysis_function == 'composite_gauss':
+            # here we will create a composite gaussian of two gaussians, with mean E(x) and E(m_x) so we can adjust
+            # our centroid as necessary
+
+            if m_x:
+                # our m_x gaussian has to fit within the range
+                self.x_antecedent['x'], sigma = gaussian_with_range(self.x_antecedent.universe, m_x)
+                self.analysis_params_antecedent = {'mean': m_x,
+                                                   'sigma': self.std_x_sigma,
+                                                   'range': np.arange(np.min(self.x_antecedent['x']), np.max(self.x_antecedent['x'])+self.tol_x, self.tol_x),
+                                                   'path': self.path}
+            else:
+                self.x_antecedent['x'], sigma = gaussian_with_range(self.x_antecedent.universe,
+                                                 float(np.mean(np.array(self.x_antecedent.universe))))
+                self.analysis_params_antecedent = {'mean': float(np.mean(np.array(self.x_antecedent.universe))),
+                                                   'sigma': sigma,
+                                                   'range': np.arange(np.min(self.x_antecedent['x']), np.max(self.x_antecedent['x'])+self.tol_x, self.tol_x),
+                                                   'path': self.path}
+            if m_y:
+                self.y_consequent['y'] = gaussian(self.y_consequent.universe, m_y,
+                                                 float(np.std(np.array(self.y_consequent.universe))))
+                self.analysis_params_consequent = {'mean': m_y,
+                                                   'sigma': float(np.std(np.array(self.y_consequent.universe))),
+                                                   'range': np.arange(np.min(self.data_y), np.max(self.data_y)+self.tol_y, self.tol_y),
+                                                   'path': self.path}
+            else:
+                # We need to use a composite gaussian here to create our y
+                self.y_consequent['y'] = gaussian(self.y_consequent.universe,
+                                                  float(np.mean(np.array(self.y_consequent.universe))),
+                                                  self.std_y_sigma)
+                self.analysis_params_consequent = {'mean': float(np.mean(np.array(self.y_consequent.universe))),
+                                                   'sigma': self.std_y_sigma,
+                                                   'range': np.arange(np.min(self.data_y), np.max(self.data_y)+self.tol_y, self.tol_y),
+                                                   'path': self.path}
         if self.analysis_function == 'gauss':
 
             if m_x:

@@ -6,7 +6,7 @@ from scipy.stats import norm
 import scipy.integrate as integrate
 import scipy.special as special
 from math import isclose
-
+from scipy import optimize
 
 def interp_membership(x, xmf, xx, tol=1e-5):
     """
@@ -87,11 +87,81 @@ def inverse_skew_pdf(x, y, e=0, w=1, a=0):
     return
 
 
+def composite_gaussian(universe, m_x, tol=1e-6):
+    '''
+    We will make two gaussians overlap
+    Gaussian 1 will have a mean that's the mean of the data and a range that's the range of the data
+    Gaussian 2 will have a mean that is either the lower or upper bound of the range around the mean of x
+    :param universe: an array of x_values
+    :param m_x: the range of all the composite gaussians
+    :param tol: tolerance of our range
+    :return: composite gaussian x ranges and sigmas in a tuple
+    '''
+
+    # Check for x values to be within range x
+    mean = np.mean(universe)
+    # We need the size of the universe to get a 
+    universe_size = np.size(universe)
+    # first gaussian
+    revised_universe_range, sigma = gaussian_with_range(universe, mean)
+    first_gaussian = gaussian(revised_universe_range, mean, sigma)
+
+    if m_x > mean:
+        # our med is greater than the mean
+        # We will use the right bound range as our new sigma
+        second_mean = 2 * m_x - mean
+        # If the second mean is greater than the max, we use the max
+        if np.max(universe) < second_mean:
+            second_mean = np.max(universe)
+        # we are going to use 6 sigma
+        second_sigma = np.divide((np.max(universe) - second_mean), 3)
+    elif m_x < mean:
+        # our med is less than the mean
+        # We will use the left bound range as our new sigma
+        second_mean = m_x - (mean - m_x)
+        if np.min(universe) > second_mean:
+            second_mean = np.max(universe)
+        second_sigma = np.divide((second_mean - np.min(universe)), 3)
+    else:
+        # they are equal which means we don't have to do anything
+        second_mean = mean
+        second_sigma = np.divide((np.max(universe) - second_mean), 3)
+    second_universe =
+    second_gaussian = gaussian(revised_universe_range, second_mean, second_sigma)
+    # normalize both to have a max of 1
+
+
+def gaussian_with_range(universe, mean):
+    """
+    This function should always return a gaussian with the range of the initial universe
+    However, it may not be centered at the center of that range.
+    :param universe: np array that has the universe of points we are analysing in our fuzzy
+    :param mean: the "mean" that you want to center your normal curve at
+    :return: An antecedent range, the sigma of the gaussian
+    """
+    total_points = np.size(universe)
+    total_range = np.max(universe) - np.min(universe)
+    # sigma calculations are 6 sigma from the mean
+    sigma = np.divide(np.sum(np.divide(total_range, 2), mean), 6)
+    revised_universe_range = np.arange(mean - 6 * sigma,
+                                       mean + 6 * sigma,
+                                       np.divide(total_range, total_points))
+    return revised_universe_range, sigma
+
+
 def gaussian(x, mean, sigma):
     sqrt_2pi = np.sqrt(np.multiply(2, np.pi))
     constant = np.divide(1, np.multiply(sigma, sqrt_2pi))
     exponent = -((x - mean)**2.) / (2 * sigma**2.)
     return np.multiply(constant, agnp.exp(exponent))
+
+
+def diff_gaussian(x, mean, sigma):
+    exponent = -((x - mean)**2.) / (2 * sigma**2.)
+    exp_term = agnp.exp(exponent)
+    sqrt_2pi = np.sqrt(np.multiply(2, np.pi))
+    sigma_3 = sqrt_2pi * sigma ** 3
+    return np.divide((x-mean) * exp_term, sigma_3)
 
 
 def centroid_gaussian(x, analysis_params):
