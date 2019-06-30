@@ -1,7 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from skfuzzy.defuzzify.defuzz import bisector
-
+import autograd.numpy as agnp
+from scipy.stats import norm
+import scipy.integrate as integrate
+import scipy.special as special
+from math import isclose
+from scipy import optimize
 
 def interp_membership(x, xmf, xx, tol=1e-5):
     """
@@ -64,7 +69,143 @@ def interp_membership(x, xmf, xx, tol=1e-5):
         return peak_y if peak_y > tol else 0
 
 
-def defuzz(x, mfx, mode):
+def skew_norm_pdf(x, e=0, w=1, a=0):
+    # adapated from:
+    # http://stackoverflow.com/questions/5884768/skew-normal-distribution-in-scipy
+    # e = location
+    # w = scale
+    # a = shape
+    # mean = e + w*alpha*sqrt(2/pi)
+    # alpha = alpha/sqrt(1+alpha^2)
+    t = (x-e) / w
+    return 2.0 * w * norm.pdf(t) * norm.cdf(a*t)
+
+
+def inverse_skew_pdf(x, y, e=0, w=1, a=0):
+    y_pdf = skew_norm_pdf(x, e=e, w=w, a=a)
+    y_cdf = norm.cdf(y_pdf)
+    return
+
+
+def composite_gaussian(universe, data_x, m_x):
+    '''
+    We will make two gaussians overlap
+    Gaussian 1 will have a mean that's the mean of the data and a range that's the range of the data
+    Gaussian 2 will have a mean that is either the lower or upper bound of the range around the mean of x
+    :param universe: an array of x_values
+    :param data_x: the data points
+    :param m_x: the range of all the composite gaussians
+    :return: composite gaussian x ranges and sigmas in a tuple
+    The first peak will be the mean of the data, the second is dependent on the m_x that is provided
+    '''
+
+    # Check for x values to be within range x
+    mean = np.mean(data_x)
+    # easy way to get the tolerance
+    tol_universe = universe[1]-universe[0]
+    # first gaussian
+    revised_universe_range, sigma = gaussian_with_range(universe, np.mean(universe))
+    if m_x > mean:
+        # our med is greater than the mean
+        # We will use the right bound range as our new sigma
+        second_mean = 2 * m_x - mean
+        # If the second mean is greater than the max, we use the max
+        if np.max(universe) < second_mean:
+            second_mean = np.max(universe)
+        # we are going to use 6 sigma
+        second_sigma = np.divide((np.max(universe) - second_mean), 6)
+    elif m_x < mean:
+        # our med is less than the mean
+        # We will use the left bound range as our new sigma
+        second_mean = m_x - (mean - m_x)
+        if np.min(universe) > second_mean:
+            second_mean = np.max(universe)
+        second_sigma = np.divide((second_mean - np.min(universe)), 6)
+    else:
+        # they are equal which means we don't have to do anything
+        second_mean = mean
+        second_sigma = np.divide((np.max(universe) - second_mean), 6)
+    # tol total range / universe size
+    if tol_universe < 6*sigma:
+        second_universe = np.arange(second_mean - 6 * second_sigma, second_mean + 6 * second_sigma+tol_universe, tol_universe)
+    else:
+        raise Exception("Tolerance of this universe is greater than the spread")
+    new_gaussian = np.array([])
+    if second_sigma == 0:
+        for x_value in np.arange(np.min(revised_universe_range), np.max(revised_universe_range),
+                                 tol_universe):
+            new_gaussian = np.append(new_gaussian, gaussian(x_value, mean, sigma))
+    else:
+        # We have a second gaussian to account for
+        for x_value in np.arange(np.minimum(np.min(revised_universe_range), np.min(second_universe)),
+                                 np.maximum(np.max(revised_universe_range), np.max(second_universe)),
+                                 tol_universe):
+            new_gaussian = np.append(new_gaussian, np.maximum(gaussian(x_value, mean, sigma), gaussian(x_value, second_mean, second_sigma)))
+    normalize_new_gaussian = np.divide(np.subtract(new_gaussian, np.min(new_gaussian)), np.subtract(np.max(new_gaussian), np.min(new_gaussian)))
+
+    return normalize_new_gaussian
+
+
+def gaussian_with_range(universe, mean):
+    """
+    This function should always return a gaussian with the range of the initial universe
+    However, it may not be centered at the center of that range.
+    :param universe: np array that has the universe of points we are analysing in our fuzzy
+    :param mean: the "mean" that you want to center your normal curve at
+    :return: An antecedent range, the sigma of the gaussian
+    """
+    total_points = np.size(universe)
+    total_range = np.max(universe) - np.min(universe)
+    # sigma calculations are 6 sigma from the mean
+    sigma = np.divide(np.divide(total_range, 2), 6)
+    revised_universe_range = np.arange(mean - 6 * sigma,
+                                       mean + 6 * sigma + np.divide(12*sigma, total_points),
+                                       np.divide(12*sigma, total_points))
+    return revised_universe_range, sigma
+
+
+def gaussian(x, mean, sigma):
+    sqrt_2pi = np.sqrt(np.multiply(2, np.pi))
+    constant = np.divide(1, np.multiply(sigma, sqrt_2pi))
+    exponent = -((x - mean)**2.) / (2 * sigma**2.)
+    return np.multiply(constant, agnp.exp(exponent))
+
+
+def diff_gaussian(x, mean, sigma):
+    exponent = -((x - mean)**2.) / (2 * sigma**2.)
+    exp_term = agnp.exp(exponent)
+    sqrt_2pi = np.sqrt(np.multiply(2, np.pi))
+    sigma_3 = sqrt_2pi * sigma ** 3
+    return np.divide((x-mean) * exp_term, sigma_3)
+
+
+def centroid_gaussian(x, analysis_params):
+    y_value = gaussian(x, analysis_params['mean'], analysis_params['sigma'])
+    return x * y_value
+
+
+# https://www.wolframalpha.com/input/?i=integrate+(1%2F((sigma)*sqrt(2*pi))*exp(-(x-mu)%5E2%2F(2*sigma%5E2)))%5E2+dx
+def integrate_centroid(x, analysis_params):
+    denom = 4*agnp.sqrt(np.pi) * analysis_params['sigma']
+    return agnp.divide(special.erf((x-analysis_params['mean'])/analysis_params['sigma']), denom)
+
+
+# https://www.wolframalpha.com/input/?i=integrate+(1%2F((sigma)*sqrt(2*pi))*exp(-(x-mu)%5E2%2F(2*sigma%5E2)))+dx
+def integrate_gaussian(x, analysis_params):
+    special_func = special.erf((x-analysis_params['mean'])/(agnp.sqrt(2) * analysis_params['sigma']))
+    return agnp.divide(special_func, 2)
+
+
+def inverse_gaussian(y, mean, sigma):
+    sqrt_2pi = np.sqrt(np.multiply(2, np.pi))
+    log_y = agnp.log(np.multiply(y, np.multiply(sigma, sqrt_2pi)))
+    ln_calc = agnp.sqrt(np.multiply(-2, log_y))
+    return np.add(np.multiply(sigma, ln_calc), mean)
+    # we know we have two values, but either one should work for the fuzzification of our gaussian
+    # return [np.add(np.multiply(sigma, ln_calc), mean), np.add(np.multiply(sigma, np.multiply(-1, ln_calc)), mean)]
+
+
+def defuzz(x, mfx, mode, analysis_function, analysis_params):
     """
     Defuzzification of a membership function, returning a defuzzified value
     of the function at x, using various defuzzification methods.
@@ -104,7 +245,7 @@ def defuzz(x, mfx, mode):
         assert not zero_truth_degree, 'Total area is zero in defuzzification!'
 
         if 'centroid' in mode:
-            return centroid(x, mfx)
+            return centroid(x, mfx, analysis_function, analysis_params)
 
         elif 'bisector' in mode:
             return bisector(x, mfx)
@@ -166,7 +307,7 @@ def interp_universe_fast(x, xmf, y):
     return x[idx] + (y-xmf[idx]) * (x[idx+1]-x[idx]) / (xmf[idx+1]-xmf[idx])
 
 
-def centroid(x, mfx):
+def centroid(x, mfx, analysis_function, analysis_params):
     """
     Defuzzification using centroid (`center of gravity`) method.
 
@@ -194,34 +335,69 @@ def centroid(x, mfx):
 
     sum_moment_area = 0.0
     sum_area = 0.0
+    if analysis_function == 'gauss':
+        # detect tol is flat
+        centroid_x = []
+        for i in range(1, len(x)):
+            x1 = x[i - 1]
+            x2 = x[i]
+            y1 = mfx[i - 1]
+            y2 = mfx[i]
+            # if agnp.absolute(agnp.subtract(y1, y2)) <= 1e-5:
+            #     # we consider 5 digits to be close enough
+            #     # this case is a square
+            #     centroid_x.append(0.5*(x2**2-x1**2) * (x2-x1))
+            # else:
+            # # integrate from x1 to x2
+            # first_integration = integrate.quad(lambda val: centroid_gaussian(val, analysis_params), x1, x2)[0]
+            # second_integration = integrate.quad(lambda val: gaussian(val, analysis_params['mean'], analysis_params['sigma']), x1, x2)[0]
+            # total_integration = agnp.divide(first_integration, second_integration)
+            if y2 == y1:
+                centroid_x.append(0.5 * (x2 ** 2 - x1 ** 2) * (x2 - x1))
+            elif y2 > y1:
+                first_integration = integrate_centroid(x2, analysis_params) - integrate_centroid(x1, analysis_params)
+                second_integration = integrate_gaussian(x2, analysis_params) - integrate_gaussian(x1, analysis_params)
+                total_integration = agnp.divide(first_integration, second_integration)
+                centroid_x.append(total_integration)
+            elif y2 < y1:
+                first_integration = integrate_centroid(x1, analysis_params) - integrate_centroid(x2, analysis_params)
+                second_integration = integrate_gaussian(x1, analysis_params) - integrate_gaussian(x2, analysis_params)
+                total_integration = agnp.divide(first_integration, second_integration)
+                centroid_x.append(total_integration)
+        if len(centroid_x) == 0:
+            total_centroid = 0
+        else:
+            total_centroid = np.average(centroid_x)
+        return total_centroid
+    else:
+        # If the membership function is a singleton fuzzy set:
+        if len(x) == 1:
+            print(x[0]*mfx[0] / np.fmax(mfx[0], np.finfo(float).eps).astype(float))
+            return x[0]*mfx[0] / np.fmax(mfx[0], np.finfo(float).eps).astype(float)
 
-    # If the membership function is a singleton fuzzy set:
-    if len(x) == 1:
-        return x[0]*mfx[0] / np.fmax(mfx[0], np.finfo(float).eps).astype(float)
+        # else return the sum of moment*area/sum of area
+        for i in range(1, len(x)):
+            x1 = x[i - 1]
+            x2 = x[i]
+            y1 = mfx[i - 1]
+            y2 = mfx[i]
 
-    # else return the sum of moment*area/sum of area
-    for i in range(1, len(x)):
-        x1 = x[i - 1]
-        x2 = x[i]
-        y1 = mfx[i - 1]
-        y2 = mfx[i]
+            # if y1 == y2 == 0.0 or x1==x2: --> rectangle of zero height or width
+            if not(y1 == y2 == 0.0 or x1 == x2):
+                if y1 == y2:  # rectangle
+                    moment = 0.5 * (x1 + x2)
+                    area = (x2 - x1) * y1
+                elif y1 == 0.0 and y2 != 0.0:  # triangle, height y2
+                    moment = 2.0 / 3.0 * (x2-x1) + x1
+                    area = 0.5 * (x2 - x1) * y2
+                elif y2 == 0.0 and y1 != 0.0:  # triangle, height y1
+                    moment = 1.0 / 3.0 * (x2 - x1) + x1
+                    area = 0.5 * (x2 - x1) * y1
+                else:
+                    moment = (2.0 / 3.0 * (x2-x1) * (y2 + 0.5*y1)) / (y1+y2) + x1
+                    area = 0.5 * (x2 - x1) * (y1 + y2)
 
-        # if y1 == y2 == 0.0 or x1==x2: --> rectangle of zero height or width
-        if not(y1 == y2 == 0.0 or x1 == x2):
-            if y1 == y2:  # rectangle
-                moment = 0.5 * (x1 + x2)
-                area = (x2 - x1) * y1
-            elif y1 == 0.0 and y2 != 0.0:  # triangle, height y2
-                moment = 2.0 / 3.0 * (x2-x1) + x1
-                area = 0.5 * (x2 - x1) * y2
-            elif y2 == 0.0 and y1 != 0.0:  # triangle, height y1
-                moment = 1.0 / 3.0 * (x2 - x1) + x1
-                area = 0.5 * (x2 - x1) * y1
-            else:
-                moment = (2.0 / 3.0 * (x2-x1) * (y2 + 0.5*y1)) / (y1+y2) + x1
-                area = 0.5 * (x2 - x1) * (y1 + y2)
-
-            sum_moment_area += moment * area
-            sum_area += area
-    float_epsilon = 2.220446049250313e-16
-    return sum_moment_area / np.fmax(sum_area, float_epsilon)
+                sum_moment_area += moment * area
+                sum_area += area
+        float_epsilon = 2.220446049250313e-16
+        return sum_moment_area / np.fmax(sum_area, float_epsilon)

@@ -22,7 +22,7 @@ def gaussian_distribution(x, mu, sigma):
 
 
 def create_three_point_file():
-    f = open("Data/ThreePointPeak/normalized_peak.txt", "w+")
+    f = open("Data/Non_Interpolated/ThreePointPeak/normalized_peak.txt", "w+")
     x = [0, 5, 10]
     y = [1, 5, 1]
 
@@ -35,6 +35,94 @@ def create_three_point_file():
         f.write(" ")
     f.close()
 
+
+def create_three_point_right_file():
+    f = open("Data/ThreePointPeakRight/normalized_peak.txt", "w+")
+    x = [0, 9, 10]
+    y = [1, 5, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+    
+    
+def create_three_point_left_increased_error_file():
+    f = open("Data/ThreePointPeakLeft_Increase_Error/normalized_peak.txt", "w+")
+    x = [0, 1, 10]
+    y = [1, 25, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+
+
+def create_three_point_left_increased_error_file():
+    f = open("Data/ThreePointPeakLeft_Increase_Error/normalized_peak.txt", "w+")
+    x = [0, 2, 10]
+    y = [1, 25, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+    
+
+def create_three_point_left_less_file():
+    f = open("Data/ThreePointPeakLeft_X_3/normalized_peak.txt", "w+")
+    x = [0, 3, 10]
+    y = [1, 5, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+
+def create_three_point_left_x_4_file():
+    f = open("Data/ThreePointPeakLeft_X_4/normalized_peak.txt", "w+")
+    x = [0, 4, 10]
+    y = [1, 5, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+
+
+def create_three_point_left_x_5_file():
+    f = open("Data/ThreePointPeakLeft_X_5/normalized_peak.txt", "w+")
+    x = [0, 5, 10]
+    y = [1, 5, 1]
+
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
 
 def create_normalized_file():
     f = open("Data/NormalizedPeakCenter/normalized_peak.txt", "w+")
@@ -71,10 +159,28 @@ def create_normalized_file_sample_size_10():
         f.write(" ")
     f.close()
 
-def create_left_peak_gumbel_file_sample_size_10():
+
+def create_left_peak_gumbel_file_sample_size_60():
     f = open("Data/LeftPeakCenterLowSampleSize/normalized_peak.txt", "w+")
     mu = 0.5
     sigma = 0.2
+
+    x = np.random.gumbel(loc=1, scale=1, size=60)
+    y = np.array(gaussian_distribution(x, mu, sigma))
+    for value in x:
+        f.write(str(value))
+        f.write(" ")
+    f.write(",")
+    for value in y:
+        f.write(str(value))
+        f.write(" ")
+    f.close()
+
+
+def create_left_peak_gumbel_file_sample_size_60_higher_sig():
+    f = open("Data/LeftPeakCenterHigherSigLowSampleSize/Trim_ABC/normalized_peak.txt", "w+")
+    mu = 0.5
+    sigma = 0.7
 
     x = np.random.gumbel(loc=1, scale=1, size=60)
     y = np.array(gaussian_distribution(x, mu, sigma))
@@ -158,7 +264,34 @@ def create_file(path=None, x_data=None, y_data=None):
 def open_data(path=None):
     text_file = open(path, "r")
     lines = text_file.read().split(',')
-    x_values = np.array(lines[0].split(' ')[:-1]).astype(float)
-    y_values = np.array(lines[1].split(' ')[:-1]).astype(float)
+    x_values = np.array(lines[0].split(' '))
+    x_values_delete = np.array([])
+    for index, value in enumerate(x_values):
+        if value != ' ' and value != '':
+            x_values_delete = np.append(x_values_delete, value)
+    x_values = x_values_delete.astype('float64')
+    y_values = np.array(lines[1].split(' '))
+    y_values_delete = np.array([])
+    for index, value in enumerate(y_values):
+        if value != ' ' and value != '':
+            y_values_delete = np.append(y_values_delete, value)
+    y_values = y_values_delete.astype('float64')
+    return x_values, y_values
 
+
+def open_array_data(path=None):
+    text_file = open(path, "r")
+    lines = text_file.read().split('] ,[')
+    x_values = np.array(lines[0].split(' '))
+    x_values_delete = np.array([])
+    for index, value in enumerate(x_values):
+        if value != ' ' and value != '':
+            x_values_delete = np.append(x_values_delete, value)
+    x_values = x_values_delete.astype('float64')
+    y_values = np.array(lines[1].split(' '))
+    y_values_delete = np.array([])
+    for index, value in enumerate(y_values):
+        if value != ' ' and value != '':
+            y_values_delete = np.append(y_values_delete, value)
+    y_values = y_values_delete.astype('float64')
     return x_values, y_values
