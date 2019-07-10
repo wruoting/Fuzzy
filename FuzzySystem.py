@@ -48,42 +48,48 @@ class FuzzySystem(object):
 
         self.std_dev_x = np.std(np.array(self.x_antecedent.universe))
         self.std_dev_y = np.std(np.array(self.y_consequent.universe))
-        self.std_x_sigma = float(np.divide(self.std_dev_x, 4))
+        self.std_x_sigma = float(np.divide(self.std_dev_x, 6))
         self.std_y_sigma = float(self.std_dev_y)
 
     def create_membership(self, m_x=None, m_y=None):
+        # so we don't actually use the antecedent and consequent stuff here...i might scrap all of this for a new repo
         if self.analysis_function == 'composite_gauss':
             # here we will create a composite gaussian of two gaussians, with mean E(x) and E(m_x) so we can adjust
             # our centroid as necessary
-
             if m_x:
                 # our m_x gaussian has to fit within the range
-                self.x_antecedent['x'], sigma = gaussian_with_range(self.x_antecedent.universe, m_x)
+                self.x_antecedent['x'] = gaussian(self.x_antecedent.universe, m_x,
+                                                 float(np.std(np.array(self.x_antecedent.universe))))
                 self.analysis_params_antecedent = {'mean': m_x,
                                                    'sigma': self.std_x_sigma,
-                                                   'range': np.arange(np.min(self.x_antecedent['x']), np.max(self.x_antecedent['x'])+self.tol_x, self.tol_x),
+                                                   'data': self.data_x,
+                                                   'range': np.arange(np.min(self.data_x), np.max(self.data_x)+self.tol_x, self.tol_x),
                                                    'path': self.path}
             else:
-                self.x_antecedent['x'], sigma = gaussian_with_range(self.x_antecedent.universe,
-                                                 float(np.mean(np.array(self.x_antecedent.universe))))
+                self.x_antecedent['x'] = gaussian(self.x_antecedent.universe,
+                                                 float(np.mean(np.array(self.x_antecedent.universe))),
+                                                 float(np.std(np.array(self.x_antecedent.universe))))
                 self.analysis_params_antecedent = {'mean': float(np.mean(np.array(self.x_antecedent.universe))),
-                                                   'sigma': sigma,
-                                                   'range': np.arange(np.min(self.x_antecedent['x']), np.max(self.x_antecedent['x'])+self.tol_x, self.tol_x),
+                                                   'sigma': float(np.std(np.array(self.x_antecedent.universe))),
+                                                   'data': self.data_x,
+                                                   'range': np.arange(np.min(self.data_x), np.max(self.data_x)+self.tol_x, self.tol_x),
                                                    'path': self.path}
             if m_y:
-                self.y_consequent['y'] = gaussian(self.y_consequent.universe, m_y,
-                                                 float(np.std(np.array(self.y_consequent.universe))))
+                # this is just a placeholder, self.y_consequent['y'] doesn't seem to affect results
+                self.y_consequent['y'] = gaussian(self.y_consequent.universe,
+                                                  float(np.mean(np.array(self.y_consequent.universe))),
+                                                  self.std_y_sigma)
                 self.analysis_params_consequent = {'mean': m_y,
-                                                   'sigma': float(np.std(np.array(self.y_consequent.universe))),
+                                                   'data': self.data_y,
                                                    'range': np.arange(np.min(self.data_y), np.max(self.data_y)+self.tol_y, self.tol_y),
                                                    'path': self.path}
             else:
-                # We need to use a composite gaussian here to create our y
+                # this is just a placeholder, self.y_consequent['y'] doesn't seem to affect results
                 self.y_consequent['y'] = gaussian(self.y_consequent.universe,
                                                   float(np.mean(np.array(self.y_consequent.universe))),
                                                   self.std_y_sigma)
                 self.analysis_params_consequent = {'mean': float(np.mean(np.array(self.y_consequent.universe))),
-                                                   'sigma': self.std_y_sigma,
+                                                   'data': self.data_y,
                                                    'range': np.arange(np.min(self.data_y), np.max(self.data_y)+self.tol_y, self.tol_y),
                                                    'path': self.path}
         if self.analysis_function == 'gauss':

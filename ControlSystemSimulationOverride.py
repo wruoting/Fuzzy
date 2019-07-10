@@ -1,6 +1,7 @@
 from skfuzzy.control.controlsystem import ControlSystemSimulation, CrispValueCalculator
 from misc_functions import interp_membership, defuzz, interp_universe_fast, centroid, gaussian, inverse_gaussian
 import numpy as np
+from CompositeGauss import CompositeGauss
 from file_functions import save_fig
 
 class ControlSystemSimulationOverride(ControlSystemSimulation):
@@ -89,6 +90,10 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
                 # TODO: i think this function uses the wrong fuzzy membership since it's supposed to be the value of the defined gauss
                 term.membership_value[self.sim] = gaussian(value, self.analysis_params['mean'],
                                                            self.analysis_params['sigma'])
+            elif self.analysis_function == 'composite_gauss':
+                # Composite gaussian fuzzing should still be a gaussian going in
+                term.membership_value[self.sim] = gaussian(value, self.analysis_params['mean'],
+                                                           self.analysis_params['sigma'])
 
     def defuzz(self):
         """Derive crisp value based on membership of adjective(s)."""
@@ -138,7 +143,8 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
         vectorize_gaussian = np.vectorize(gaussian)
         # This is our range function
         new_universe = self.analysis_params['range']
-
+        cg = CompositeGauss(new_universe, self.analysis_params.get('data'), self.analysis_params.get('mean'))
+        cg.composite_gaussian()
         for label, term in self.var.terms.items():
             term._cut = term.membership_value[self.sim]
             if term._cut is None:
@@ -150,6 +156,12 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
             # term._cut - particular y value for area under
             if self.analysis_function == 'gauss':
                 new_values.append(inverse_gaussian(term._cut, self.analysis_params.get('mean'), self.analysis_params.get('sigma')))
+            elif self.analysis_function == 'composite_gauss':
+                # whichever gauss is greater should be the one we are using
+                if gaussian(term._cut, cg.mean_one, cg.sigma_one) >= gaussian(term._cut, cg.mean_two, cg.sigma_two):
+                    new_values.append(inverse_gaussian(term._cut, cg.mean_one, cg.sigma_one))
+                elif gaussian(term._cut, cg.mean_one, cg.sigma_one) < gaussian(term._cut, cg.mean_two, cg.sigma_two):
+                    new_values.append(inverse_gaussian(term._cut, cg.mean_two, cg.sigma_two))
         # The new values are the values that represent the universe area
         # I should be taking the new values and using them to create a
         # new output_mf_final that is the cut shape
@@ -159,6 +171,9 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
         term_mfs = {}
         upsampled_mf = np.array([])
         output_mf_final = np.array([])
+        cg = CompositeGauss(new_universe, self.analysis_params.get('data'),
+                            self.analysis_params.get('mean'))
+        cg.composite_gaussian()
         for label, term in self.var.terms.items():
             if term._cut is None:
                 continue  # No membership defined for this adjective
@@ -166,6 +181,11 @@ class CrispValueCalculatorOverride(CrispValueCalculator):
                 if self.analysis_function == 'gauss':
                     upsampled_mf = np.append(upsampled_mf, vectorize_gaussian(value, self.analysis_params['mean'],
                                                                               self.analysis_params['sigma']))
+                elif self.analysis_function == 'composite_gauss':
+                    if gaussian(term._cut, cg.mean_one, cg.sigma_one) >= gaussian(term._cut, cg.mean_two, cg.sigma_two):
+                        upsampled_mf = np.append(upsampled_mf, vectorize_gaussian(value, cg.mean_one, cg.sigma_one))
+                    elif gaussian(term._cut, cg.mean_one, cg.sigma_one) < gaussian(term._cut, cg.mean_two, cg.sigma_two):
+                        upsampled_mf = np.append(upsampled_mf, vectorize_gaussian(value, cg.mean_two, cg.sigma_two))
             term_mfs[label] = np.minimum(term._cut, upsampled_mf)
             output_mf_final = term_mfs[label]
             # if self.analysis_function == 'gauss':

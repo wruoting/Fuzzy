@@ -17,6 +17,11 @@ def mse_generator(path=None, analysis_function='gauss'):
         normalized_peak_mse_output_path = 'normalized_peak_mse_gauss.txt'
         data_output_graph = 'data_gauss.png'
         overlay_graph_data = 'overlay_data_gauss.png'
+    elif analysis_function == 'composite_gauss':
+        normalized_peak_output_path = 'normalized_peak_mse_composite_gauss.txt'
+        normalized_peak_mse_output_path = 'normalized_peak_mse_composite_gauss.txt'
+        data_output_graph = 'data_composite_gauss.png'
+        overlay_graph_data = 'overlay_data_composite_gauss.png'
     elif analysis_function == 'trimf':
         normalized_peak_output_path = 'normalized_peak_mse.txt'
         normalized_peak_mse_output_path = 'normalized_peak_mse.txt'
@@ -156,9 +161,9 @@ def test_fuzzy(path, analysis_function='gauss'):
         print(fuzzy_system.generate_output('x', 'y', datum))
 
 
-def add_to_path(data_x, data_y, path):
+def add_to_path(data_x, data_y, analysis_function, path):
     # Create our universe
-    fuzzy_system = FuzzySystem(data_x, data_y)
+    fuzzy_system = FuzzySystem(data_x, data_y, analysis_function=analysis_function, path=path)
     fuzzy_system.create_universes()
     min_x = np.min(data_x)
     max_x = np.max(data_x)
@@ -186,12 +191,14 @@ def create_diff_data(path, analysis_function='gauss'):
     if analysis_function == 'gauss':
         normalized_peak_output_path = 'normalized_peak.txt'
         diff_data = 'DiffData_XY_Gauss.txt'
+    elif analysis_function == 'composite_gauss':
+        normalized_peak_output_path = 'normalized_peak.txt'
+        diff_data = 'DiffData_XY_Composite_Gauss.txt'
     elif analysis_function == 'trimf':
         normalized_peak_output_path = 'normalized_peak.txt'
         diff_data = 'DiffData_XY.txt'
-
     data_x, data_y = open_data(path="{}{}".format(path, normalized_peak_output_path))
-    add_to_path(data_x, data_y, path='{}{}'.format(path, diff_data))
+    add_to_path(data_x, data_y, analysis_function=analysis_function, path='{}{}'.format(path, diff_data))
 
 
 def plot_diff_data(path, analysis_function='gauss'):
@@ -201,6 +208,12 @@ def plot_diff_data(path, analysis_function='gauss'):
         diff_data = 'DiffData_XY_Gauss.txt'
         normalized_peak_output_path = 'normalized_peak_mse_gauss.txt'
         overlay_output_dMSE_vs_dX = 'overlay_dMSE_dX_gauss.png'
+    elif analysis_function == 'composite_gauss':
+        output_dMSE_vs_dX_points = 'dMSE_vs_dX_points_composite_gauss.png'
+        output_dMSE_vs_dX = 'dMSE_vs_dX_composite_gauss.png'
+        diff_data = 'DiffData_XY_Composite_Gauss.txt'
+        normalized_peak_output_path = 'normalized_peak_mse_composite_gauss.txt'
+        overlay_output_dMSE_vs_dX = 'overlay_dMSE_dX_composite_gauss.png'
     elif analysis_function == 'trimf':
         output_dMSE_vs_dX_points = 'dMSE_vs_dX_points.png'
         output_dMSE_vs_dX = 'dMSE_vs_dX.png'
@@ -278,6 +291,7 @@ three_point_peak_right_path_gauss = "Data/ThreePointPeakRight/Gaussian_Data/"
 
 three_point_peak_left_path = "Data/Non_Interpolated/ThreePointPeakLeft/Trim_ABC/"
 three_point_peak_left_path_gauss = "Data/Non_Interpolated/ThreePointPeakLeft/Gaussian_Data/"
+three_point_peak_left_path_composite_gauss = "Data/Non_Interpolated/ThreePointPeakLeft/Composite_Gaussian_Data/"
 
 three_point_peak_left_increase_error_path = "Data/ThreePointPeakLeft_Increase_Error/Trim_ABC/"
 three_point_peak_left_increase_error_path_gauss = "Data/ThreePointPeakLeft_Increase_Error/Gaussian_Data/"
@@ -294,9 +308,12 @@ three_point_peak_left_x_5_path_gauss = "Data/ThreePointPeakLeft_X_5/Gaussian_Dat
 three_point_peak_left_x_5_400_pts_path = "Data/ThreePointPeakLeft_X_5_400_pts/Trim_ABC/"
 three_point_peak_left_x_5_400_pts_path_gauss = "Data/ThreePointPeakLeft_X_5_400_pts/Gaussian_Data/"
 
-mse_generator(path=three_point_peak_left_path_gauss, analysis_function='gauss')
+# mse_generator(path=three_point_peak_left_path_gauss, analysis_function='gauss')
+mse_generator(path=three_point_peak_left_path_composite_gauss, analysis_function='composite_gauss')
+create_diff_data(three_point_peak_left_path_composite_gauss, analysis_function='composite_gauss')
+plot_diff_data(path=three_point_peak_left_path_composite_gauss, analysis_function='composite_gauss')
 # centroid_generator(path=three_point_peak_left_path_gauss, analysis_function='gauss')
 # test_fuzzy(three_point_peak_left_path_gauss)
-create_diff_data(three_point_peak_left_path_gauss)
-plot_diff_data(path=three_point_peak_left_path_gauss)
+# create_diff_data(three_point_peak_left_path_gauss)
+# plot_diff_data(path=three_point_peak_left_path_gauss)
 # graph_fuzzy(path=three_point_peak_path_gauss)

@@ -1,0 +1,4 @@
+ControlSystemSimulationOverride:
+find_memberships and fuzz rely on which membership function you're using
+
+setting something like self.x_antecedent['x'] doesn't really matter for the final calculations. i literally have no idea why this is here.
